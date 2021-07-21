@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/enchiladaSquad/FEC/issues"
   },
-  "homepage": "https://github.com/enchiladaSquad/FEC#readme"
+  "homepage": "https://github.com/enchiladaSquad/FEC#readme",
+  "devDependencies": {
+    "eslint-config-hackreactor": "github:reactorcore/eslint-config-hackreactor"
+  }
 }
