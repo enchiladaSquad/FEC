@@ -15,18 +15,12 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [14.17]
         # node-version: [14.x, 16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
       - uses: actions/checkout@v2
-      # - name: Setup SSH Keys and known_hosts
-      #   env:
-      #     SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-      #     run: |
-      #       ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-      #       ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
