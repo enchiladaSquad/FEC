@@ -3,3 +3,9 @@ describe('worst test ever', function () {
     expect(1).toBe(1);
   });
 });
+
+describe('worst test ever', function () {
+  it('should fail this test always', function () {
+    expect(1).toBe(1.1);
+  });
+});
