@@ -4,23 +4,25 @@ const axios = require('axios');
 
 const API_KEY = require('./config.js');
 const baseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
-const PORT = 3000;
+const PORT = 4000;
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, '/client/dist')));
+// app.use(express.static(path.join(__dirname, '../client/dist')));
 app.use(express.json());
 
 const getStatusCode = (method) => {
   switch (method) {
-    case 'GET':
-      return 200;
-    case 'POST':
-      return 201;
-    case 'PUT':
-      return 204;
+  case 'GET':
+    return 200;
+  case 'POST':
+    return 201;
+  case 'PUT':
+    return 204;
   }
 };
+
+// Add Favicon Handler here
 
 app.all('/*', (req, res) => {
   // console.log('METHOD:', req.method);
