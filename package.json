@@ -4,7 +4,7 @@
   "description": "A demonstration of raw talent devised and forged by ferocious Enchilada-Eaters",
   "main": "index.js",
   "scripts": {
-    "test": "concurrently \"cd server && test\" \"cd client && test\"",
+    "test": "cd client && test",
     "build": "concurrently \"cd server && build:dev\" \"cd client && build:dev\""
   },
   "keywords": [],
@@ -12,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^6.2.0",
+    "eslint-config-hackreactor": "github:hackreactor-labs/eslint-config-hackreactor",
     "jest": "^27.0.6"
   }
 }
