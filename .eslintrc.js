@@ -5,6 +5,15 @@
  */
 
 module.exports = {
-  extends: './node_modules/eslint-config-hackreactor/index.js',
-  rules: {},
+  extends: 'hackreactor',
+  parserOptions: {
+    ecmaVersion: 2019,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
+  rules: {
+    eqeqeq: 1,
+  },
 };
