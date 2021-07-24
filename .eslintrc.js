@@ -15,5 +15,6 @@ module.exports = {
   },
   rules: {
     eqeqeq: 1,
+    camelcase: 1,
   },
 };
