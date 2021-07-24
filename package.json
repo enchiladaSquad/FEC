@@ -1,0 +1,17 @@
+{
+  "name": "front-end-capstone",
+  "version": "1.0.0",
+  "description": "A demonstration of raw talent devised and forged by ferocious Enchilada-Eaters",
+  "main": "index.js",
+  "scripts": {
+    "test": "concurrently \"cd server && test\" \"cd client && test\"",
+    "build": "concurrently \"cd server && build:dev\" \"cd client && build:dev\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^6.2.0",
+    "jest": "^27.0.6"
+  }
+}
