@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "concurrently \"cd server && npm run test\" \"cd client && npm run test\"",
-    "build:dev": "concurrently \"cd server && npm run build:dev\" \"cd client && npm run build:dev\""
+    "build:action": "concurrently \"cd server && npm run build:action\" \"cd client && npm run build:action\""
   },
   "keywords": [],
   "author": "",
