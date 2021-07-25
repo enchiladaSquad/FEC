@@ -4,8 +4,8 @@
   "description": "A demonstration of raw talent devised and forged by ferocious Enchilada-Eaters",
   "main": "index.js",
   "scripts": {
-    "test": "cd client && npm test",
-    "build:dev": "concurrently \"cd server && build:dev\" \"cd client && build:dev\""
+    "test": "concurrently \"cd server && npm run test\" \"cd client && npm run test\"",
+    "build:dev": "concurrently \"cd server && npm run build:dev\" \"cd client && npm run build:dev\""
   },
   "keywords": [],
   "author": "",
