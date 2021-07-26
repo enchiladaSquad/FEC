@@ -1,7 +1,13 @@
 import React from 'react';
 
-const ProductDetails = () => {
-  return <div>These are the product details</div>;
+const ProductDetails = ({ productCategory, productName, productPrice }) => {
+  return (
+    <div>
+      <div>{productCategory}</div>
+      <div>{productName}</div>
+      <div>{productPrice}</div>
+    </div>
+  );
 };
 
 export default ProductDetails;
