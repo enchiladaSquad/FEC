@@ -25,19 +25,19 @@ const config = {
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
     new NodePolyfillPlugin(),
   ],
-  // resolve: {
-  //   fallback: {
-  //     fs: false,
-  //     tls: false,
-  //     net: false,
-  //     path: false,
-  //     zlib: false,
-  //     http: false,
-  //     https: false,
-  //     stream: false,
-  //     crypto: false,
-  //   },
-  // },
+  resolve: {
+    fallback: {
+      fs: false,
+      tls: false,
+      net: false,
+      path: require.resolve('path-browserify') || false,
+      zlib: false,
+      http: require.resolve('stream-http') || false,
+      https: false,
+      stream: false,
+      crypto: false,
+    },
+  },
   module: {
     rules: [
       {
