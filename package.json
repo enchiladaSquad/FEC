@@ -5,11 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build:action": "concurrently \"npm run build:server\" \"npm run build:server\"",
     "build:client": "cd client && webpack --mode=development",
-    "start:server": "nodemon server/src/index.js",
-    "watch:server": "cd server && webpack --watch",
-    "watch:client": "cd client && webpack --watch"
+    "watch:client": "cd client && webpack --watch",
+    "start:server": "nodemon server/src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +16,7 @@
     "@babel/core": "^7.14.8",
     "@babel/preset-env": "^7.14.8",
     "@babel/preset-react": "^7.14.5",
+    "@testing-library/react": "^12.0.0",
     "babel-loader": "^8.2.2",
     "concurrently": "^6.2.0",
     "css-loader": "^6.2.0",

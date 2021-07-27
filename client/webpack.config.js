@@ -56,9 +56,11 @@ const config = {
   },
   resolve: {
     alias: {
+      src: path.resolve(__dirname, 'src/'),
       components: path.resolve(__dirname, 'src/components'),
       data: path.resolve(__dirname, 'data/'),
       modules: path.resolve(__dirname, '../../node_modules/'),
+      // utils: path.resolve(__dirname, 'utils.js'),
     },
   },
 };
