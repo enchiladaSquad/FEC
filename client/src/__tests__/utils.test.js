@@ -1,7 +1,7 @@
-import { formatPrice } from 'src/utils.js';
+import { formatPrice } from '../utils';
 
-describe('formatPrice', function () {
-  it('should format price correctly', function () {
+describe('formatPrice', () => {
+  it('should format price correctly', () => {
     const input = '140.00';
     const result = formatPrice(input);
     const expected = '$140';

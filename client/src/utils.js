@@ -1,3 +1,1 @@
-export const formatPrice = (priceStr) => {
-  return `$${priceStr.split('.')[0]}`;
-};
+export const formatPrice = (priceStr) => `$${priceStr.split('.')[0]}`;
