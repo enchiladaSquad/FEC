@@ -5,7 +5,7 @@
  */
 
 module.exports = {
-  extends: 'hackreactor',
+  extends: ['airbnb', 'airbnb/hooks'],
   parserOptions: {
     ecmaVersion: 2019,
     sourceType: 'module',
@@ -16,5 +16,8 @@ module.exports = {
   rules: {
     eqeqeq: 1,
     camelcase: 1,
+    'import/no-unresolved': [1, { caseSensitive: false }],
+    'react/prop-types': 1,
+    'import/prefer-default-export': 1,
   },
 };
