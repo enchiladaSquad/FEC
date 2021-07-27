@@ -16,7 +16,7 @@ const App = () => {
   const [product, setProduct] = useState(null);
   const [productStyles, setProductStyles] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [productId, setProductId] = useState(18078);
+  const [productId, setProductId] = useState(18082);
   const [error, setError] = useState('');
 
   function fetchData(route, setData, params) {
@@ -37,11 +37,11 @@ const App = () => {
   useEffect(() => {
     const fetchPromises = [
     { route: '/reviews', setter: setReviews, params: { page: 1, count: 100, sort: 'relevant', product_id: productId } },
-    { route: '/reviews/meta', setter: setReviewsMeta },
+    { route: '/reviews/meta', setter: setReviewsMeta, params: { product_id: productId } },
     { route: `/products/${productId}`, setter: setProduct },
     { route: `/products/${productId}/styles`, setter: setProductStyles },
     ].map((item) => {
-      return fetchData(item.route, item.setter);
+      return fetchData(item.route, item.setter, item.params);
     });
 Promise.all(fetchPromises).then(() => {
   setLoading(false);
