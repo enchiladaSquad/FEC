@@ -16,5 +16,7 @@ module.exports = {
   rules: {
     eqeqeq: 1,
     camelcase: 1,
+    'import/no-unresolved': [1, { caseSensitive: false }],
+    'react/prop-types': 1,
   },
 };

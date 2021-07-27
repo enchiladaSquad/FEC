@@ -2,7 +2,8 @@ const path = require('path');
 const express = require('express'); // npm installed
 const axios = require('axios');
 
-const API_KEY = require('../config.js');
+const API_KEY = require('../config');
+
 const baseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
 const PORT = 4000;
 
@@ -13,12 +14,14 @@ app.use(express.json());
 
 const getStatusCode = (method) => {
   switch (method) {
-  case 'GET':
-    return 200;
-  case 'POST':
-    return 201;
-  case 'PUT':
-    return 204;
+    case 'GET':
+      return 200;
+    case 'POST':
+      return 201;
+    case 'PUT':
+      return 204;
+    default:
+      return 200;
   }
 };
 
