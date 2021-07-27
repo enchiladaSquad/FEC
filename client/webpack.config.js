@@ -33,14 +33,17 @@ const config = {
       {
         test: /\.(js|jsx)$/i,
         loader: 'babel-loader',
+        exclude: '/node_modules/',
       },
       {
         test: /\.css$/i,
         use: [stylesHandler, 'css-loader'],
+        exclude: '/node_modules/',
       },
       {
         test: /\.s[ac]ss$/i,
         use: [stylesHandler, 'css-loader', 'sass-loader'],
+        exclude: '/node_modules/',
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
@@ -50,6 +53,13 @@ const config = {
       // Add your rules for custom modules here
       // Learn more about loaders from https://webpack.js.org/loaders/
     ],
+  },
+  resolve: {
+    alias: {
+      components: path.resolve(__dirname, 'src/components'),
+      data: path.resolve(__dirname, 'data/'),
+      modules: path.resolve(__dirname, '../../node_modules/'),
+    },
   },
 };
 

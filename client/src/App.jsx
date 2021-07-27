@@ -1,10 +1,12 @@
 import React from 'react';
 import Reviews from './components/R&R/Reviews.jsx';
 
+import ProductOverview from 'components/overview/ProductOverview.jsx';
+
 const App = () => {
   return (
     <div>
-      <div>Hello World</div>
+      <ProductOverview />
       <Reviews />
     </div>
   );

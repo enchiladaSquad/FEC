@@ -6,7 +6,6 @@
   "scripts": {
     "test": "jest",
     "build:action": "concurrently \"npm run build:server\" \"npm run build:server\"",
-    "build:server": "cd server && webpack --mode=development",
     "build:client": "cd client && webpack --mode=development",
     "start:server": "nodemon server/src/index.js",
     "watch:server": "cd server && webpack --watch",
