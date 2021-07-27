@@ -2,3 +2,4 @@ node_modules
 /server/config.js
 /server/dist/
 /client/dist/
+/coverage
