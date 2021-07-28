@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import { ProductContext } from '../../context';
 
-class Questions extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+const Questions = () => {
+  const {} = useContext(ProductContext);
+              
+  return (
+    <div>
+      This is the Questions and Answers section
+    </div>
+  );
 
-  render() {
-    return <div>This is the Questions and Answers section</div>;
-  }
 }
 
 export default Questions;
-// bleh

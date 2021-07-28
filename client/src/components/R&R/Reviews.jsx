@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import { ProductContext } from '../../context';
 
-const Reviews = () => <div>This is the Ratings and Reviews widget!</div>;
+const Reviews = () => {
+  const {reviews, reviewsMeta, reviewSort, setReviewSort } = useContext(ProductContext)
+
+  return <div>This is the Ratings and Reviews widget!</div>;
+};
 
 export default Reviews;

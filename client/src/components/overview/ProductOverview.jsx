@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect, useContext } from 'react';
 
-import ProductDetails from 'components/overview/ProductDetails';
+import ProductDetails from './ProductDetails.jsx'; // TodoQ: why not check for JSX?
 
 import mockProductData from 'data/exampleProductIdRes';
+
+import { ProductContext } from '../../context';
 
 const ProductOverview = ({ averageRating }) => {
   const [productData, setProductData] = useState(null);
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
-
+  const {reviewsMeta, product, productStyles} = useContext(ProductContext);
+  
   useEffect(() => {
     try {
       setProductData(mockProductData);
