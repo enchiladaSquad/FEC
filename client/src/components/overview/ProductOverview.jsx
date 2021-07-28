@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import ProductDetails from 'components/overview/ProductDetails.jsx'; // TodoQ: why not check for JSX?
 
 import mockProductData from 'data/exampleProductIdRes';
 
+import { ProductContext } from '../../context';
+
 const ProductOverview = ({ averageRating }) => {
   const [productData, setProductData] = useState(null);
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
-
+  const {reviewsMeta, product, productStyles} = useContext(ProductContext);
+  
   useEffect(() => {
     setProductData(mockProductData);
     setLoaded(true);
