@@ -18,8 +18,12 @@ module.exports = {
     camelcase: 1,
     'import/no-unresolved': [1, { caseSensitive: false }],
     'react/prop-types': 2,
-    'import/prefer-default-export': 1,
-    'react/forbid-prop-types': 0,
+    // 'import/prefer-default-export': 0,
+    // 'no-undef': 0, // enable
+    // 'no-unused-vars': 0,
+    'no-nested-ternary': 0,
+    'react/forbid-prop-types': 1,
+    // 'react-hooks/exhaustive-deps': 0,
   },
   settings: {
     'import/resolver': {
