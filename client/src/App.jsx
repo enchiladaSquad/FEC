@@ -1,20 +1,33 @@
-import React, { useState, useEffect } from 'react';
 
-import Reviews from './components/R&R/Reviews.jsx';
-import Questions from './components/Q&A/questions.jsx';
-import ProductOverview from './components/overview/ProductOverview.jsx';
-import ProductProvider from './components/ProductProvider.jsx';
+import React from 'react';
+import Reviews from 'components/R&R/Reviews';
+import Questions from 'components/Q&A/questions';
+import ProductOverview from 'components/overview/ProductOverview';
+import ProductProvider from 'components/ProductProvider';
+import useSetContext from './components/setContext';
 
-const { error: printError } = console;
+const App = () => {
+  const { error, loading, context: contextValues } = useSetContext();
+  // Set Context
 
-const App = () => (
-  <>
-    <ProductProvider>
-      <ProductOverview />
-      <Reviews />
-      <Questions />
-    </ProductProvider>
-  </>
-);
+  return (
+    <>
+      {error ? (
+        <div>
+          error:
+          {JSON.stringify(error)}
+        </div>
+      ) : loading ? (
+        <div> We Be Loadin </div>
+      ) : (
+        <ProductProvider contextValues={contextValues}>
+          <ProductOverview />
+          <Reviews />
+          <Questions />
+        </ProductProvider>
+      )}
+    </>
+  );
+};
 
 export default App;

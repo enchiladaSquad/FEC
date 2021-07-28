@@ -1,52 +1,50 @@
 import React, { useState, useEffect, useContext } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import ProductDetails from './ProductDetails'; // TodoQ: why not check for JSX?
-
-// import mockProductData from 'data/exampleProductIdRes';
 
 import { ProductContext } from '../../context';
 
 const ProductOverview = () => {
-  const [productData, setProductData] = useState(null);
-  const [loaded, setLoaded] = useState(false);
-  const [error, setError] = useState(false);
+  // const [productData, setProductData] = useState(null);
+  // const [loaded, setLoaded] = useState(false);
+  // const [error, setError] = useState(false);
   const { reviewsMeta, product, productStyles } = useContext(ProductContext);
 
-  useEffect(() => {
-    try {
-      setProductData(product);
-      setLoaded(true);
-    } catch (e) {
-      setError(e);
-    }
-  }, []);
+  // useEffect(() => {
+  //   try {
+  //     setProductData(mockProductData);
+  //     setLoaded(true);
+  //   } catch (e) {
+  //     setError(e);
+  //   }
+  // }, []);
 
-  if (error) {
-    return <div>An error has occurred</div>;
-  }
+  // if (error) {
+  //   return <div>An error has occurred</div>;
+  // }
 
   return (
     <div>
-      {loaded ? (
-        <>
-          {/* <div>{averageRating}</div> */}
-          <ProductDetails
-            productCategory={productData.category || ''}
-            productName={productData.name || ''}
-            productPrice={productData.default_price || ''}
-          />
-        </>
-      ) : (
+      {/* {loaded ? ( */}
+      <>
+        <div>{JSON.stringify(reviewsMeta.ratings)}</div>
+        <ProductDetails
+          productCategory={product.category || ''}
+          productName={product.name || ''}
+          productPrice={product.default_price || ''}
+        />
+        <div>{JSON.stringify(productStyles)}</div>
+      </>
+      {/* ) : (
         <div>Loading...</div>
-      )}
+      )} */}
     </div>
   );
 };
 
-ProductOverview.propTypes = {
-  // averageRating: PropTypes.number.isRequired,
-  // product: PropTypes.object.isRequired,
-};
+// ProductOverview.propTypes = {
+//   averageRating: PropTypes.number.isRequired,
+// };
 
 export default ProductOverview;
