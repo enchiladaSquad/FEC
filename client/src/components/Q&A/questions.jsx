@@ -5,14 +5,11 @@ class Questions extends React.Component {
     super(props);
     this.state = {};
   }
+
   render() {
-    return (
-      <div>
-            This is the Questions and Answers section 
-      </div>
-    );
+    return <div>This is the Questions and Answers section</div>;
   }
 }
 
 export default Questions;
-// bleh 
+// bleh

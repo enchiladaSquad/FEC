@@ -86,7 +86,7 @@ return (
   <>
     {error ? <div> error: {(JSON.stringify(error))} </div> : (loading ? <div> We Be Loadin </div> :
       <div>
-        <ProductOverview />
+        <ProductOverview averageRating={5} />
         <Reviews />
         <Questions />
       </div>
