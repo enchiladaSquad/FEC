@@ -25,8 +25,6 @@ const getStatusCode = (method) => {
   }
 };
 
-// Add Favicon Handler here
-
 app.all('/*', (req, res) => {
   console.log('METHOD:', req.method);
   console.log('PATH:', req.url);

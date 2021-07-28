@@ -57,10 +57,11 @@ const config = {
   },
   resolve: {
     alias: {
-      src: path.resolve(__dirname, 'src/'),
-      components: path.resolve(__dirname, 'src/components'),
-      data: path.resolve(__dirname, 'data/'),
-      modules: path.resolve(__dirname, '../../node_modules/'),
+      src: path.join(__dirname, 'src'),
+      components: path.join(__dirname, 'src', 'components'),
+      data: path.join(__dirname, '..', '..', '..', 'server', 'data'),
+      modules: path.join(__dirname, '../../node_modules/'),
+      server: path.join(__dirname, '..', '..', '..', 'server'),
       // utils: path.resolve(__dirname, 'utils.js'),
     },
     extensions: ['.js', '.jsx'], // * This cancels requirement for file extensions
