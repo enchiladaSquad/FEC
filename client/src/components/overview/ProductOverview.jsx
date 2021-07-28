@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import mockProductData from 'data/exampleProductIdRes';
 import ProductDetails from './ProductDetails'; // TodoQ: why not check for JSX?
 
 import { ProductContext } from '../../context';
