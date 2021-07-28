@@ -13,11 +13,8 @@ const App = () => {
     <>
       {error ? (
         <div>
-          {' '}
           error:
-          {' '}
           {JSON.stringify(error)}
-          {' '}
         </div>
       ) : loading ? (
         <div> We Be Loadin </div>
