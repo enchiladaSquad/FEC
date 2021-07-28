@@ -1,17 +1,18 @@
 import React, { useState, useEffect, useContext } from 'react';
+// import PropTypes from 'prop-types';
 
-import ProductDetails from './ProductDetails.jsx'; // TodoQ: why not check for JSX?
+import ProductDetails from './ProductDetails'; // TodoQ: why not check for JSX?
 
 // import mockProductData from 'data/exampleProductIdRes';
 
 import { ProductContext } from '../../context';
 
-const ProductOverview = ({ averageRating }) => {
+const ProductOverview = () => {
   const [productData, setProductData] = useState(null);
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
-  const {reviewsMeta, product, productStyles} = useContext(ProductContext);
-  
+  const { reviewsMeta, product, productStyles } = useContext(ProductContext);
+
   useEffect(() => {
     try {
       setProductData(product);
@@ -29,7 +30,7 @@ const ProductOverview = ({ averageRating }) => {
     <div>
       {loaded ? (
         <>
-          <div>{averageRating}</div>
+          {/* <div>{averageRating}</div> */}
           <ProductDetails
             productCategory={productData.category || ''}
             productName={productData.name || ''}
@@ -44,8 +45,8 @@ const ProductOverview = ({ averageRating }) => {
 };
 
 ProductOverview.propTypes = {
-  averageRating: PropTypes.number.isRequired,
-  product: PropTypes.object.isRequired,
+  // averageRating: PropTypes.number.isRequired,
+  // product: PropTypes.object.isRequired,
 };
 
 export default ProductOverview;
