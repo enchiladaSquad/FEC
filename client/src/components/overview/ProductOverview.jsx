@@ -1,50 +1,39 @@
-import React, { useState, useEffect, useContext } from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext, useState, useEffect } from 'react';
 
-import ProductDetails from './ProductDetails'; // TodoQ: why not check for JSX?
+import ProductDetails from 'components/overview/ProductDetails';
+import ImageCarousel from 'components/overview/ImageCarousel';
 
 import { ProductContext } from '../../context';
 
 const ProductOverview = () => {
-  // const [productData, setProductData] = useState(null);
-  // const [loaded, setLoaded] = useState(false);
-  // const [error, setError] = useState(false);
   const { reviewsMeta, product, productStyles } = useContext(ProductContext);
 
-  // useEffect(() => {
-  //   try {
-  //     setProductData(mockProductData);
-  //     setLoaded(true);
-  //   } catch (e) {
-  //     setError(e);
-  //   }
-  // }, []);
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [currentPhotos, setCurrentPhotos] = useState([]);
 
-  // if (error) {
-  //   return <div>An error has occurred</div>;
-  // }
+  useEffect(() => {
+    setCurrentPhotos(productStyles.results[0].photos);
+    setCurrentPhotoIndex(0);
+  }, []);
 
   return (
     <div>
-      {/* {loaded ? ( */}
       <>
         <div>{JSON.stringify(reviewsMeta.ratings)}</div>
+        {currentPhotos.length ? (
+          <ImageCarousel
+            photos={currentPhotos}
+            currentPhotoIndex={currentPhotoIndex}
+          />
+        ) : null}
         <ProductDetails
           productCategory={product.category || ''}
           productName={product.name || ''}
           productPrice={product.default_price || ''}
         />
-        <div>{JSON.stringify(productStyles)}</div>
       </>
-      {/* ) : (
-        <div>Loading...</div>
-      )} */}
     </div>
   );
 };
-
-// ProductOverview.propTypes = {
-//   averageRating: PropTypes.number.isRequired,
-// };
 
 export default ProductOverview;
