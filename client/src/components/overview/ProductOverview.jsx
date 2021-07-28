@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 
 import ProductDetails from 'components/overview/ProductDetails';
 
-import mockProductData from 'data/exampleProductIdRes';
+// import mockProductData from 'data/exampleProductIdRes';
 
-const ProductOverview = ({ averageRating }) => {
+const ProductOverview = ({ averageRating, product }) => {
   const [productData, setProductData] = useState(null);
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     try {
-      setProductData(mockProductData);
+      setProductData(product);
       setLoaded(true);
     } catch (e) {
       setError(e);
@@ -43,6 +43,7 @@ const ProductOverview = ({ averageRating }) => {
 
 ProductOverview.propTypes = {
   averageRating: PropTypes.number.isRequired,
+  product: PropTypes.object.isRequired,
 };
 
 export default ProductOverview;
