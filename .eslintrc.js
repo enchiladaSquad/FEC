@@ -20,4 +20,11 @@ module.exports = {
     'react/prop-types': 2,
     'import/prefer-default-export': 1,
   },
+  settings: {
+    'import/resolver': {
+      webpack: {
+        config: './client/webpack.config.js',
+      },
+    },
+  },
 };

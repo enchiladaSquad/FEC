@@ -1,7 +1,7 @@
 import React from 'react';
-import ProductOverview from 'components/overview/ProductOverview.jsx';
-import Reviews from './components/R&R/Reviews.jsx';
-import Questions from './components/Q&A/questions.jsx';
+import ProductOverview from 'components/overview/ProductOverview';
+import Reviews from 'components/R&R/Reviews';
+import Questions from 'components/Q&A/questions';
 
 const App = () => (
   <div>

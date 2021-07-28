@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import ProductDetails from 'components/overview/ProductDetails.jsx'; // TodoQ: why not check for JSX?
+import ProductDetails from 'components/overview/ProductDetails';
 
 import mockProductData from 'data/exampleProductIdRes';
 
