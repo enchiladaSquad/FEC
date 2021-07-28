@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { formatPrice } from 'src/utils';
 
@@ -30,3 +31,9 @@ const ProductDetails = ({ productCategory, productName, productPrice }) => (
 );
 
 export default ProductDetails;
+
+ProductDetails.propTypes = {
+  productCategory: PropTypes.string.isRequired,
+  productName: PropTypes.string.isRequired,
+  productPrice: PropTypes.string.isRequired,
+};

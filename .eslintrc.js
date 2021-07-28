@@ -17,7 +17,14 @@ module.exports = {
     eqeqeq: 1,
     camelcase: 1,
     'import/no-unresolved': [1, { caseSensitive: false }],
-    'react/prop-types': 1,
+    'react/prop-types': 2,
     'import/prefer-default-export': 1,
+  },
+  settings: {
+    'import/resolver': {
+      webpack: {
+        config: './client/webpack.config.js',
+      },
+    },
   },
 };

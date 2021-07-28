@@ -11,5 +11,5 @@ const Questions = () => {
   );
 
 }
-//tumbleweed ------>  >*
+
 export default Questions;

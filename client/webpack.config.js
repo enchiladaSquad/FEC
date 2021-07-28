@@ -32,7 +32,7 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/i,
+        test: /\.(js|jsx)?$/i,
         loader: 'babel-loader',
         exclude: '/node_modules/',
       },
@@ -63,6 +63,7 @@ const config = {
       modules: path.resolve(__dirname, '../../node_modules/'),
       // utils: path.resolve(__dirname, 'utils.js'),
     },
+    extensions: ['.js', '.jsx'], // * This cancels requirement for file extensions
   },
 };
 

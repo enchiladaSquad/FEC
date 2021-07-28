@@ -13,8 +13,12 @@ const ProductOverview = ({ averageRating }) => {
   const {reviewsMeta, product, productStyles} = useContext(ProductContext);
   
   useEffect(() => {
-    setProductData(mockProductData);
-    setLoaded(true);
+    try {
+      setProductData(mockProductData);
+      setLoaded(true);
+    } catch (e) {
+      setError(e);
+    }
   }, []);
 
   if (error) {
@@ -24,16 +28,23 @@ const ProductOverview = ({ averageRating }) => {
   return (
     <div>
       {loaded ? (
-        <ProductDetails
-          productCategory={productData.category || ''}
-          productName={productData.name || ''}
-          productPrice={productData.default_price || ''}
-        />
+        <>
+          <div>{averageRating}</div>
+          <ProductDetails
+            productCategory={productData.category || ''}
+            productName={productData.name || ''}
+            productPrice={productData.default_price || ''}
+          />
+        </>
       ) : (
         <div>Loading...</div>
       )}
     </div>
   );
+};
+
+ProductOverview.propTypes = {
+  averageRating: PropTypes.number.isRequired,
 };
 
 export default ProductOverview;
