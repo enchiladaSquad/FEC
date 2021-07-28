@@ -19,6 +19,7 @@ module.exports = {
     'import/no-unresolved': [1, { caseSensitive: false }],
     'react/prop-types': 2,
     'import/prefer-default-export': 1,
+    'react/forbid-prop-types': 0,
   },
   settings: {
     'import/resolver': {
