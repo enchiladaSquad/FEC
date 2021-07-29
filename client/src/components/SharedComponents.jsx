@@ -11,9 +11,7 @@ const StarRating = ({ rating }) => {
   starFill[starFill.indexOf(0)] = remainingFraction;
   return (
     <>
-      {starFill.map((percent) => {
-        return <span key={Math.random()} className={`star star-${percent} fa fa-star`}></span>
-      })}
+      {starFill.map((percent) => <span key={Math.random()} className={`star star-${percent} fa fa-star`} />)}
     </>
   );
 };
@@ -23,7 +21,7 @@ const AverageRatings = (ratings) => {
   for (const key in ratings) {
     total += key * ratings[key];
     length += Number(ratings[key]);
-  };
+  }
   return (total / length).toFixed(2);
 };
 
