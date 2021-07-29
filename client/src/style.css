@@ -1,8 +1,10 @@
-
+body{
+  font-family: 'Poppins', sans-serif;
+}
 .star {
   display: inline-block;
   position: relative;
-  font-size: 25px;
+  font-size: 1em;
   color: white;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
@@ -25,7 +27,8 @@
   top: 0;
   width: 50%;
   overflow: hidden;
-  color: black;}
+  color: black;
+}
 .star-75:after {
   font-family: FontAwesome;
   content: "\f005";
@@ -34,7 +37,8 @@
   top: 0;
   width: 75%;
   overflow: hidden;
-  color: black;}
+  color: black;
+}
 .star-100:after {
   font-family: FontAwesome;
   content: "\f005";
@@ -43,4 +47,28 @@
   top: 0;
   width: 100%;
   overflow: hidden;
-  color: black;}
+  color: black;
+}
+
+.averageReview {
+  font-size: 3em;
+  font-family: 'Poppins', sans-serif;
+}
+
+progress {
+  border-radius: 0%; 
+  height: .5em;
+  margin-bottom: .25em;
+  margin-left: .15em;
+}
+progress::-webkit-progress-bar {
+  background-color: grey;
+  border-radius: 0%;
+}
+progress::-webkit-progress-value {
+  background-color: black;
+  border-radius: 0%;
+}
+progress::-moz-progress-bar {
+  /* style rules */
+}

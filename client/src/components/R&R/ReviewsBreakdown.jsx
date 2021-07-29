@@ -18,11 +18,36 @@ const ReviewsBreakdown = () => {
     });
   };
 
+  const starPercents = {};
+  const keys = [];
+  const ratingPercents = () => {
+    let ratingTotal = 0;
+    Object.keys(reviewsMeta.ratings).forEach((key) => {
+      keys.push(key);
+    });
+    keys.sort((a, b) => {
+      return b - a;
+    });
+    keys.forEach((key) => {
+      ratingTotal += Number(reviewsMeta.ratings[key]);
+    });
+    keys.forEach((key) => {
+      starPercents[key] = ((reviewsMeta.ratings[key] / ratingTotal) * 100).toFixed(0);
+    });
+    return keys;
+  };
   return (
     <>
-      <div>{averageRatings(reviewsMeta.ratings)}</div>
+      <div className="averageReview">{averageRatings(reviewsMeta.ratings)}</div>
       <StarRating rating={averageRatings(reviewsMeta.ratings)} />
       <div>{recommendPercentage()}% of reviews recommended this product</div>
+      {ratingPercents().map((rating) => {
+        return (
+          <div key={JSON.stringify(rating)}>
+            {rating} Stars: <progress className='percentBar' value={Number(starPercents[rating])} max="100"/>
+          </div>
+        );
+      })}
       {formatCharacteristics().map((characteristic) => {
         return (
           <div key={characteristic.id}>
