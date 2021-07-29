@@ -8,23 +8,29 @@ import { ProductContext } from '../../context';
 const ProductOverview = () => {
   const { reviewsMeta, product, productStyles } = useContext(ProductContext);
 
+  const [styleIndex, setStyleIndex] = useState(0);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [currentPhotos, setCurrentPhotos] = useState([]);
+  const [altText, setAltText] = useState('');
 
   useEffect(() => {
-    setCurrentPhotos(productStyles.results[0].photos);
+    setStyleIndex(0);
+    setCurrentPhotos(productStyles.results[styleIndex].photos);
     setCurrentPhotoIndex(0);
+    setAltText(productStyles.results[styleIndex].name);
   }, []);
 
   return (
     <div>
       <>
-        <div>{JSON.stringify(reviewsMeta.ratings)}</div>
+        {/* <div>{JSON.stringify(reviewsMeta.ratings)}</div> */}
+        <div>Header</div>
         {currentPhotos.length ? (
           <ImageCarousel
             photos={currentPhotos}
             currentPhotoIndex={currentPhotoIndex}
             setCurrentPhotoIndex={setCurrentPhotoIndex}
+            alt={altText}
           />
         ) : null}
         <ProductDetails

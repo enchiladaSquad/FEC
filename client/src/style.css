@@ -7,7 +7,7 @@ body {
 .carousel-thumbnail {
   display: block;
   max-width: 7rem;
-  max-height: 8rem;
+  max-height: 7rem;
   width: auto;
   height: auto;
   position: relative;
@@ -15,13 +15,36 @@ body {
   /* overflow: hidden; */
 }
 
+.main-photo-container{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#arrow-left {
+	transform: translateX(2rem);
+	z-index: 2;
+	color: white;
+}
+
+#arrow-right {
+	transform: translateX(-2rem);
+	z-index: 2;
+	color: white;
+}
+
 #carousel-container {
   display: flex;
-  flex-direction: column;
+	flex-direction: column;
+	display: none;
+}
+
+#current-thumbnail {
+	border-bottom: solid 0.2rem cornflowerblue;
 }
 
 #main-photo {
-  position: absolute;
+  /* position: absolute; */
   z-index: 0;
   max-width: 85%;
   max-height: 85%;
