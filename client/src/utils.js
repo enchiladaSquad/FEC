@@ -4,8 +4,8 @@ export const composeParams = (params) => {
   let result = '?';
   Object.keys(params).forEach((param) => {
     result += `${param}=${typeof params[param] === 'string' ? `"${params[param]}"` : params[param]}&`;
-    return result.slice(0, -1);
   });
+  return result.slice(0, -1);
 };
 
 export const averageRatings = (ratings) => {
