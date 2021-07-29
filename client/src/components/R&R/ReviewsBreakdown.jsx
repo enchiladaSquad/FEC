@@ -1,13 +1,14 @@
 import React, { useState, useContext } from 'react';
-import StarRating, { AverageRatings } from '../SharedComponents';
+import StarRating from '../SharedComponents';
+import { averageRatings } from '../../utils';
 import { ProductContext } from '../../context';
 
 const ReviewsBreakdown = () => {
   const { reviews, reviewsMeta, reviewSort, setReviewSort } = useContext(ProductContext);
   return (
     <>
-      <div>ratings</div>
-      <StarRating rating={AverageRatings(reviewsMeta.ratings)} />
+      <div>Ratings Average</div>
+      <StarRating rating={Number(averageRatings(reviewsMeta.ratings))} />
     </>
   );
 };

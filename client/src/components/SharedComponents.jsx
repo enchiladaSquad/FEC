@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const StarRating = ({ rating }) => {
   const quarteredRating = (Math.round(rating * 4) / 4).toFixed(2);
@@ -15,15 +16,6 @@ const StarRating = ({ rating }) => {
     </>
   );
 };
-const AverageRatings = (ratings) => {
-  let total = 0;
-  let length = 0;
-  for (const key in ratings) {
-    total += key * ratings[key];
-    length += Number(ratings[key]);
-  }
-  return (total / length).toFixed(2);
-};
 
+StarRating.propTypes = { rating: PropTypes.number.isRequired };
 export default StarRating;
-export { AverageRatings };
