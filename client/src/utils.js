@@ -12,8 +12,10 @@ export const averageRatings = (ratings) => {
   let total = 0;
   let length = 0;
   Object.keys(ratings).forEach((key) => {
-    total += key * ratings[key];
-    length += Number(ratings[key]);
+    if (ratings[key] > -1) {
+      total += key * ratings[key];
+      length += Number(ratings[key]);
+    }
   });
-  return (total / length).toFixed(2);
+  return Number((total / length).toFixed(2));
 };

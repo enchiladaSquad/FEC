@@ -1,4 +1,4 @@
-import { composeParams, formatPrice } from '../utils';
+import { averageRatings, composeParams, formatPrice } from '../utils';
 
 describe('formatPrice', () => {
   it('should format price correctly', () => {
@@ -20,6 +20,33 @@ describe('composeParams', () => {
     const input = { product_id: 1813 };
     const result = composeParams(input);
     const expected = '?product_id=1813';
+    expect(result).toBe(expected);
+  });
+});
+
+describe('averageRatings', () => {
+  it('should average an object of review counts', () => {
+    const input = {
+      "1": '1',
+      "2": '1',
+      "3": '1',
+      "4": '3',
+      "5": '8'
+    };
+    const result = averageRatings(input);
+    const expected = 4.14;
+    expect(result).toBe(expected);
+  });
+  it('should ignore negative values', () => {
+    const input = {
+      "1": '-1',
+      "2": '1',
+      "3": '1',
+      "4": '3',
+      "5": '8'
+    };
+    const result = averageRatings(input);
+    const expected = 4.38;
     expect(result).toBe(expected);
   });
 });
