@@ -1,0 +1,48 @@
+.star {
+  display: inline-block;
+  position: relative;
+  font-size: 20px;
+  color: darkgrey;
+}
+
+
+.star-25:after {
+  font-family: FontAwesome;
+  content: "\f005";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 25%;
+  overflow: hidden;
+  color: gold;
+}
+.star-50:after {
+  font-family: FontAwesome;
+  content: "\f005";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  overflow: hidden;
+  color: gold;
+}
+.star-75:after {
+  font-family: FontAwesome;
+  content: "\f005";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 75%;
+  overflow: hidden;
+  color: gold;
+}
+.star-100:after {
+  font-family: FontAwesome;
+  content: "\f005";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  color: gold;
+}
