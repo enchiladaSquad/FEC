@@ -34,7 +34,7 @@ describe('averageRatings', () => {
       "5": '8'
     };
     const result = averageRatings(input);
-    const expected = 4.14;
+    const expected = 4.2;
     expect(result).toBe(expected);
   });
   it('should ignore negative values', () => {
@@ -46,7 +46,7 @@ describe('averageRatings', () => {
       "5": '8'
     };
     const result = averageRatings(input);
-    const expected = 4.38;
+    const expected = 4.5;
     expect(result).toBe(expected);
   });
 });
