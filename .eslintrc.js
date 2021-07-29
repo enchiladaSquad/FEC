@@ -1,10 +1,7 @@
-/**
- * These rules enforce Hack Reactor's style guide.
- * Visit this repo for more information:
- *   https://github.com/reactorcore/eslint-config-hackreactor
- */
-
 module.exports = {
+  env: {
+    'jest/globals': true,
+  },
   extends: ['airbnb', 'airbnb/hooks'],
   parserOptions: {
     ecmaVersion: 2019,
@@ -13,6 +10,7 @@ module.exports = {
       jsx: true,
     },
   },
+  plugins: ['jest'],
   rules: {
     eqeqeq: 1,
     camelcase: 1,
@@ -24,6 +22,11 @@ module.exports = {
     'no-nested-ternary': 0,
     'react/forbid-prop-types': 1,
     // 'react-hooks/exhaustive-deps': 0,
+    'jest/no-disabled-tests': 'warn',
+    'jest/no-focused-tests': 'error',
+    'jest/no-identical-title': 'error',
+    'jest/prefer-to-have-length': 'warn',
+    'jest/valid-expect': 'error',
   },
   settings: {
     'import/resolver': {
