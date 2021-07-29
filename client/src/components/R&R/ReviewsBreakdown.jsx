@@ -7,7 +7,7 @@ const ReviewsBreakdown = () => {
   const { reviews, reviewsMeta, reviewSort, setReviewSort } = useContext(ProductContext);
   return (
     <>
-      <div>Ratings Average</div>
+      <div>{averageRatings(reviewsMeta.ratings)}</div>
       <StarRating rating={averageRatings(reviewsMeta.ratings)} />
     </>
   );

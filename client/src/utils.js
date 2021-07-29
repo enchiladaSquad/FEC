@@ -17,5 +17,5 @@ export const averageRatings = (ratings) => {
       length += Number(ratings[key]);
     }
   });
-  return Number((total / length).toFixed(2));
+  return Number((Math.round((total / length) * 4) / 4).toString().slice(0, 3));
 };
