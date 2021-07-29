@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-import ProductDetails from './ProductDetails'; // TodoQ: why not check for JSX?
+import ProductDetails from 'components/overview/ProductDetails';
+import StyleSelector from 'components/overview/StyleSelector';
 
 import { ProductContext } from '../../context';
 
 const ProductOverview = () => {
   const { reviewsMeta, product, productStyles } = useContext(ProductContext);
+
+  const [styles, setStyles] = useState(productStyles.results);
+  const [currentStyleIndex, setCurrentStyleIndex] = useState(0);
 
   return (
     <>
@@ -16,13 +20,12 @@ const ProductOverview = () => {
         productName={product.name || ''}
         productPrice={product.default_price || ''}
       />
-      <div>{JSON.stringify(productStyles)}</div>
+      <StyleSelector
+        styles={styles}
+        setCurrentStyleIndex={setCurrentStyleIndex}
+      />
     </>
   );
 };
-
-// ProductOverview.propTypes = {
-//   averageRating: PropTypes.number.isRequired,
-// };
 
 export default ProductOverview;

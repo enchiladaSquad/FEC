@@ -43,4 +43,11 @@
   top: 0;
   width: 100%;
   overflow: hidden;
-  color: black;}
+	color: black;}
+
+	.style-node {
+		/* border-radius: 50%; */
+		clip-path: circle();
+		max-width: 8em;
+		margin: 0.25em 0;
+	}
