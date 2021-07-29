@@ -16,6 +16,7 @@ module.exports = {
     camelcase: 1,
     'import/no-unresolved': [1, { caseSensitive: false }],
     'react/prop-types': 2,
+    'arrow-body-style': 0,
     // 'import/prefer-default-export': 0,
     // 'no-undef': 0, // enable
     // 'no-unused-vars': 0,
