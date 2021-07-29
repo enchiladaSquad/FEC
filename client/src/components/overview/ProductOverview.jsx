@@ -24,6 +24,7 @@ const ProductOverview = () => {
           <ImageCarousel
             photos={currentPhotos}
             currentPhotoIndex={currentPhotoIndex}
+            setCurrentPhotoIndex={setCurrentPhotoIndex}
           />
         ) : null}
         <ProductDetails

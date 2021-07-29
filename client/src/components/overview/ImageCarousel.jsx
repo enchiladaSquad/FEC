@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import {
   ExpandLess,
   ExpandMore,
@@ -6,27 +7,58 @@ import {
   ArrowForward,
 } from '@material-ui/icons';
 
-const ImageCarousel = ({ photos, currentPhotoIndex, alt }) => {
+const ImageCarousel = ({
+  photos,
+  currentPhotoIndex,
+  setCurrentPhotoIndex,
+  alt,
+}) => {
   const [thumbMin, setThumbMin] = useState(0);
-  const [thumbMax, setThumbMax] = useState(4);
+  const [thumbMax, setThumbMax] = useState(5);
+  const [currentThumbnails, setCurrentThumbnails] = useState([]);
+
+  useEffect(() => {
+    setThumbMin(0);
+    setThumbMax(4);
+    setCurrentThumbnails(photos.slice(thumbMin, thumbMax + 1));
+  }, []);
+
+  useEffect(() => {
+    setCurrentThumbnails(photos.slice(thumbMin, thumbMax + 1));
+  }, [photos, thumbMin, thumbMax]);
+
+  const handleClickDown = () => {
+    setThumbMin((prevMin) => (prevMin > 0 ? prevMin - 1 : prevMin));
+    setThumbMax((prevMax) => (prevMax > 4 ? prevMax - 1 : prevMax));
+  };
+  const handleClickUp = () => {
+    setThumbMin((prevMin) => (prevMin < photos.length - 4 ? prevMin + 1 : prevMin));
+    setThumbMax((prevMax) => (prevMax < photos.length - 1 ? prevMax + 1 : prevMax));
+  };
+
+  const handleClickLeft = () => {
+    setCurrentPhotoIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : photos.length - 1));
+  };
+  const handleClickRight = () => {
+    setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % photos.length);
+  };
 
   return (
     <div>
       <div>
-        <ArrowBack />
+        <ArrowBack onClick={handleClickLeft} />
         <img
           id="main-photo"
           src={photos[currentPhotoIndex].url || ''}
           alt={alt}
         />
-        <ArrowForward />
+        <ArrowForward onClick={handleClickRight} />
       </div>
 
       <div>
-        <ExpandLess />
         <div id="carousel-container">
-          {photos
-            .filter((photo, i) => i >= thumbMin && i <= thumbMax)
+          <ExpandLess onClick={handleClickDown} />
+          {currentThumbnails
             .filter((photo, i) => i !== currentPhotoIndex)
             .map((photo, i) => (
               <img
@@ -36,7 +68,7 @@ const ImageCarousel = ({ photos, currentPhotoIndex, alt }) => {
                 key={i}
               />
             ))}
-          <ExpandMore />
+          <ExpandMore onClick={handleClickUp} />
         </div>
       </div>
     </div>
@@ -44,3 +76,8 @@ const ImageCarousel = ({ photos, currentPhotoIndex, alt }) => {
 };
 
 export default ImageCarousel;
+
+ImageCarousel.propTypes = {
+  photos: PropTypes.array.isRequired,
+  currentPhotoIndex: PropTypes.number.isRequired,
+};
