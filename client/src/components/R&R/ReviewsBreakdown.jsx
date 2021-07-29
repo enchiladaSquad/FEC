@@ -5,8 +5,6 @@ import { ProductContext } from '../../context';
 
 const ReviewsBreakdown = () => {
   const { reviews, reviewsMeta, reviewSort, setReviewSort } = useContext(ProductContext);
-  console.log(reviewsMeta.ratings);
-  console.log(averageRatings(reviewsMeta.ratings));
   return (
     <>
       <div>Ratings Average</div>
