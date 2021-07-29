@@ -5,6 +5,7 @@ import {
   ExpandMore as NextThumbnail,
   ArrowBack as PrevImage,
   ArrowForward as NextImage,
+  Fullscreen,
 } from '@material-ui/icons';
 
 const THUMBNAIL_LENGTH = 7;
@@ -18,6 +19,7 @@ const ImageCarousel = ({
   const [thumbMin, setThumbMin] = useState(0);
   const [thumbMax, setThumbMax] = useState(0);
   const [currentThumbnails, setCurrentThumbnails] = useState([]);
+  // const [expanding, setExpanding] = useState(false);
 
   useEffect(() => {
     setThumbMin(0);
@@ -35,6 +37,7 @@ const ImageCarousel = ({
   };
 
   const handleNextThumbnail = () => {
+    console.log('hello');
     setThumbMin((prevMin) => (prevMin < photos.length - THUMBNAIL_LENGTH ? prevMin + 1 : prevMin));
     setThumbMax((prevMax) => (prevMax < photos.length - 1 ? prevMax + 1 : prevMax));
   };
@@ -49,6 +52,10 @@ const ImageCarousel = ({
 
   return (
     <div>
+      <div id="fs-icon-container">
+        <Fullscreen id="fs-icon" />
+      </div>
+
       <div className="main-photo-container">
         <PrevImage id="arrow-left" onClick={handlePrevImage} />
         <img

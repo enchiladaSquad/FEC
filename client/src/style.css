@@ -6,8 +6,8 @@ body {
 
 .carousel-thumbnail {
   display: block;
-  max-width: 7rem;
-  max-height: 7rem;
+  max-width: 4rem;
+  max-height: 5rem;
   width: auto;
   height: auto;
   position: relative;
@@ -19,16 +19,17 @@ body {
 	display:flex;
 	justify-content: center;
 	align-items: center;
+	position: absolute;
 }
 
 #arrow-left {
-	transform: translateX(2rem);
+	transform: translateX(5rem);
 	z-index: 2;
 	color: white;
 }
 
 #arrow-right {
-	transform: translateX(-2rem);
+	transform: translateX(-5rem);
 	z-index: 2;
 	color: white;
 }
@@ -36,16 +37,26 @@ body {
 #carousel-container {
   display: flex;
 	flex-direction: column;
-	display: none;
 }
 
 #current-thumbnail {
 	border-bottom: solid 0.2rem cornflowerblue;
 }
 
+#fs-icon-container {
+	display: flex;
+	justify-content: flex-end;
+	width: 89%;
+}
+
+#fs-icon {
+	z-index: 2;
+	color: white;
+	transform: translateY(2rem);
+}
+
 #main-photo {
-  /* position: absolute; */
   z-index: 0;
-  max-width: 85%;
-  max-height: 85%;
+  max-width: 80%;
+  max-height: 80%;
 }
