@@ -13,7 +13,6 @@ const stylesHandler = isProduction
 const config = {
   entry: './src/index.js',
   output: {
-    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
   // devServer: {
@@ -35,17 +34,17 @@ const config = {
       {
         test: /\.(js|jsx)?$/i,
         loader: 'babel-loader',
-        exclude: './node_modules/',
+        exclude: '/node_modules/',
       },
       {
         test: /\.css$/i,
         use: [stylesHandler, 'css-loader'],
-        exclude: './node_modules/',
+        exclude: '/node_modules/',
       },
       {
         test: /\.s[ac]ss$/i,
         use: [stylesHandler, 'css-loader', 'sass-loader'],
-        exclude: './node_modules/',
+        exclude: '/node_modules/',
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
@@ -63,6 +62,7 @@ const config = {
       data: path.join(__dirname, '..', '..', '..', 'server', 'data'),
       modules: path.join(__dirname, '../../node_modules/'),
       server: path.join(__dirname, '..', '..', '..', 'server'),
+      react: path.resolve('./node_modules/react'),
     },
     extensions: ['.js', '.jsx'], // * This cancels requirement for file extensions
   },
