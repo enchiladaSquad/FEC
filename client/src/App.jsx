@@ -4,7 +4,6 @@ import Questions from 'components/Q&A/questions';
 import ProductOverview from 'components/overview/ProductOverview';
 import ProductProvider from 'components/ProductProvider';
 import useSetContext from './components/setContext';
-import StarRating from './components/SharedComponents';
 
 const App = () => {
   const { error, loading, context: contextValues } = useSetContext();
@@ -21,9 +20,8 @@ const App = () => {
         <div> We Be Loadin </div>
       ) : (
         <ProductProvider contextValues={contextValues}>
-          <StarRating rating={3.769} />
-          <ProductOverview />
           <Reviews />
+          <ProductOverview />
           <Questions />
         </ProductProvider>
       )}

@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { ProductContext } from '../../context';
+import ReviewsBreakdown from './ReviewsBreakdown';
 
 const Reviews = () => {
-  const {reviews, reviewsMeta, reviewSort, setReviewSort } = useContext(ProductContext)
+  const {reviews, reviewsMeta, reviewSort, setReviewSort } = useContext(ProductContext);
 
-  return <div>This is the Ratings and Reviews widget!</div>;
+  return <ReviewsBreakdown />;
 };
 
 export default Reviews;
