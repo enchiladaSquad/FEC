@@ -1,13 +1,32 @@
 body{
   font-family: 'Poppins', sans-serif;
+  color: rgb(70, 70, 70);
 }
+
+.reviewsBreakdown {
+  zoom: 1.35;
+}
+
+.starAndAverage {
+  display: flex;
+}
+
+.averageReview {
+  font-size: 3em;
+  margin-right: .2em;
+  margin-bottom: .2em;
+  font-family: 'Poppins', sans-serif;
+}
+
 .star {
+  margin-top: 1em;
+  margin-left: .25em;
   display: inline-block;
   position: relative;
-  font-size: 1em;
+  font-size: .85em;
   color: white;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: .076em;
+  -webkit-text-stroke-color: rgb(70, 70, 70);
 }
 .star-25:after {
   font-family: FontAwesome;
@@ -17,7 +36,7 @@ body{
   top: 0;
   width: 25%;
   overflow: hidden;
-  color: black;
+  color: rgb(70, 70, 70);
 }
 .star-50:after {
   font-family: FontAwesome;
@@ -27,7 +46,7 @@ body{
   top: 0;
   width: 50%;
   overflow: hidden;
-  color: black;
+  color: rgb(70, 70, 70);
 }
 .star-75:after {
   font-family: FontAwesome;
@@ -37,7 +56,7 @@ body{
   top: 0;
   width: 75%;
   overflow: hidden;
-  color: black;
+  color: rgb(70, 70, 70);
 }
 .star-100:after {
   font-family: FontAwesome;
@@ -47,12 +66,18 @@ body{
   top: 0;
   width: 100%;
   overflow: hidden;
-  color: black;
+  color: rgb(70, 70, 70);
 }
 
-.averageReview {
-  font-size: 3em;
-  font-family: 'Poppins', sans-serif;
+
+.recPercent {
+  font-size: .60em;
+  margin-bottom: 1em;
+}
+
+.starBar {
+  margin-bottom: .4em;
+  font-size: .85em;
 }
 
 progress {
@@ -62,13 +87,71 @@ progress {
   margin-left: .15em;
 }
 progress::-webkit-progress-bar {
-  background-color: grey;
+  background-color: rgb(193, 190, 190);
   border-radius: 0%;
 }
 progress::-webkit-progress-value {
-  background-color: black;
+  background-color: rgb(70, 70, 70);
   border-radius: 0%;
 }
 progress::-moz-progress-bar {
   /* style rules */
+}
+
+.characteristic {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  height: 3em;
+  font-size: .85em;
+}
+
+.bar {
+  z-index: 4;
+  background-color: rgb(193, 190, 190);
+  width: 13.75em;
+  height: .5em;
+  margin-top: .25em;
+  margin-bottom: .5em;
+}
+.icon {
+  width: 15em;
+  height: .5em;
+  /* margin-top: .25em; */
+  margin-bottom: .25em;
+}
+.divider1 {
+  position: absolute;
+  z-index: 5;
+  background-color: white;
+  width: .25em;
+  height: .5em;
+  margin-left: 4.45em;
+}
+.divider2 {
+  z-index: 5;
+  position: absolute;
+  background-color: white;
+  width: .25em;
+  height: .5em;
+  margin-left: 9.32em;
+
+}
+.options {
+  display: flex;
+  font-size: .67em;
+  justify-content: center;
+  margin-top: .7em;
+}
+
+.opt1 {
+  flex: 1;
+  margin-left: 0;
+}
+
+.opt3 {
+  flex: 1;
+  margin-right: 0;
+  text-align: end;
 }
