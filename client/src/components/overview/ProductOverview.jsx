@@ -23,6 +23,7 @@ const ProductOverview = () => {
       <StyleSelector
         styles={styles}
         setCurrentStyleIndex={setCurrentStyleIndex}
+        currentStyleIndex={currentStyleIndex}
       />
     </>
   );

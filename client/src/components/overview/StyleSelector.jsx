@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { CheckCircleOutline } from '@material-ui/icons';
 
 import { makeRows } from 'src/utils';
 
@@ -11,25 +12,38 @@ const StyleNode = ({
     onClick={() => {
       setCurrentStyleIndex(index);
     }}
+    key={index}
     src={src}
     alt={alt}
   />
 );
 
-const StyleSelector = ({ styles, setCurrentStyleIndex }) => {
+const StyleSelector = ({ styles, setCurrentStyleIndex, currentStyleIndex }) => {
   const rows = makeRows(styles, 4);
-  console.log('rows:', rows);
+
   return (
     <div>
       {rows.map((row, i) => row.map((style, j) => {
         const { name, photos } = style;
-        return (
+        const index = rows.length * i + j;
+
+        return index !== currentStyleIndex ? (
           <StyleNode
-            index={j}
+            index={index}
             setCurrentStyleIndex={setCurrentStyleIndex}
             src={photos[0].thumbnail_url}
             alt={name + j}
           />
+        ) : (
+          <>
+            <CheckCircleOutline className="style-check" />
+            <StyleNode
+              index={j}
+              setCurrentStyleIndex={setCurrentStyleIndex}
+              src={photos[0].thumbnail_url}
+              alt={name + j}
+            />
+          </>
         );
       }))}
     </div>
@@ -66,6 +80,7 @@ StyleSelector.propTypes = {
     }),
   ).isRequired,
   setCurrentStyleIndex: PropTypes.func.isRequired,
+  currentStyleIndex: PropTypes.number.isRequired,
 };
 
 export default StyleSelector;
