@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import StarRating from '../SharedComponents';
 import { averageRatings } from '../../utils';
 import { ProductContext } from '../../context';
 
 const ReviewsBreakdown = () => {
-  const { reviews, reviewsMeta, reviewSort, setReviewSort } = useContext(ProductContext);
+  const { reviewsMeta } = useContext(ProductContext);
   const options = {
     Size: ['A size too small', 'Perfect', 'A size too big'],
     Width: ['Too narrow', 'Perfect', 'Too wide'],
@@ -54,11 +54,16 @@ const ReviewsBreakdown = () => {
         <div className="averageReview">{averageRatings(reviewsMeta.ratings)}</div>
         <StarRating rating={averageRatings(reviewsMeta.ratings)} />
       </div>
-      <div className="recPercent">{recommendPercentage()}% of reviews recommended this product</div>
+      <div className="recPercent">
+        {recommendPercentage()}
+        % of reviews recommended this product
+      </div>
       {ratingPercents().map((rating) => {
         return (
-          <div className="starBar" key={JSON.stringify(rating)}>
-            {rating} Stars: <progress className="percentBar" value={Number(starPercents[rating])} max="100" />
+          <div className="starBar" onClick={() => (console.log(rating))} key={JSON.stringify(rating)}>
+            {rating}
+            Stars:
+            <progress className="percentBar" value={Number(starPercents[rating])} max="100" />
           </div>
         );
       })}
@@ -68,7 +73,9 @@ const ReviewsBreakdown = () => {
         };
         return (
           <div className="characteristic" key={characteristic.id}>
-            {characteristic.char}: <br />
+            {characteristic.char}
+            :
+            <br />
             <div className="bar">
               <div className="divider1" />
               <div className="divider2" />

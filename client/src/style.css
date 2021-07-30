@@ -28,45 +28,30 @@ body{
   -webkit-text-stroke-width: .076em;
   -webkit-text-stroke-color: rgb(70, 70, 70);
 }
-.star-25:after {
+.star-25:after,
+.star-50:after,
+.star-75:after,
+.star-100:after
+ {
   font-family: FontAwesome;
   content: "\f005";
   position: absolute;
   left: 0;
   top: 0;
-  width: 25%;
   overflow: hidden;
   color: rgb(70, 70, 70);
+}
+.star-25:after {
+  width: 33%;
 }
 .star-50:after {
-  font-family: FontAwesome;
-  content: "\f005";
-  position: absolute;
-  left: 0;
-  top: 0;
   width: 50%;
-  overflow: hidden;
-  color: rgb(70, 70, 70);
 }
 .star-75:after {
-  font-family: FontAwesome;
-  content: "\f005";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 75%;
-  overflow: hidden;
-  color: rgb(70, 70, 70);
+  width: 67%;
 }
 .star-100:after {
-  font-family: FontAwesome;
-  content: "\f005";
-  position: absolute;
-  left: 0;
-  top: 0;
   width: 100%;
-  overflow: hidden;
-  color: rgb(70, 70, 70);
 }
 
 
@@ -75,16 +60,22 @@ body{
   margin-bottom: 1em;
 }
 
+.starBar:hover {
+  cursor: pointer;
+}
+
 .starBar {
   margin-bottom: .4em;
   font-size: .85em;
+  text-decoration: underline;
+  width: 14em;
 }
 
 progress {
   border-radius: 0%; 
   height: .5em;
   margin-bottom: .25em;
-  margin-left: .15em;
+  margin-left: .5em;
 }
 progress::-webkit-progress-bar {
   background-color: rgb(193, 190, 190);
