@@ -91,7 +91,7 @@ body{
 }
 
 progress {
-  border-radius: 0%; 
+  border-radius: 0%;
   height: .5em;
   margin-top: .4em;
   /* margin-bottom: .25em; */
@@ -175,7 +175,7 @@ progress::-moz-progress-bar {
 }
 
 .style-check {
-  position: fixed;
+  position: absolute;
 	transform: translateX(3.5em);
 	z-index: 1;
 }
