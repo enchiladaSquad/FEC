@@ -3,9 +3,32 @@ body{
   color: rgb(70, 70, 70);
 }
 
+.reviews {
+  display: flex;
+}
+
+.review {
+  padding-bottom: 1em;
+  border-bottom: .1em solid rgb(70, 70, 70);
+}
+
+.report {
+  margin-left: 1em;
+  padding-left: 1em;
+  border-left: .1em solid rgb(70, 70, 70);
+}
+
+.helpful {
+  margin-bottom: 1em;
+}
+
 .reviewsBreakdown {
   zoom: 1.35;
 }
+
+/* .reviewsList {
+
+} */
 
 .starAndAverage {
   display: flex;
@@ -17,6 +40,7 @@ body{
   margin-bottom: .2em;
   font-family: 'Poppins', sans-serif;
 }
+
 
 .star {
   margin-top: 1em;
@@ -66,6 +90,7 @@ body{
 
 .starBar {
   margin-bottom: .4em;
+  display: flex;
   font-size: .85em;
   text-decoration: underline;
   width: 14em;
@@ -74,7 +99,8 @@ body{
 progress {
   border-radius: 0%; 
   height: .5em;
-  margin-bottom: .25em;
+  margin-top: .4em;
+  /* margin-bottom: .25em; */
   margin-left: .5em;
 }
 progress::-webkit-progress-bar {
@@ -124,7 +150,7 @@ progress::-moz-progress-bar {
   z-index: 5;
   position: absolute;
   background-color: white;
-  width: .25em;
+  width: .22em;
   height: .5em;
   margin-left: 9.32em;
 

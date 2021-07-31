@@ -11,17 +11,21 @@ const ReviewsBreakdown = () => {
     Comfort: ['Uncomfortable', 'Ok', 'Perfect'],
     Quality: ['Poor', 'What I expected', 'Perfect'],
     Length: ['Runs short', 'Perfect', 'Runs long'],
-    Fit: ['Runs tight', 'Perfect', 'Runs long'],
+    Fit: ['Runs tight', 'Perfect', 'Runs loose'],
+  };
+
+  const calculatePercentage = (num1, num2) => {
+    return (num1 / num2) * 100;
   };
 
   const recommendPercentage = () => {
     const total = Number(reviewsMeta.recommended.true) + Number(reviewsMeta.recommended.false);
-    return Math.round((reviewsMeta.recommended.true / total) * 100);
+    return Math.round(calculatePercentage(reviewsMeta.recommended.true, total));
   };
 
-  const characteristicArray = [];
   const formatCharacteristics = () => {
-    Object.keys(reviewsMeta.characteristics).map((key) => {
+    const characteristicArray = [];
+    Object.keys(reviewsMeta.characteristics).forEach((key) => {
       const obj = { ...reviewsMeta.characteristics[key] };
       obj.char = key;
       characteristicArray.push(obj);
@@ -30,8 +34,8 @@ const ReviewsBreakdown = () => {
   };
 
   const starPercents = {};
-  const keys = [];
-  const ratingPercents = () => {
+  const calcRatingPercentages = () => {
+    const keys = [];
     let ratingTotal = 0;
     Object.keys(reviewsMeta.ratings).forEach((key) => {
       keys.push(key);
@@ -43,7 +47,7 @@ const ReviewsBreakdown = () => {
       ratingTotal += Number(reviewsMeta.ratings[key]);
     });
     keys.forEach((key) => {
-      starPercents[key] = ((reviewsMeta.ratings[key] / ratingTotal) * 100).toFixed(0);
+      starPercents[key] = calculatePercentage(reviewsMeta.ratings[key], ratingTotal).toFixed(0);
     });
     return keys;
   };
@@ -58,12 +62,10 @@ const ReviewsBreakdown = () => {
         {recommendPercentage()}
         % of reviews recommended this product
       </div>
-      {ratingPercents().map((rating) => {
+      {calcRatingPercentages().map((rating) => {
         return (
-          <div className="starBar" onClick={() => (console.log(rating))} key={JSON.stringify(rating)}>
-            {rating}
-            Stars:
-            <progress className="percentBar" value={Number(starPercents[rating])} max="100" />
+          <div className="starBar" key={JSON.stringify(rating)}>
+            {rating} Stars: <progress className="percentBar" value={Number(starPercents[rating])} max="100" />
           </div>
         );
       })}
