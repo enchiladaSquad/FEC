@@ -28,5 +28,5 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm i @material-ui/core
-      - run: npm run build:prod --if-present
+      - run: npm run build:dev --if-present
       - run: npm test
