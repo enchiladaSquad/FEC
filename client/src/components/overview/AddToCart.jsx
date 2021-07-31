@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const DropDown = ({ options, label }) => {
+const DropDown = ({
+  options, label, onChange, disabled = false,
+}) => {
   return (
     <>
       <label htmlFor={`${label}`} />
-      <select>
+      <select disabled={disabled}>
         {options.map((option, i) => {
           return <option value={option}>{option}</option>;
         })}
@@ -22,6 +24,20 @@ const AddToCart = ({ skus }) => {
   const quantities = keys.map((key) => {
     return skus[key].quantity;
   });
+
+  const [currentSize, setCurrentSize] = useState('');
+
+  return (
+    <div>
+      <DropDown onChange={setCurrentSize} options={sizes} label="Sizes" />
+      <DropDown
+        options={Array(quantities[currentSize])}
+        label="Sizes"
+        disabled={currentSize !== ''}
+      />
+      <div />
+    </div>
+  );
 };
 
 AddToCart.propTypes = {
@@ -40,3 +56,5 @@ DropDown.propTypes = {
     }),
   ).isRequired,
 };
+
+export default AddToCart;

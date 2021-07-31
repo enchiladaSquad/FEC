@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from 'react';
 
 import ProductDetails from 'components/overview/ProductDetails';
 import StyleSelector from 'components/overview/StyleSelector';
+// import AddToCart from 'components/overview/AddToCart';
 
 import { ProductContext } from '../../context';
 
@@ -25,6 +26,7 @@ const ProductOverview = () => {
         setCurrentStyleIndex={setCurrentStyleIndex}
         currentStyleIndex={currentStyleIndex}
       />
+      {/* <AddToCart skus={styles[currentStyleIndex].skus} /> */}
     </>
   );
 };
