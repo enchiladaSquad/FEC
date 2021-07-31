@@ -62,7 +62,6 @@ const config = {
       data: path.join(__dirname, '..', '..', '..', 'server', 'data'),
       modules: path.join(__dirname, '../../node_modules/'),
       server: path.join(__dirname, '..', '..', '..', 'server'),
-      react: path.resolve(__dirname, 'node_modules', 'react'),
     },
     extensions: ['.js', '.jsx'], // * This cancels requirement for file extensions
   },
@@ -75,6 +74,11 @@ module.exports = () => {
     config.plugins.push(new MiniCssExtractPlugin());
   } else {
     config.mode = 'development';
+    config.resolve.alias.react = path.resolve(
+      __dirname,
+      'node_modules',
+      'react',
+    );
   }
   return config;
 };
