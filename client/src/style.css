@@ -26,10 +26,6 @@ body{
   zoom: 1.35;
 }
 
-/* .reviewsList {
-
-} */
-
 .starAndAverage {
   display: flex;
 }
@@ -40,7 +36,6 @@ body{
   margin-bottom: .2em;
   font-family: 'Poppins', sans-serif;
 }
-
 
 .star {
   margin-top: 1em;
@@ -58,7 +53,7 @@ body{
 .star-100:after
  {
   font-family: FontAwesome;
-  content: "\f005";
+  content: '\f005';
   position: absolute;
   left: 0;
   top: 0;
@@ -77,7 +72,6 @@ body{
 .star-100:after {
   width: 100%;
 }
-
 
 .recPercent {
   font-size: .60em;
@@ -171,4 +165,17 @@ progress::-moz-progress-bar {
   flex: 1;
   margin-right: 0;
   text-align: end;
+}
+
+.style-node {
+  /* border-radius: 50%; */
+  clip-path: circle();
+  max-width: 8em;
+  margin: 0.25em 0;
+}
+
+.style-check {
+  position: fixed;
+	transform: translateX(3.5em);
+	z-index: 1;
 }

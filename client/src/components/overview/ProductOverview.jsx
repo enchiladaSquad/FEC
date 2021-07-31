@@ -1,50 +1,32 @@
 import React, { useState, useEffect, useContext } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-import ProductDetails from './ProductDetails'; // TodoQ: why not check for JSX?
+import ProductDetails from 'components/overview/ProductDetails';
+import StyleSelector from 'components/overview/StyleSelector';
 
 import { ProductContext } from '../../context';
 
 const ProductOverview = () => {
-  // const [productData, setProductData] = useState(null);
-  // const [loaded, setLoaded] = useState(false);
-  // const [error, setError] = useState(false);
   const { reviewsMeta, product, productStyles } = useContext(ProductContext);
 
-  // useEffect(() => {
-  //   try {
-  //     setProductData(mockProductData);
-  //     setLoaded(true);
-  //   } catch (e) {
-  //     setError(e);
-  //   }
-  // }, []);
-
-  // if (error) {
-  //   return <div>An error has occurred</div>;
-  // }
+  const [styles, setStyles] = useState(productStyles.results);
+  const [currentStyleIndex, setCurrentStyleIndex] = useState(0);
 
   return (
-    <div>
-      {/* {loaded ? ( */}
-      <>
-        <div>{JSON.stringify(reviewsMeta.ratings)}</div>
-        <ProductDetails
-          productCategory={product.category || ''}
-          productName={product.name || ''}
-          productPrice={product.default_price || ''}
-        />
-        <div>{JSON.stringify(productStyles)}</div>
-      </>
-      {/* ) : (
-        <div>Loading...</div>
-      )} */}
-    </div>
+    <>
+      <div>{JSON.stringify(reviewsMeta.ratings)}</div>
+      <ProductDetails
+        productCategory={product.category || ''}
+        productName={product.name || ''}
+        productPrice={product.default_price || ''}
+      />
+      <StyleSelector
+        styles={styles}
+        setCurrentStyleIndex={setCurrentStyleIndex}
+        currentStyleIndex={currentStyleIndex}
+      />
+    </>
   );
 };
-
-// ProductOverview.propTypes = {
-//   averageRating: PropTypes.number.isRequired,
-// };
 
 export default ProductOverview;
