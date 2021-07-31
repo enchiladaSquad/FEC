@@ -62,7 +62,6 @@ const config = {
       data: path.join(__dirname, '..', '..', '..', 'server', 'data'),
       modules: path.join(__dirname, '../../node_modules/'),
       server: path.join(__dirname, '..', '..', '..', 'server'),
-      // utils: path.resolve(__dirname, 'utils.js'),
     },
     extensions: ['.js', '.jsx'], // * This cancels requirement for file extensions
   },
