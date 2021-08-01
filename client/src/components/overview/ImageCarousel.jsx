@@ -10,6 +10,19 @@ import {
 
 const THUMBNAIL_LENGTH = 7;
 
+const Thumbnail = ({ photo, index, isImageThumbnail }) => (
+  <div>
+    <img
+      id={isImageThumbnail ? 'current-thumbnail' : null}
+      className="carousel-thumbnail"
+      // onClick={setCurrentPhotoIndex(i)}
+      src={photo.thumbnail_url}
+      alt={photo.alt + index}
+      key={index}
+    />
+  </div>
+);
+
 const ImageCarousel = ({
   photos,
   currentPhotoIndex,
@@ -19,7 +32,7 @@ const ImageCarousel = ({
   const [thumbMin, setThumbMin] = useState(0);
   const [thumbMax, setThumbMax] = useState(0);
   const [currentThumbnails, setCurrentThumbnails] = useState([]);
-  // const [expanding, setExpanding] = useState(false);
+  const [expanding, setExpanding] = useState(false);
 
   useEffect(() => {
     setThumbMin(0);
@@ -33,11 +46,10 @@ const ImageCarousel = ({
 
   const handlePrevThumbnail = () => {
     setThumbMin((prevMin) => (prevMin > 0 ? prevMin - 1 : prevMin));
-    setThumbMax((prevMax) => (prevMax > THUMBNAIL_LENGTH ? prevMax - 1 : prevMax));
+    setThumbMax((prevMax) => (prevMax > THUMBNAIL_LENGTH - 1 ? prevMax - 1 : prevMax));
   };
 
   const handleNextThumbnail = () => {
-    console.log('hello');
     setThumbMin((prevMin) => (prevMin < photos.length - THUMBNAIL_LENGTH ? prevMin + 1 : prevMin));
     setThumbMax((prevMax) => (prevMax < photos.length - 1 ? prevMax + 1 : prevMax));
   };
@@ -48,6 +60,13 @@ const ImageCarousel = ({
 
   const handleNextImage = () => {
     setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % photos.length);
+  };
+
+  const isImageThumbnail = (thumbnail) => {
+    if (photos[currentPhotoIndex].thumbnail_url === thumbnail.thumbnail_url) {
+      return true;
+    }
+    return false;
   };
 
   return (
@@ -68,18 +87,28 @@ const ImageCarousel = ({
 
       <div>
         <div id="carousel-container">
-          <PrevThumbnail onClick={handlePrevThumbnail} />
+          <PrevThumbnail
+            style={{
+              // fontSize: 'large',
+              zIndex: '5',
+              visibility: thumbMin > 0 ? 'visible' : 'hidden',
+            }}
+            onClick={handlePrevThumbnail}
+          />
           {currentThumbnails.map((photo, i) => (
-            <img
-              id={i === currentPhotoIndex ? 'current-thumbnail' : null}
-              className="carousel-thumbnail"
-              // onClick={setCurrentPhotoIndex(i)}
-              src={photo.thumbnail_url}
-              alt={alt + i}
-              key={i}
+            <Thumbnail
+              isImageThumbnail={isImageThumbnail(photo)}
+              photo={photo}
+              index={i}
             />
           ))}
-          <NextThumbnail onClick={handleNextThumbnail} />
+          <NextThumbnail
+            style={{
+              zIndex: '5',
+              visibility: thumbMax < photos.length - 1 ? 'visible' : 'hidden',
+            }}
+            onClick={handleNextThumbnail}
+          />
         </div>
       </div>
     </div>

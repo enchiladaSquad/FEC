@@ -17,19 +17,20 @@ body {
 
 .main-photo-container{
 	display:flex;
-	justify-content: center;
+	/* justify-content: center; */
 	align-items: center;
 	position: absolute;
+	overflow: hidden;
 }
 
 #arrow-left {
-	transform: translateX(5rem);
+	transform: translateX(7rem);
 	z-index: 2;
 	color: white;
 }
 
 #arrow-right {
-	transform: translateX(-5rem);
+	transform: translateX(-7rem);
 	z-index: 2;
 	color: white;
 }
@@ -37,6 +38,8 @@ body {
 #carousel-container {
   display: flex;
 	flex-direction: column;
+	max-width: 4em;
+	transform: translateX(2.5em);
 }
 
 #current-thumbnail {
