@@ -29,10 +29,10 @@ const StyleSelector = ({ styles, setCurrentStyleIndex, currentStyleIndex }) => {
           <>
             <StyleNode
               index={i}
-              setCurrentStyleIndex={setCurrentStyleIndex}
               src={style.photos[0].thumbnail_url}
               alt={style.name + i}
               marked={currentStyleIndex === i}
+              setCurrentStyleIndex={setCurrentStyleIndex}
             />
             {(i + 1) % 4 ? null : <div className="flex-break" />}
           </>
