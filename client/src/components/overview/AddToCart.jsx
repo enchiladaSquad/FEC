@@ -1,68 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const DropDown = ({
-  options, onChange, flexGrow, label, disabled = false,
-}) => {
-  console.log('options:', options);
-  return (
-    <>
-      {/* <label name={`${label}`} htmlFor={`${label}`} /> */}
-      <select
-        style={{ flexGrow }}
-        className="enchilada"
-        onChange={(e) => {
-          console.log('e.target:', e.target);
-          onChange(e.target.value);
-        }}
-        disabled={disabled}
-      >
-        {options.map((option, i) => {
-          return (
-            <option key={label + i} value={option}>
-              {option}
-            </option>
-          );
-        })}
-      </select>
-    </>
-  );
-};
+import DropDown from 'components/overview/DropDown';
 
-const composeSizeQuantity = (skus) => {
-  const keys = Object.keys(skus);
-  const result = {};
-  for (let i = 0; i < keys.length; i += 1) {
-    const { size, quantity } = skus[keys[i]];
-    result[size] = quantity;
-  }
-  return result;
-};
-
-const populateLinearArray = (size) => {
-  const arr = [];
-  for (let i = 1; i <= size; i += 1) {
-    arr.push(i);
-  }
-  return arr;
-};
-
-const areArraysEqual = (arr1, arr2) => {
-  if (arr1 === arr2) return true;
-  if (arr1.length !== arr2.length) return false;
-  if (!arr1 || !arr2) return false;
-
-  for (let i = 0, l = arr1.length; i < l; i += 1) {
-    if (arr1[i] instanceof Array && arr2[i] instanceof Array) {
-      if (!areArraysEqual(arr1[i], arr2[i])) {
-        return false;
-      }
-    } else if (arr1[i] !== arr2[i]) {
-      return false;
-    }
-  }
-  return true;
-};
+import {
+  composeSizeQuantity,
+  populateLinearArray,
+  areArraysEqual,
+} from 'src/utils';
 
 const AddToCart = ({ skus }) => {
   const keys = Object.keys(skus);
@@ -75,14 +20,6 @@ const AddToCart = ({ skus }) => {
   const [currentSize, setCurrentSize] = useState(['SELECT SIZE']);
   const [currentQuantity, setCurrentQuantity] = useState(0);
   const [triedSubmit, setTriedSubmit] = useState(false);
-  // const [hidePrompt, setHidePrompt] = useState(
-  //   areArraysEqual(currentSize, ['SELECT SIZE']) && triedSubmit,
-  // );
-
-  // console.log(
-  //   'status:',
-  //   areArraysEqual(currentSize, ['SELECT SIZE']) && triedSubmit,
-  // );
 
   const quantity = sizeQuantities[currentSize];
 
@@ -152,7 +89,6 @@ const AddToCart = ({ skus }) => {
               style={{ flexGrow: '5' }}
               className="enchilada"
               onClick={() => {
-                console.log('I am a button');
                 setTriedSubmit(true);
               }}
             >

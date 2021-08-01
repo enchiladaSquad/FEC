@@ -23,8 +23,6 @@ const StyleNode = ({
   );
 };
 
-// Todo: test 18079
-
 const StyleSelector = ({ styles, setCurrentStyleIndex, currentStyleIndex }) => {
   const rows = makeRows(styles, 4);
 
