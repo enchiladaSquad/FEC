@@ -3,27 +3,76 @@ import PropTypes from 'prop-types';
 import {
   ExpandLess as PrevThumbnail,
   ExpandMore as NextThumbnail,
-  ArrowBack as PrevImage,
-  ArrowForward as NextImage,
-  Fullscreen,
 } from '@material-ui/icons';
+
+import MainPhoto from 'components/overview/MainPhoto';
+import Thumbnail from 'components/overview/Thumbnail';
 
 const THUMBNAIL_LENGTH = 7;
 
-const Thumbnail = ({ photo, index, isImageThumbnail }) => (
-  <div>
-    <img
-      id={isImageThumbnail ? 'current-thumbnail' : null}
-      className="carousel-thumbnail"
-      // onClick={setCurrentPhotoIndex(i)}
-      src={photo.thumbnail_url}
-      alt={photo.alt + index}
-      key={index}
-    />
-  </div>
-);
+// const MainPhoto = ({
+//   handlePrevImage,
+//   handleNextImage,
+//   photos,
+//   currentPhotoIndex,
+//   alt,
+// }) => (
+//   <div id="main-photo-container">
+//     <div id="icon-container">
+//       <PrevImage id="arrow-left" onClick={handlePrevImage} />
+//       <Fullscreen id="fs-icon" />
+//       <NextImage id="arrow-right" onClick={handleNextImage} />
+//     </div>
 
-const ImageCarousel = ({
+//     <img id="main-photo" src={photos[currentPhotoIndex].url || ''} alt={alt} />
+//   </div>
+// );
+
+// const ImageCarousel = (
+//   thumbMin,
+//   handlePrevThumbnail,
+//   currentThumbnails,
+//   thumbMax,
+//   photos,
+//   handleNextThumbnail,
+//   isImageThumbnail,
+// ) => {
+//   console.log('handlePrevThumbnail:', handlePrevThumbnail);
+//   return (
+//     <div id="carousel-container">
+//       {typeof handlePrevThumbnail === 'function' ? (
+//         <PrevThumbnail
+//           style={{
+//             // fontSize: 'large',
+//             zIndex: '5',
+//             visibility: thumbMin > 0 ? 'visible' : 'hidden',
+//           }}
+//           onClick={handlePrevThumbnail}
+//         />
+//       ) : null}
+//       {currentThumbnails
+//         ? currentThumbnails.map((photo, i) => (
+//           <Thumbnail
+//             isImageThumbnail={isImageThumbnail(photo)}
+//             photo={photo}
+//             index={i}
+//           />
+//         ))
+//         : null}
+//       {photos && typeof handleNextThumbnail === 'function' ? (
+//         <NextThumbnail
+//           style={{
+//             zIndex: '5',
+//             visibility: thumbMax < photos.length - 1 ? 'visible' : 'hidden',
+//           }}
+//           onClick={handleNextThumbnail}
+//         />
+//       ) : null}
+//     </div>
+//   );
+// };
+
+const ImageGallery = ({
   photos,
   currentPhotoIndex,
   setCurrentPhotoIndex,
@@ -32,7 +81,7 @@ const ImageCarousel = ({
   const [thumbMin, setThumbMin] = useState(0);
   const [thumbMax, setThumbMax] = useState(0);
   const [currentThumbnails, setCurrentThumbnails] = useState([]);
-  const [expanding, setExpanding] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     setThumbMin(0);
@@ -70,52 +119,57 @@ const ImageCarousel = ({
   };
 
   return (
-    <div>
-      <div id="fs-icon-container">
-        <Fullscreen id="fs-icon" />
-      </div>
+    <>
+      <MainPhoto
+        handlePrevImage={handlePrevImage}
+        handleNextImage={handleNextImage}
+        photos={photos}
+        currentPhotoIndex={currentPhotoIndex}
+        alt={alt}
+        expanded={expanded}
+        setExpanded={setExpanded}
+      />
 
-      <div className="main-photo-container">
-        <PrevImage id="arrow-left" onClick={handlePrevImage} />
-        <img
-          id="main-photo"
-          src={photos[currentPhotoIndex].url || ''}
-          alt={alt}
+      {/* <ImageCarousel
+        thumbMin={thumbMin}
+        handlePrevThumbnail={handlePrevThumbnail}
+        currentThumbnails={currentThumbnails}
+        thumbMax={thumbMax}
+        photos={photos}
+        handleNextThumbnail={handleNextThumbnail}
+        isImageThumbnail={isImageThumbnail}
+      /> */}
+      <div id="carousel-container">
+        <PrevThumbnail
+          style={{
+            // fontSize: 'large',
+            zIndex: '5',
+            visibility: thumbMin > 0 ? 'visible' : 'hidden',
+            color: 'white',
+          }}
+          onClick={handlePrevThumbnail}
         />
-        <NextImage id="arrow-right" onClick={handleNextImage} />
-      </div>
-
-      <div>
-        <div id="carousel-container">
-          <PrevThumbnail
-            style={{
-              // fontSize: 'large',
-              zIndex: '5',
-              visibility: thumbMin > 0 ? 'visible' : 'hidden',
-            }}
-            onClick={handlePrevThumbnail}
+        {currentThumbnails.map((photo, i) => (
+          <Thumbnail
+            isImageThumbnail={isImageThumbnail(photo)}
+            photo={photo}
+            index={i}
           />
-          {currentThumbnails.map((photo, i) => (
-            <Thumbnail
-              isImageThumbnail={isImageThumbnail(photo)}
-              photo={photo}
-              index={i}
-            />
-          ))}
-          <NextThumbnail
-            style={{
-              zIndex: '5',
-              visibility: thumbMax < photos.length - 1 ? 'visible' : 'hidden',
-            }}
-            onClick={handleNextThumbnail}
-          />
-        </div>
+        ))}
+        <NextThumbnail
+          style={{
+            zIndex: '5',
+            visibility: thumbMax < photos.length - 1 ? 'visible' : 'hidden',
+            color: 'white',
+          }}
+          onClick={handleNextThumbnail}
+        />
       </div>
-    </div>
+    </>
   );
 };
 
-ImageCarousel.propTypes = {
+ImageGallery.propTypes = {
   photos: PropTypes.arrayOf(
     PropTypes.shape({
       thumbnail_url: PropTypes.string.isRequired,
@@ -127,4 +181,4 @@ ImageCarousel.propTypes = {
   alt: PropTypes.string.isRequired,
 };
 
-export default ImageCarousel;
+export default ImageGallery;
