@@ -14,7 +14,7 @@ const useSetContext = () => {
   const [reviews, setReviews] = useState(null);
   const [reviewsMeta, setReviewsMeta] = useState(null);
   const [reviewPage, setReviewPage] = useState(1);
-  const [reviewCount, setReviewCount] = useState(5);
+  const [reviewCount, setReviewCount] = useState(2);
   const [reviewSort, setReviewSort] = useState('relevant');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
