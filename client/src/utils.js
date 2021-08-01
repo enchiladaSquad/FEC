@@ -21,13 +21,3 @@ export const averageRatings = (ratings) => {
   });
   return Number((Math.round((total / length) * 4) / 4).toString().slice(0, 3));
 };
-
-export const makeRows = (array, size) => {
-  const result = [];
-  let j = 0;
-  for (let i = 0; i < Math.ceil(array.length / size); i += 1) {
-    result[i] = array.slice(j, j + size);
-    j += size;
-  }
-  return result;
-};
