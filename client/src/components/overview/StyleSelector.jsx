@@ -3,19 +3,27 @@ import PropTypes from 'prop-types';
 import { CheckCircleOutline } from '@material-ui/icons';
 
 const StyleNode = ({
-  index, src, alt, marked,
+  index, src, alt, marked, setCurrentStyleIndex,
 }) => {
   return (
-    <>
-      <img className="style-node" key={index} src={src} alt={alt} />
+    <div className="image-container">
+      <img
+        className={`style-node ${marked ? '' : 'opac'}`}
+        key={index}
+        src={src}
+        alt={alt}
+        onClick={() => {
+          setCurrentStyleIndex(index);
+        }}
+      />
       {marked ? <CheckCircleOutline className="style-check" /> : null}
-    </>
+    </div>
   );
 };
 
 const StyleSelector = ({ styles, setCurrentStyleIndex, currentStyleIndex }) => {
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+    <div className="styles-container">
       {styles.map((style, i) => {
         return (
           <>
