@@ -6,8 +6,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import StarRating from '../SharedComponents';
 
 const ReviewsListItem = ({ review, decrease }) => {
-  const [voted, setVoted] = useState(0);
-  const [reported, setReported] = useState(0);
+  const [rerenderEverything, setRerenderEverything] = useState(0);
   const myStorage = window.localStorage;
   if (!myStorage.getItem(`${review.review_id}helpful`)) {
     myStorage.setItem(`${review.review_id}helpful`, review.helpfulness);
@@ -51,14 +50,14 @@ const ReviewsListItem = ({ review, decrease }) => {
     if (myStorage.getItem(`${review.review_id}voted`) === 'false') {
       myStorage.setItem(`${review.review_id}helpful`, Number(myStorage[`${review.review_id}helpful`]) + 1);
       myStorage.setItem(`${review.review_id}voted`, true);
-      setVoted(Math.random());
+      setRerenderEverything(Math.random());
       axios.put(`/reviews/${review.review_id}/helpful`);
     }
   };
 
   const handleReport = () => {
     myStorage.setItem(`${review.review_id}reported`, 'true');
-    setReported(Math.random());
+    setRerenderEverything(Math.random());
     decrease();
   };
 

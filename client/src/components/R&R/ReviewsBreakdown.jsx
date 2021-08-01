@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import StarRating from '../SharedComponents';
 import { averageRatings } from '../../utils';
 import { ProductContext } from '../../context';
+import { TextRotationAngleupTwoTone } from '@material-ui/icons';
 
 const ReviewsBreakdown = () => {
   const { reviewsMeta } = useContext(ProductContext);
@@ -36,15 +37,10 @@ const ReviewsBreakdown = () => {
   const starPercents = {};
   const calcRatingPercentages = () => {
     const keys = ['5', '4', '3', '2', '1'];
-    let ratingTotal = 0;
-    keys.sort((a, b) => {
-      return b - a;
-    });
-    keys.forEach((key) => {
-      if (Number(reviewsMeta.ratings[key]) > 0) {
-        ratingTotal += Number(reviewsMeta.ratings[key]);
-      }
-    });
+    const ratingTotal = keys.reduce((total, key) => {
+      return total + Number(reviewsMeta.ratings[key]);
+    }, 0);
+
     keys.forEach((key) => {
       if (isNaN(calculatePercentage(reviewsMeta.ratings[key], ratingTotal).toFixed(0))) {
         starPercents[key] = 0;
