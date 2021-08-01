@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build:client": "cd client && webpack --mode=development",
-    "watch:client": "cd client && webpack --watch",
-    "start:server": "nodemon server/src/index.js",
-    "start": "concurrently \"npm run build:client\" \"npm run start:server\""
+    "build:dev": "cd client && webpack --mode=development",
+    "build:prod": "cd client && webpack --mode=production",
+    "watch:client": "cd client && webpack --mode=development --watch",
+    "start:server": "nodemon server/src/index.js"
   },
   "keywords": [],
   "author": "",

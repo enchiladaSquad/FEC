@@ -220,4 +220,5 @@ progress::-moz-progress-bar {
 
 .style-check:hover {
   cursor: auto;
+  position: absolute;
 }
