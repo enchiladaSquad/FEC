@@ -75,6 +75,14 @@ const AddToCart = ({ skus }) => {
   const [currentSize, setCurrentSize] = useState(['SELECT SIZE']);
   const [currentQuantity, setCurrentQuantity] = useState(0);
   const [triedSubmit, setTriedSubmit] = useState(false);
+  // const [hidePrompt, setHidePrompt] = useState(
+  //   areArraysEqual(currentSize, ['SELECT SIZE']) && triedSubmit,
+  // );
+
+  // console.log(
+  //   'status:',
+  //   areArraysEqual(currentSize, ['SELECT SIZE']) && triedSubmit,
+  // );
 
   const quantity = sizeQuantities[currentSize];
 
@@ -82,15 +90,35 @@ const AddToCart = ({ skus }) => {
 
   return (
     <>
-      {/* <div
+      <div
         className="checkout-container"
         style={{
-          display: hidePrompt ? 'none' : 'flex',
+          display:
+            areArraysEqual(currentSize, ['SELECT SIZE']) && triedSubmit
+              ? 'flex'
+              : 'none',
+          marginBottom: '0',
+          paddingBottom: '0',
         }}
       >
-        <div>Please</div>
-        <div>Just a spacer</div>
-      </div> */}
+        <div
+          className="enchilada"
+          style={{
+            flexGrow: '3',
+
+            backgroundColor: 'red',
+            color: 'rgb(97, 26, 21)',
+          }}
+        >
+          Please select size
+        </div>
+        <div
+          className="enchilada"
+          style={{ flexGrow: '2', visibility: 'hidden' }}
+        >
+          Just a spacer
+        </div>
+      </div>
       <div className="checkout-container">
         <>
           <DropDown

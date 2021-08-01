@@ -54,9 +54,8 @@ progress::-moz-progress-bar {
 }
 
 .checkout-container {
-	display: flex;
-	flex-direction: row;
-
+  display: flex;
+  flex-direction: row;
 }
 
 .divider1 {
@@ -79,10 +78,10 @@ progress::-moz-progress-bar {
 
 .enchilada {
   padding: 1em 4em 1em 0.1em;
-  margin: 1em;
+  margin: 0em 1em 1em 1em;
   font-family: system-ui;
-	font-weight: bold;
-	font-size: medium;
+  font-weight: bold;
+  font-size: medium;
 }
 
 .enchilada:after {
@@ -206,7 +205,6 @@ progress::-moz-progress-bar {
 }
 
 .style-node {
-  /* border-radius: 50%; */
   clip-path: circle();
   max-width: 8em;
   max-height: 8em; /* * Closest */

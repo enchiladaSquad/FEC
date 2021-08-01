@@ -62,7 +62,7 @@ const StyleSelector = ({ styles, setCurrentStyleIndex, currentStyleIndex }) => {
                 </div>
               );
             })}
-            <div className="flex-break" />
+            {/* <div className="flex-break" /> */}
           </div>
         );
       })}
