@@ -38,13 +38,16 @@ const ReviewsBreakdown = () => {
   const calcRatingPercentages = () => {
     const keys = ['5', '4', '3', '2', '1'];
     const ratingTotal = keys.reduce((total, key) => {
-      return total + Number(reviewsMeta.ratings[key]);
+      let starCount = Number(reviewsMeta.ratings[key]);
+      if (isNaN(starCount)) {
+        starCount = 0;
+      }
+      return total + starCount;
     }, 0);
 
     keys.forEach((key) => {
-      if (isNaN(calculatePercentage(reviewsMeta.ratings[key], ratingTotal).toFixed(0))) {
-        starPercents[key] = 0;
-      } else {
+      starPercents[key] = 0;
+      if (reviewsMeta.ratings[key]) {
         starPercents[key] = calculatePercentage(reviewsMeta.ratings[key], ratingTotal).toFixed(0);
       }
     });

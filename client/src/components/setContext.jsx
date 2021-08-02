@@ -70,6 +70,20 @@ const useSetContext = () => {
       });
   }, []);
 
+  useEffect(() => {
+    const request = {
+      route: '/reviews',
+      setter: setReviews,
+      params: {
+        page: reviewPage,
+        count: reviewCount,
+        sort: reviewSort,
+        product_id: productId,
+      },
+    };
+    fetchData(request.route, request.setter, request.params);
+  }, [reviewCount, reviewSort]);
+
   //   useEffect(() => {
   //     const fetchPromises = [
   //     { route: '/reviews', setter: setReviews, params: {
@@ -100,6 +114,7 @@ const useSetContext = () => {
     reviewPage,
     reviewCount,
     reviewSort,
+    setReviewCount,
     setReviewSort,
   };
 
