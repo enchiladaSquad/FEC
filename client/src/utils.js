@@ -3,9 +3,7 @@ export const formatPrice = (priceStr) => `$${priceStr.split('.')[0]}`;
 export const composeParams = (params) => {
   let result = '?';
   Object.keys(params).forEach((param) => {
-    result += `${param}=${
-      typeof params[param] === 'string' ? `"${params[param]}"` : params[param]
-    }&`;
+    result += `${param}=${typeof params[param] === 'string' ? `"${params[param]}"` : params[param]}&`;
   });
   return result.slice(0, -1);
 };
@@ -33,17 +31,11 @@ export const averageRatings = (ratings) => {
       length += Number(ratings[key]);
     }
   });
-  return Number((Math.round((total / length) * 4) / 4).toString().slice(0, 3));
-};
-
-export const makeRows = (array, size) => {
-  const result = [];
-  let j = 0;
-  for (let i = 0; i < Math.ceil(array.length / size); i += 1) {
-    result[i] = array.slice(j, j + size);
-    j += size;
+  const average = Number((Math.round((total / length) * 4) / 4).toString().slice(0, 3));
+  if (average.toString().length === 1) {
+    return `${average}.0`;
   }
-  return result;
+  return average;
 };
 
 export const composeSizeQuantity = (skus) => {
