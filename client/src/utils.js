@@ -24,16 +24,6 @@ export const averageRatings = (ratings) => {
   return average;
 };
 
-export const makeRows = (array, size) => {
-  const result = [];
-  let j = 0;
-  for (let i = 0; i < Math.ceil(array.length / size); i += 1) {
-    result[i] = array.slice(j, j + size);
-    j += size;
-  }
-  return result;
-};
-
 export const composeSizeQuantity = (skus) => {
   const keys = Object.keys(skus);
   const result = {};

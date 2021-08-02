@@ -2,66 +2,40 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CheckCircleOutline } from '@material-ui/icons';
 
-import { makeRows } from 'src/utils';
-
 const StyleNode = ({
-  index, src, alt, setCurrentStyleIndex,
+  index, src, alt, marked, setCurrentStyleIndex,
 }) => {
   return (
-    <img
-      className="style-node"
-      onClick={() => {
-        setCurrentStyleIndex(index);
-      }}
-      key={alt}
-      // onKeyPress={(e) => {
-      //   if (e.code === index) setCurrentStyleIndex(index);
-      // }}
-      src={src}
-      alt={alt}
-    />
+    <div className="image-container">
+      <img
+        className={`style-node ${marked ? '' : 'opac'}`}
+        key={index}
+        src={src}
+        alt={alt}
+        onClick={() => {
+          setCurrentStyleIndex(index);
+        }}
+      />
+      {marked ? <CheckCircleOutline className="style-check" /> : null}
+    </div>
   );
 };
 
 const StyleSelector = ({ styles, setCurrentStyleIndex, currentStyleIndex }) => {
-  const rows = makeRows(styles, 4);
-
-  console.log('currentStyleIndex:', currentStyleIndex);
-
   return (
-    <div className="node-container">
-      {rows.map((row, i) => {
+    <div className="styles-container">
+      {styles.map((style, i) => {
         return (
-          <div key={i}>
-            {row.map((style, j) => {
-              const { name, photos } = style;
-              const index = rows.length * i + j;
-
-              return (
-                <div key={index}>
-                  {index === currentStyleIndex ? (
-                    <>
-                      <CheckCircleOutline className="style-check" />
-                      <StyleNode
-                        index={j}
-                        setCurrentStyleIndex={setCurrentStyleIndex}
-                        src={photos[0].thumbnail_url}
-                        alt={name + j}
-                      />
-                    </>
-                  ) : (
-                    <StyleNode
-                      index={index}
-                      setCurrentStyleIndex={setCurrentStyleIndex}
-                      src={photos[0].thumbnail_url}
-                      alt={name + j}
-                    />
-                  )}
-                </div>
-              );
-            })}
-            {/* <div className="flex-break" /> */}
-          </div>
+          <>
+            <StyleNode
+              index={i}
+              src={style.photos[0].thumbnail_url}
+              alt={style.name + i}
+              marked={currentStyleIndex === i}
+              setCurrentStyleIndex={setCurrentStyleIndex}
+            />
+            {(i + 1) % 4 ? null : <div className="flex-break" />}
+          </>
         );
       })}
     </div>
@@ -72,7 +46,7 @@ StyleNode.propTypes = {
   index: PropTypes.number.isRequired,
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
-  setCurrentStyleIndex: PropTypes.func.isRequired,
+  marked: PropTypes.bool.isRequired,
 };
 
 StyleSelector.propTypes = {

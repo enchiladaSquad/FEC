@@ -171,11 +171,13 @@ progress::-moz-progress-bar {
   margin-bottom: 0.25em;
 }
 
-.node-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+.image-container {
+  max-width: 10rem;
+  max-height: 10rem;
+}
+
+.opac {
+  opacity: 0.6;
 }
 
 .options {
@@ -295,12 +297,18 @@ progress::-moz-progress-bar {
 }
 
 .style-check {
-  /* position: absolute; */
-  transform: translateX(3.5em) translateY(-2rem);
+  position: absolute;
+  transform: translateX(-1em) translateY(-0.5rem);
   z-index: 1;
 }
 
 .style-check:hover {
   cursor: auto;
   position: absolute;
+}
+
+.styles-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }

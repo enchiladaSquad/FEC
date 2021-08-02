@@ -20,7 +20,7 @@ const config = {
       template: './src/index.html',
     }),
   ],
-  devtool: 'inline-source-map',
+  // devtool: 'inline-source-map',
   module: {
     rules: [
       {
