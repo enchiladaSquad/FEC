@@ -1,6 +1,7 @@
 module.exports = {
   env: {
     'jest/globals': true,
+    browser: true,
   },
   extends: ['airbnb', 'airbnb/hooks'],
   parserOptions: {

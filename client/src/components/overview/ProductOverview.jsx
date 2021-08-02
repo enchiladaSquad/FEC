@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 
 import ProductDetails from 'components/overview/ProductDetails';
-import ImageCarousel from 'components/overview/ImageCarousel';
+import ImageGallery from 'components/overview/ImageGallery';
 
 import { ProductContext } from '../../context';
 
@@ -26,7 +26,7 @@ const ProductOverview = () => {
         {/* <div>{JSON.stringify(reviewsMeta.ratings)}</div> */}
         <div>Header</div>
         {currentPhotos.length ? (
-          <ImageCarousel
+          <ImageGallery
             photos={currentPhotos}
             currentPhotoIndex={currentPhotoIndex}
             setCurrentPhotoIndex={setCurrentPhotoIndex}

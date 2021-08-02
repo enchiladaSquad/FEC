@@ -14,17 +14,37 @@ const MainPhoto = ({
   alt,
   expanded,
   setExpanded,
+  setZooming,
 }) => (
-  <div id="main-photo-container" style={{ width: expanded ? '100%' : '' }}>
+  <div
+    id="main-photo-container"
+    onClick={() => {
+      setZooming(true);
+    }}
+    style={{ width: expanded ? '100%' : '' }}
+  >
     <div id="icon-container">
-      <PrevImage id="arrow-left" onClick={handlePrevImage} />
+      <PrevImage
+        id="arrow-left"
+        onClick={(e) => {
+          e.stopPropagation();
+          handlePrevImage();
+        }}
+      />
       <Fullscreen
         id="fs-icon"
-        onClick={() => {
+        onClick={(e) => {
+          e.stopPropagation();
           setExpanded((expanded) => !expanded);
         }}
       />
-      <NextImage id="arrow-right" onClick={handleNextImage} />
+      <NextImage
+        id="arrow-right"
+        onClick={(e) => {
+          e.stopPropagation();
+          handleNextImage();
+        }}
+      />
     </div>
 
     <img

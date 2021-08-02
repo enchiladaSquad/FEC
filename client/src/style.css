@@ -24,14 +24,14 @@ body {
 #arrow-left {
   /* transform: translateX(7rem); */
   margin-left: 4em;
-  z-index: 2;
+  z-index: 3;
   color: white;
 }
 
 #arrow-right {
   /* transform: translateX(-7rem); */
   margin-right: 4em;
-  z-index: 2;
+  z-index: 3;
   color: white;
 }
 
@@ -54,9 +54,11 @@ body {
 }
 
 #fs-icon {
-  transform: translate(18.5em, -12em) scale(1.25);
-  z-index: 2;
+  z-index: 3;
   color: white;
+  position: inherit;
+  top: 6%;
+  right: 5%;
 }
 
 #icon-container {
@@ -72,6 +74,7 @@ body {
   z-index: 0;
   max-height: 40em;
   width: auto;
+  cursor: zoom-in;
 }
 
 #main-photo-container {
@@ -84,4 +87,28 @@ body {
   margin-left: auto;
   justify-content: center;
   background-color: black;
+  animation: expand;
+}
+
+#zoom-image {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  padding: calc(100% / (16 / 9));
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#zoom-image:hover {
+  background-size: 175%;
+  cursor: zoom-out;
+}
+
+#zoom-image-wrapper {
+  margin: 4em auto;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 60em;
 }

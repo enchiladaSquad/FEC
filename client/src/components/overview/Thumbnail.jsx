@@ -1,7 +1,17 @@
 import React from 'react';
 
-const Thumbnail = ({ photo, index, isImageThumbnail }) => (
-  <div className="thumbnail-container">
+const Thumbnail = ({
+  photo,
+  index,
+  isImageThumbnail,
+  setCurrentPhotoIndex,
+}) => (
+  <div
+    className="thumbnail-container"
+    onClick={(e) => {
+      setCurrentPhotoIndex(index);
+    }}
+  >
     <img
       className="carousel-thumbnail"
       id={isImageThumbnail ? 'current-thumbnail' : null}
