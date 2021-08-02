@@ -20,8 +20,8 @@ const App = () => {
         <div> We Be Loadin </div>
       ) : (
         <ProductProvider contextValues={contextValues}>
-          <Reviews />
           <ProductOverview />
+          <Reviews />
           <Questions />
         </ProductProvider>
       )}

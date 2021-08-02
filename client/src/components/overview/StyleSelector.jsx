@@ -6,46 +6,64 @@ import { makeRows } from 'src/utils';
 
 const StyleNode = ({
   index, src, alt, setCurrentStyleIndex,
-}) => (
-  <img
-    className="style-node"
-    onClick={() => {
-      setCurrentStyleIndex(index);
-    }}
-    key={index}
-    src={src}
-    alt={alt}
-  />
-);
+}) => {
+  return (
+    <img
+      className="style-node"
+      onClick={() => {
+        setCurrentStyleIndex(index);
+      }}
+      key={alt}
+      // onKeyPress={(e) => {
+      //   if (e.code === index) setCurrentStyleIndex(index);
+      // }}
+      src={src}
+      alt={alt}
+    />
+  );
+};
 
 const StyleSelector = ({ styles, setCurrentStyleIndex, currentStyleIndex }) => {
   const rows = makeRows(styles, 4);
 
-  return (
-    <div>
-      {rows.map((row, i) => row.map((style, j) => {
-        const { name, photos } = style;
-        const index = rows.length * i + j;
+  console.log('currentStyleIndex:', currentStyleIndex);
 
-        return index !== currentStyleIndex ? (
-          <StyleNode
-            index={index}
-            setCurrentStyleIndex={setCurrentStyleIndex}
-            src={photos[0].thumbnail_url}
-            alt={name + j}
-          />
-        ) : (
-          <>
-            <CheckCircleOutline className="style-check" />
-            <StyleNode
-              index={j}
-              setCurrentStyleIndex={setCurrentStyleIndex}
-              src={photos[0].thumbnail_url}
-              alt={name + j}
-            />
-          </>
+  return (
+    <div className="node-container">
+      {rows.map((row, i) => {
+        return (
+          <div key={i}>
+            {row.map((style, j) => {
+              const { name, photos } = style;
+              const index = rows.length * i + j;
+
+              return (
+                <div key={index}>
+                  {index === currentStyleIndex ? (
+                    <>
+                      <CheckCircleOutline className="style-check" />
+                      <StyleNode
+                        index={j}
+                        setCurrentStyleIndex={setCurrentStyleIndex}
+                        src={photos[0].thumbnail_url}
+                        alt={name + j}
+                      />
+                    </>
+                  ) : (
+                    <StyleNode
+                      index={index}
+                      setCurrentStyleIndex={setCurrentStyleIndex}
+                      src={photos[0].thumbnail_url}
+                      alt={name + j}
+                    />
+                  )}
+                </div>
+              );
+            })}
+            {/* <div className="flex-break" /> */}
+          </div>
         );
-      }))}
+      })}
     </div>
   );
 };

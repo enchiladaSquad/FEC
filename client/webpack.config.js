@@ -49,7 +49,7 @@ const config = {
       src: path.join(__dirname, 'src'),
       components: path.join(__dirname, 'src', 'components'),
       data: path.join(__dirname, '..', '..', '..', 'server', 'data'),
-      modules: path.join(__dirname, '../../node_modules/'),
+      modules: path.join(__dirname, '..', '..', 'node_modules'),
       server: path.join(__dirname, '..', '..', '..', 'server'),
       react: path.resolve(__dirname, '..', 'node_modules', 'react'),
     },
