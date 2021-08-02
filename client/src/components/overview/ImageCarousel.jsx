@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Thumbnail from 'components/overview/Thumbnail';
 
@@ -7,61 +7,61 @@ import {
   ExpandMore as NextThumbnail,
 } from '@material-ui/icons';
 
-const isImageThumbnail = (thumbnail, photos, currentPhotoIndex) => {
-  if (photos[currentPhotoIndex].thumbnail_url === thumbnail.thumbnail_url) {
-    return true;
-  }
-  return false;
-};
+const THUMBNAIL_LENGTH = 7;
 
-const ImageCarousel = ({
-  thumbLength,
-  thumbStart,
-  setThumbStart,
-  currentThumbnails,
-  photos,
-  setCurrentPhotoIndex,
-  currentPhotoIndex,
-}) => (
-  <div id="carousel-container">
-    <PrevThumbnail
-      style={{
-        zIndex: '5',
-        visibility: thumbStart > 0 ? 'visible' : 'hidden',
-      }}
-      onClick={() => {
-        setThumbStart((prevMin) => (prevMin > 0 ? prevMin - 1 : prevMin));
-      }}
-    />
-    {currentThumbnails
-      ? currentThumbnails.map((photo, i) => (
+const ImageCarousel = ({ photos, setCurrentPhotoIndex, currentPhotoIndex }) => {
+  const [thumbStart, setThumbStart] = useState(0);
+  const [currentThumbnails, setCurrentThumbnails] = useState([]);
+
+  useEffect(() => {
+    setThumbStart(0);
+    setCurrentThumbnails(
+      photos.slice(thumbStart, thumbStart + THUMBNAIL_LENGTH),
+    );
+  }, []);
+
+  useEffect(() => {
+    setCurrentThumbnails(
+      photos.slice(thumbStart, thumbStart + THUMBNAIL_LENGTH),
+    );
+  }, [photos, thumbStart]);
+
+  return (
+    <div id="carousel-container">
+      <PrevThumbnail
+        className="arrow-icon"
+        style={{
+          visibility: thumbStart > 0 ? 'visible' : 'hidden',
+        }}
+        onClick={() => {
+          setThumbStart((prevMin) => (prevMin > 0 ? prevMin - 1 : prevMin));
+        }}
+      />
+      {currentThumbnails.map((photo, i) => (
         <Thumbnail
-          isImageThumbnail={isImageThumbnail(
-            photo,
-            photos,
-            currentPhotoIndex,
-          )}
+          isImageThumbnail={
+            photos[currentPhotoIndex].thumbnail_url === photo.thumbnail_url
+          }
           photo={photo}
           index={i}
           setCurrentPhotoIndex={setCurrentPhotoIndex}
         />
-      ))
-      : null}
-    <NextThumbnail
-      style={{
-        zIndex: '5',
-        visibility:
-          thumbStart + thumbLength < photos.length - 1 ? 'visible' : 'hidden',
-      }}
-      onClick={() => {
-        const lastIndex = photos.length - thumbLength;
-        console.log('LastIndex:', lastIndex);
-        console.log('thumbStart:', thumbStart);
-
-        setThumbStart((prevStart) => (prevStart < lastIndex ? prevStart + 1 : prevStart));
-      }}
-    />
-  </div>
-);
-
+      ))}
+      <NextThumbnail
+        className="arrow-icon"
+        style={{
+          visibility:
+            thumbStart + THUMBNAIL_LENGTH < photos.length - 1
+              ? 'visible'
+              : 'hidden',
+        }}
+        onClick={() => {
+          setThumbStart((prevStart) => (prevStart < photos.length - THUMBNAIL_LENGTH
+            ? prevStart + 1
+            : prevStart));
+        }}
+      />
+    </div>
+  );
+};
 export default ImageCarousel;

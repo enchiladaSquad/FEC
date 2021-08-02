@@ -21,18 +21,17 @@ body {
   padding: 0.5em 0;
 }
 
-#arrow-left {
-  /* transform: translateX(7rem); */
-  margin-left: 4em;
+.arrow-icon {
   z-index: 3;
   color: white;
 }
 
+#arrow-left {
+  margin-left: 4em;
+}
+
 #arrow-right {
-  /* transform: translateX(-7rem); */
   margin-right: 4em;
-  z-index: 3;
-  color: white;
 }
 
 #carousel-container {

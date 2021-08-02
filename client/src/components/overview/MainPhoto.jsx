@@ -42,7 +42,9 @@ const MainPhoto = ({
         id="arrow-right"
         onClick={(e) => {
           e.stopPropagation();
-          setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % photos.length);
+          setCurrentPhotoIndex(
+            (prevIndex) => (prevIndex + 1) % photos.length,
+          );
         }}
       />
     </div>
@@ -55,5 +57,4 @@ const MainPhoto = ({
     />
   </div>
 );
-
 export default MainPhoto;
