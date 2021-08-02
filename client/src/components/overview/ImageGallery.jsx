@@ -9,50 +9,37 @@ const THUMBNAIL_LENGTH = 7;
 
 const ImageGallery = ({
   photos,
-  currentPhotoIndex,
+  currentPhotoIndex, // Why is this included?
   setCurrentPhotoIndex,
   alt,
 }) => {
-  const [thumbMin, setThumbMin] = useState(0);
-  const [thumbMax, setThumbMax] = useState(0);
+  const [thumbStart, setThumbStart] = useState(0);
   const [currentThumbnails, setCurrentThumbnails] = useState([]);
+
   const [expanded, setExpanded] = useState(false);
   const [zooming, setZooming] = useState(false);
 
   useEffect(() => {
-    setThumbMin(0);
-    setThumbMax(6);
-    setCurrentThumbnails(photos.slice(thumbMin, thumbMax + 1));
+    setThumbStart(0);
+    setCurrentThumbnails(
+      photos.slice(thumbStart, thumbStart + THUMBNAIL_LENGTH),
+    );
   }, []);
 
   useEffect(() => {
-    setCurrentThumbnails(photos.slice(thumbMin, thumbMax + 1));
-  }, [photos, thumbMin, thumbMax]);
+    setCurrentThumbnails(
+      photos.slice(thumbStart, thumbStart + THUMBNAIL_LENGTH),
+    );
+  }, [photos, thumbStart]);
 
-  const handlePrevThumbnail = () => {
-    setThumbMin((prevMin) => (prevMin > 0 ? prevMin - 1 : prevMin));
-    setThumbMax((prevMax) => (prevMax > THUMBNAIL_LENGTH - 1 ? prevMax - 1 : prevMax));
-  };
+  // Todo: streamline handlers
+  // const handlePrevThumbnail = () => {
+  //   setThumbStart((prevStart) => (prevStart > 0 ? prevStart - 1 : prevStart));
+  // };
 
-  const handleNextThumbnail = () => {
-    setThumbMin((prevMin) => (prevMin < photos.length - THUMBNAIL_LENGTH ? prevMin + 1 : prevMin));
-    setThumbMax((prevMax) => (prevMax < photos.length - 1 ? prevMax + 1 : prevMax));
-  };
-
-  const handlePrevImage = () => {
-    setCurrentPhotoIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : photos.length - 1));
-  };
-
-  const handleNextImage = () => {
-    setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % photos.length);
-  };
-
-  const isImageThumbnail = (thumbnail) => {
-    if (photos[currentPhotoIndex].thumbnail_url === thumbnail.thumbnail_url) {
-      return true;
-    }
-    return false;
-  };
+  // const handleNextThumbnail = () => {
+  //   setThumbStart((prevStart) => (prevStart < photos.length - THUMBNAIL_LENGTH ? prevStart + 1 : prevStart));
+  // };
 
   return (
     <>
@@ -64,24 +51,22 @@ const ImageGallery = ({
       ) : (
         <>
           <MainPhoto
-            handlePrevImage={handlePrevImage}
-            handleNextImage={handleNextImage}
             photos={photos}
             currentPhotoIndex={currentPhotoIndex}
             alt={alt}
             expanded={expanded}
             setExpanded={setExpanded}
             setZooming={setZooming}
+            setCurrentPhotoIndex={setCurrentPhotoIndex}
           />
           <ImageCarousel
-            thumbMin={thumbMin}
-            handlePrevThumbnail={handlePrevThumbnail}
+            thumbStart={thumbStart}
+            setThumbStart={setThumbStart}
             currentThumbnails={currentThumbnails}
-            thumbMax={thumbMax}
+            thumbLength={THUMBNAIL_LENGTH}
             photos={photos}
-            handleNextThumbnail={handleNextThumbnail}
-            isImageThumbnail={isImageThumbnail}
             setCurrentPhotoIndex={setCurrentPhotoIndex}
+            currentPhotoIndex={currentPhotoIndex}
           />
         </>
       )}

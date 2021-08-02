@@ -7,7 +7,6 @@ import {
 } from '@material-ui/icons';
 
 const MainPhoto = ({
-  handlePrevImage,
   handleNextImage,
   photos,
   currentPhotoIndex,
@@ -15,6 +14,7 @@ const MainPhoto = ({
   expanded,
   setExpanded,
   setZooming,
+  setCurrentPhotoIndex,
 }) => (
   <div
     id="main-photo-container"
@@ -28,7 +28,7 @@ const MainPhoto = ({
         id="arrow-left"
         onClick={(e) => {
           e.stopPropagation();
-          handlePrevImage();
+          setCurrentPhotoIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : photos.length - 1));
         }}
       />
       <Fullscreen
@@ -42,7 +42,7 @@ const MainPhoto = ({
         id="arrow-right"
         onClick={(e) => {
           e.stopPropagation();
-          handleNextImage();
+          setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % photos.length);
         }}
       />
     </div>
