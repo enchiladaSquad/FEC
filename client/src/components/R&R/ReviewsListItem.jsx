@@ -1,9 +1,23 @@
-// import React, { useState, useContext } from 'react';
-import React from 'react';
+import { FormatIndentDecrease } from '@material-ui/icons';
+import axios from 'axios';
+import React, { useState, useContext, useEffect } from 'react';
+// import React from 'react';
 // import { ProductContext } from '../../context';
 import StarRating from '../SharedComponents';
 
-const ReviewsListItem = ({ review }) => {
+const ReviewsListItem = ({ review, decrease }) => {
+  const [rerenderEverything, setRerenderEverything] = useState(0);
+  const myStorage = window.localStorage;
+  if (!myStorage.getItem(`${review.review_id}helpful`)) {
+    myStorage.setItem(`${review.review_id}helpful`, review.helpfulness);
+  }
+  if (!myStorage.getItem(`${review.review_id}voted`)) {
+    myStorage.setItem(`${review.review_id}voted`, false);
+  }
+  if (!myStorage.getItem(`${review.review_id}reported`)) {
+    myStorage.setItem(`${review.review_id}reported`, 'false');
+  }
+
   const formatDate = () => {
     const months = {
       1: 'January',
@@ -32,19 +46,39 @@ const ReviewsListItem = ({ review }) => {
     return formattedDate;
   };
 
+  const handleYesVote = () => {
+    if (myStorage.getItem(`${review.review_id}voted`) === 'false') {
+      myStorage.setItem(`${review.review_id}helpful`, Number(myStorage[`${review.review_id}helpful`]) + 1);
+      myStorage.setItem(`${review.review_id}voted`, true);
+      setRerenderEverything(Math.random());
+      axios.put(`/reviews/${review.review_id}/helpful`);
+    }
+  };
+
+  const handleReport = () => {
+    myStorage.setItem(`${review.review_id}reported`, 'true');
+    setRerenderEverything(Math.random());
+    decrease();
+  };
+
   return (
-    <div className="review">
-      <StarRating rating={review.rating} />
-      {review.reviewer_name} {formatDate()}
-      <div>{review.summary}</div>
-      <div>{review.body}</div>
-      <div> {review.recommend ? '✔ I recommend this product' : null} </div>
-      <span className="helpful">
-        Helpful? <span>Yes </span>
-        {'('}{review.helpfulness}{')'}
-        <span className="report">Report</span>
-      </span>
-    </div>
+
+    myStorage.getItem(`${review.review_id}reported`) === 'true' ? null :
+      (
+        <div className="review">
+          <StarRating rating={review.rating} />
+          {review.reviewer_name} {formatDate()}
+          <div>{review.summary}</div>
+          <div>{review.body}</div>
+          <div> {review.recommend ? '✔ I recommend this product' : null} </div>
+          {review.response !== null ? <div className="response">Response: This is a response!</div> : null}
+          <div className="helpful">
+            Helpful? <span onClick={handleYesVote}>Yes </span>
+            {'('}{myStorage[`${review.review_id}helpful`]}{')'}
+            <span className="report" onClick={handleReport}>Report</span>
+          </div>
+        </div >
+      )
   );
 };
 

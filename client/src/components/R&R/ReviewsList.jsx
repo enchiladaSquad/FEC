@@ -9,16 +9,35 @@ const ReviewsList = () => {
     reviewSort,
     setReviewSort,
   } = useContext(ProductContext);
+  const [updateCount, setUpdateCount] = useState(0);
+  const myStorage = window.localStorage;
+  if (!myStorage.getItem('listCount')) {
+    myStorage.setItem('listCount', reviews.results.length);
+  }
+
+  const decreaseListItemsCount = () => {
+    myStorage.setItem('listCount', myStorage.getItem('listCount') - 1);
+    setUpdateCount(Math.random());
+  };
+
 
   return (
     <div className="reviewsList">
       <div className="numberAndSortType">
-        Showing {reviews.count} of {' '}
-        {Number(reviewsMeta.recommended.true) + Number(reviewsMeta.recommended.false) + ''} {' '}
+        Showing {myStorage.getItem('listCount')} of {' '}
+        {
+          Number(reviewsMeta.recommended.true ?
+            reviewsMeta.recommended.true : 0) +
+          Number(reviewsMeta.recommended.false ?
+            reviewsMeta.recommended.false : 0) + ''} {' '}
         reviews, sorted by {reviewSort}
       </div>
       {reviews.results.map((review) => {
-        return <ReviewsListItem key={review.review_id} review={review} />;
+        return (<ReviewsListItem
+          key={review.review_id}
+          review={review}
+          decrease={decreaseListItemsCount} />
+        );
       })}
     </div>
   );
