@@ -15,18 +15,10 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
   },
-  // devServer: {
-  //   contentBase: path.join(__dirname, 'dist'),
-  //   compress: true,
-  //   port: 9000,
-  // },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
-
-    // Add your plugins here
-    // Learn more about plugins from https://webpack.js.org/configuration/plugins/
   ],
   devtool: 'inline-source-map',
   module: {
@@ -50,9 +42,6 @@ const config = {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
         type: 'asset',
       },
-
-      // Add your rules for custom modules here
-      // Learn more about loaders from https://webpack.js.org/loaders/
     ],
   },
   resolve: {
@@ -60,9 +49,9 @@ const config = {
       src: path.join(__dirname, 'src'),
       components: path.join(__dirname, 'src', 'components'),
       data: path.join(__dirname, '..', '..', '..', 'server', 'data'),
-      modules: path.join(__dirname, '../../node_modules/'),
+      modules: path.join(__dirname, '..', '..', 'node_modules'),
       server: path.join(__dirname, '..', '..', '..', 'server'),
-      react: path.resolve('./node_modules/react'),
+      react: path.resolve(__dirname, '..', 'node_modules', 'react'),
     },
     extensions: ['.js', '.jsx'], // * This cancels requirement for file extensions
   },
