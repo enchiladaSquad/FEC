@@ -25,7 +25,6 @@ const ReviewsList = () => {
 
   const handleSort = (event) => {
     event.preventDefault();
-    // console.log(event.target.value);
     setReviewSort(event.target.value);
   };
 
@@ -40,9 +39,9 @@ const ReviewsList = () => {
             reviewsMeta.recommended.false : 0) + ''} {' '}
         reviews, sorted by
         <select onChange={handleSort}>
-          <option value="relevant">Relevance</option>
-          <option value="newest">Newest</option>
-          <option value="helpful">Helpful</option>
+          <option value='relevant'>Relevance</option>
+          <option value='newest'>Newest</option>
+          <option value='helpful'>Helpful</option>
         </select>
       </div>
       {reviews.results.map((review) => {

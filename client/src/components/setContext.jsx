@@ -60,7 +60,6 @@ const useSetContext = () => {
 
     Promise.allSettled(fetchPromises)
       .then(() => {
-        // dis ok? ^
         setLoading(false);
       })
       .catch((err) => {
