@@ -16,7 +16,7 @@ const ProductOverview = () => {
   const [styles, setStyles] = useState(productStyles.results);
   const [styleIndex, setStyleIndex] = useState(0);
   const [currentPhotos, setCurrentPhotos] = useState([]);
-  const [skus, setSkus] = useState([]);
+  const [skus, setSkus] = useState(null);
   const [altText, setAltText] = useState(productStyles.results[0].name);
 
   useEffect(() => {
@@ -41,27 +41,24 @@ const ProductOverview = () => {
   //   setCurrentPhotos(styles[styleIndex].photos);
   // }, [styleIndex]);
 
-  console.log('styles:', styles);
-  console.log('styleIndex:', styleIndex);
-
   return (
-    <div>
-      <div>
-        {currentPhotos.length ? (
-          <ImageGallery photos={currentPhotos} alt={altText} />
-        ) : null}
-        <div>
+    <div className="overview-container">
+      {currentPhotos.length ? (
+        <ImageGallery photos={currentPhotos} alt={altText} />
+      ) : null}
+      <div className="info-panel">
+        <div className="star-container">
           <StarRating rating={Number(averageRatings(reviewsMeta.ratings))} />
-          <ProductDetails product={product} />
-          {styles && styleIndex ? (
-            <StyleSelector
-              styles={styles}
-              setStyleIndex={setStyleIndex}
-              styleIndex={styleIndex}
-            />
-          ) : null}
-          {skus ? <AddToCart skus={skus} /> : null}
         </div>
+        <ProductDetails product={product} />
+        {styles && styleIndex ? (
+          <StyleSelector
+            styles={styles}
+            setStyleIndex={setStyleIndex}
+            styleIndex={styleIndex}
+          />
+        ) : null}
+        {skus ? <AddToCart skus={skus} /> : null}
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 const DropDown = ({
   options, onChange, flexGrow, label, disabled = false,
 }) => {
+  console.log('options:', options);
   return (
     <>
       <select

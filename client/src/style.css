@@ -186,6 +186,11 @@ progress::-moz-progress-bar {
   max-height: 10rem;
 }
 
+.info-panel {
+  display: flex;
+  flex-direction: column;
+}
+
 .opac {
   opacity: 0.6;
 }
@@ -206,6 +211,11 @@ progress::-moz-progress-bar {
   flex: 1;
   margin-right: 0;
   text-align: end;
+}
+
+.overview-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .recPercent {
@@ -297,6 +307,11 @@ progress::-moz-progress-bar {
   cursor: pointer;
 }
 
+.star-container {
+  display: flex;
+  flex-direction: row;
+}
+
 .style-node {
   clip-path: circle();
   max-width: 8em;
@@ -360,6 +375,7 @@ progress::-moz-progress-bar {
   align-items: center;
   max-width: 4em;
   transform: translateX(2.5em);
+  position: absolute;
 }
 
 #current-thumbnail {
@@ -399,7 +415,6 @@ progress::-moz-progress-bar {
 #main-photo-container {
   display: flex;
   align-items: center;
-  position: absolute;
   overflow: hidden;
   min-width: 60em;
   margin-right: auto;

@@ -25,6 +25,8 @@ const AddToCart = ({ skus }) => {
 
   const quantityArray = quantity > 15 ? populateLinearArray(15) : populateLinearArray(quantity);
 
+  console.log('quantityArray:', quantityArray);
+
   return (
     <>
       <div
@@ -69,6 +71,7 @@ const AddToCart = ({ skus }) => {
             onChange={setCurrentSize}
             flexGrow={3}
             label="Sizes"
+            disabled={false}
           />
         </>
         <DropDown
