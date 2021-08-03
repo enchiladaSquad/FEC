@@ -117,21 +117,13 @@ const AddToCart = ({ skus }) => {
   );
 };
 
-// AddToCart.propTypes = {
-//   skus: PropTypes.shape({
-//     [PropTypes.number.isRequired]: PropTypes.shape({
-//       quantity: PropTypes.number.isRequired,
-//       size: PropTypes.string.isRequired,
-//     }).isRequired,
-//   }).isRequired,
-// };
-
-// DropDown.propTypes = {
-//   options: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       option: PropTypes.string.isRequired,
-//     }),
-//   ).isRequired,
-// };
+AddToCart.propTypes = {
+  skus: PropTypes.shape({
+    [PropTypes.number.isRequired]: PropTypes.shape({
+      quantity: PropTypes.number.isRequired,
+      size: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default AddToCart;

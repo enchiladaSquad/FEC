@@ -10,12 +10,11 @@ body {
 }
 progress {
   border-radius: 0%;
-  height: .5em;
-  margin-top: .4em;
+  height: 0.5em;
+  margin-top: 0.4em;
   /* margin-bottom: .25em; */
-  margin-left: .5em;
+  margin-left: 0.5em;
 }
-
 
 progress {
   border-radius: 0%;
@@ -39,10 +38,10 @@ progress::-moz-progress-bar {
   /* style rules */
 }
 
-.arrow-icon {
+/* .arrow-icon {
   z-index: 3;
   color: white;
-}
+} */
 
 .averageReview {
   font-size: 3em;
@@ -73,15 +72,15 @@ progress::-moz-progress-bar {
   display: flex;
   flex-direction: column;
   height: 3em;
-  font-size: .85em;
+  font-size: 0.85em;
 }
 
 .divider1 {
   position: absolute;
   z-index: 5;
   background-color: white;
-  width: .25em;
-  height: .5em;
+  width: 0.25em;
+  height: 0.5em;
   margin-left: 4.45em;
 }
 
@@ -89,10 +88,9 @@ progress::-moz-progress-bar {
   z-index: 5;
   position: absolute;
   background-color: white;
-  width: .22em;
-  height: .5em;
+  width: 0.22em;
+  height: 0.5em;
   margin-left: 9.32em;
-
 }
 
 .helpful {
@@ -100,17 +98,17 @@ progress::-moz-progress-bar {
 }
 
 .icon {
-  width: .5em;
-  height: .5em;
+  width: 0.5em;
+  height: 0.5em;
   /* margin-top: .25em; */
-  margin-bottom: .25em;
+  margin-bottom: 0.25em;
 }
 
 .options {
   display: flex;
-  font-size: .67em;
+  font-size: 0.67em;
   justify-content: center;
-  margin-top: .7em;
+  margin-top: 0.7em;
 }
 
 .opt1 {
@@ -125,7 +123,7 @@ progress::-moz-progress-bar {
 }
 
 .recPercent {
-  font-size: .60em;
+  font-size: 0.6em;
   margin-bottom: 1em;
 }
 
@@ -236,7 +234,7 @@ progress::-moz-progress-bar {
 
 .review {
   padding-bottom: 1em;
-  border-bottom: .1em solid rgb(70, 70, 70);
+  border-bottom: 0.1em solid rgb(70, 70, 70);
 }
 
 .reviewsBreakdown {
@@ -295,7 +293,6 @@ progress::-moz-progress-bar {
   width: 14em;
 }
 
-
 .starBar:hover {
   cursor: pointer;
 }
@@ -335,13 +332,26 @@ progress::-moz-progress-bar {
   padding: 0.5em 0;
 }
 
+#arrow-down {
+  z-index: 3;
+  color: white;
+}
 
 #arrow-left {
   margin-left: 4em;
+  z-index: 3;
+  color: white;
 }
 
 #arrow-right {
   margin-right: 4em;
+  z-index: 3;
+  color: white;
+}
+
+#arrow-up {
+  z-index: 3;
+  color: white;
 }
 
 #carousel-container {
@@ -421,5 +431,3 @@ progress::-moz-progress-bar {
   box-sizing: border-box;
   max-width: 60em;
 }
-
-

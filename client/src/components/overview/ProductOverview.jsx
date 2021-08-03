@@ -13,47 +13,56 @@ import { ProductContext } from '../../context';
 const ProductOverview = () => {
   const { reviewsMeta, product, productStyles } = useContext(ProductContext);
 
-  const [styleIndex, setStyleIndex] = useState(0);
-  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
-  const [currentPhotos, setCurrentPhotos] = useState([]);
-  const [altText, setAltText] = useState('');
-
   const [styles, setStyles] = useState(productStyles.results);
-  const [currentStyleIndex, setCurrentStyleIndex] = useState(0);
-  const [skus, setSkus] = useState(styles[currentStyleIndex].skus);
+  const [styleIndex, setStyleIndex] = useState(0);
+  const [currentPhotos, setCurrentPhotos] = useState([]);
+  const [skus, setSkus] = useState([]);
+  const [altText, setAltText] = useState(productStyles.results[0].name);
 
   useEffect(() => {
+    const { results } = productStyles;
+    setStyles(results);
     setStyleIndex(0);
-    setCurrentPhotos(productStyles.results[styleIndex].photos);
-    setCurrentPhotoIndex(0);
-    setAltText(productStyles.results[styleIndex].name);
-  }, []);
+    const { photos, name, skus: styleSkus } = styles[styleIndex];
+    setCurrentPhotos(photos || []);
+    setAltText(name || '');
+    setSkus(styleSkus);
+    // setStyles(results, () => {
+    //   setStyleIndex(0, () => {
+    //     const { photos, name, skus: styleSkus } = styles[styleIndex];
+    //     setCurrentPhotos(photos);
+    //     setAltText(name);
+    //     setSkus(styleSkus);
+    //   });
+    // });
+  }, [productStyles, styles, styleIndex]);
+
+  // useEffect(() => {
+  //   setCurrentPhotos(styles[styleIndex].photos);
+  // }, [styleIndex]);
+
+  console.log('styles:', styles);
+  console.log('styleIndex:', styleIndex);
 
   return (
     <div>
-      <>
-        <div>Header</div>
+      <div>
         {currentPhotos.length ? (
-          <ImageGallery
-            photos={currentPhotos}
-            currentPhotoIndex={currentPhotoIndex}
-            setCurrentPhotoIndex={setCurrentPhotoIndex}
-            alt={altText}
-          />
+          <ImageGallery photos={currentPhotos} alt={altText} />
         ) : null}
-        <StarRating rating={averageRatings(reviewsMeta.ratings)} />
-        <ProductDetails
-          productCategory={product.category || ''}
-          productName={product.name || ''}
-          productPrice={product.default_price || ''}
-        />
-        <StyleSelector
-          styles={styles}
-          setCurrentStyleIndex={setCurrentStyleIndex}
-          currentStyleIndex={currentStyleIndex}
-        />
-        <AddToCart skus={skus} />
-      </>
+        <div>
+          <StarRating rating={Number(averageRatings(reviewsMeta.ratings))} />
+          <ProductDetails product={product} />
+          {styles && styleIndex ? (
+            <StyleSelector
+              styles={styles}
+              setStyleIndex={setStyleIndex}
+              styleIndex={styleIndex}
+            />
+          ) : null}
+          {skus ? <AddToCart skus={skus} /> : null}
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 const ZoomImage = ({ url, setZooming }) => {
   const imageRef = useRef(null);
@@ -28,22 +29,13 @@ const ZoomImage = ({ url, setZooming }) => {
           backgroundPosition: bgPos,
         }}
       />
-      {/* <img
-        id="zoom-image"
-        alt=""
-        style={{
-          backgroundImage: '',
-          // margin: '0',
-          // padding: '0',
-          // boxSizing: 'border-box',
-          // width: '100%',
-          // paddingTop: 'calc(100% / (16/9))', // used to calculate height based on the aspect-ratio,
-          // backgroundPosition
-          // backgroundRepeat
-        }}
-      /> */}
     </div>
   );
+};
+
+ZoomImage.propTypes = {
+  url: PropTypes.string.isRequired,
+  setZooming: PropTypes.func.isRequired,
 };
 
 export default ZoomImage;

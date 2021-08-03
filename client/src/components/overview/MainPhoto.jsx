@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
   ArrowBack as PrevImage,
@@ -7,7 +8,6 @@ import {
 } from '@material-ui/icons';
 
 const MainPhoto = ({
-  handleNextImage,
   photos,
   currentPhotoIndex,
   alt,
@@ -42,9 +42,7 @@ const MainPhoto = ({
         id="arrow-right"
         onClick={(e) => {
           e.stopPropagation();
-          setCurrentPhotoIndex(
-            (prevIndex) => (prevIndex + 1) % photos.length,
-          );
+          setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % photos.length);
         }}
       />
     </div>
@@ -57,4 +55,20 @@ const MainPhoto = ({
     />
   </div>
 );
+
+MainPhoto.propTypes = {
+  photos: PropTypes.arrayOf(
+    PropTypes.shape({
+      thumbnail_url: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  currentPhotoIndex: PropTypes.number.isRequired,
+  alt: PropTypes.string.isRequired,
+  expanded: PropTypes.bool.isRequired,
+  setExpanded: PropTypes.func.isRequired,
+  setZooming: PropTypes.func.isRequired,
+  setCurrentPhotoIndex: PropTypes.func.isRequired,
+};
+
 export default MainPhoto;

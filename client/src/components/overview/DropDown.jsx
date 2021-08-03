@@ -1,16 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const DropDown = ({
   options, onChange, flexGrow, label, disabled = false,
 }) => {
   return (
     <>
-      {/* <label name={`${label}`} htmlFor={`${label}`} /> */}
       <select
         style={{ flexGrow }}
         className="enchilada"
         onChange={(e) => {
-          console.log('e.target:', e.target);
           onChange(e.target.value);
         }}
         disabled={disabled}
@@ -25,6 +24,18 @@ const DropDown = ({
       </select>
     </>
   );
+};
+
+DropDown.propTypes = {
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      option: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  onChange: PropTypes.func.isRequired,
+  flexGrow: PropTypes.number.isRequired,
+  label: PropTypes.string.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
 
 export default DropDown;
