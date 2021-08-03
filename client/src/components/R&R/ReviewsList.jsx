@@ -6,7 +6,6 @@ const ReviewsList = () => {
   const {
     reviews,
     reviewsMeta,
-    reviewSort,
     reviewCount,
     setReviewCount,
     setReviewSort,
@@ -28,30 +27,43 @@ const ReviewsList = () => {
     setReviewSort(event.target.value);
   };
 
+  const getReviewsTotal = () => {
+    return (
+      (Number(reviewsMeta.recommended.true
+        ? reviewsMeta.recommended.true : 0)
+        + Number(reviewsMeta.recommended.false
+          ? reviewsMeta.recommended.false : 0)).toString()
+    );
+  };
+
+  const filterByRating = (starRating) => {
+    reviews.results.filter((result) => {
+      return result.rating === starRating;
+    });
+  };
+  filterByRating(4);
   return (
     <div className="reviewsList">
       <div className="numberAndSortType">
-        Showing {myStorage.getItem('listCount')} of {' '}
-        {
-          Number(reviewsMeta.recommended.true ?
-            reviewsMeta.recommended.true : 0) +
-          Number(reviewsMeta.recommended.false ?
-            reviewsMeta.recommended.false : 0) + ''} {' '}
+        Showing {reviews.results.length} of {' '}
+        {getReviewsTotal()} {' '}
         reviews, sorted by
         <select onChange={handleSort}>
-          <option value='relevant'>Relevance</option>
-          <option value='newest'>Newest</option>
-          <option value='helpful'>Helpful</option>
+          <option value="relevant">Relevance</option>
+          <option value="newest">Newest</option>
+          <option value="helpful">Helpful</option>
         </select>
       </div>
       {reviews.results.map((review) => {
-        return (<ReviewsListItem
-          key={review.review_id}
-          review={review}
-          decrease={decreaseListItemsCount} />
+        return (
+          <ReviewsListItem
+            key={review.review_id}
+            review={review}
+            decrease={decreaseListItemsCount}
+          />
         );
       })}
-      <div onClick={() => { setReviewCount(reviewCount + 2) }}>More Reviews</div>
+      <div onClick={() => { setReviewCount(reviewCount + 2); }}>More Reviews</div>
     </div>
   );
 };

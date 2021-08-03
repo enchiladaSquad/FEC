@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import StarRating from '../SharedComponents';
 import { averageRatings } from '../../utils';
 import { ProductContext } from '../../context';
-import { TextRotationAngleupTwoTone } from '@material-ui/icons';
 
 const ReviewsBreakdown = () => {
   const { reviewsMeta } = useContext(ProductContext);
