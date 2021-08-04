@@ -1,6 +1,7 @@
 module.exports = {
   env: {
     'jest/globals': true,
+    browser: true,
   },
   extends: ['airbnb', 'airbnb/hooks'],
   parserOptions: {
@@ -30,6 +31,9 @@ module.exports = {
     'jest/no-identical-title': 'error',
     'jest/prefer-to-have-length': 'warn',
     'jest/valid-expect': 'error',
+    'react/no-array-index-key': 0,
+    'react-hooks/exhaustive-deps': 1,
+    'comma-dangle': 1,
   },
   settings: {
     'import/resolver': {

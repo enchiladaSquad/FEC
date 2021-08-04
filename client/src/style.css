@@ -1,3 +1,9 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   color: rgb(70, 70, 70);
@@ -8,6 +14,15 @@ progress {
   margin-top: .4em;
   /* margin-bottom: .25em; */
   margin-left: .5em;
+}
+
+
+progress {
+  border-radius: 0%;
+  height: 0.5em;
+  margin-top: 0.4em;
+  /* margin-bottom: .25em; */
+  margin-left: 0.5em;
 }
 
 progress::-webkit-progress-bar {
@@ -24,10 +39,15 @@ progress::-moz-progress-bar {
   /* style rules */
 }
 
+.arrow-icon {
+  z-index: 3;
+  color: white;
+}
+
 .averageReview {
   font-size: 3em;
-  margin-right: .2em;
-  margin-bottom: .2em;
+  margin-right: 0.2em;
+  margin-bottom: 0.2em;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -35,9 +55,16 @@ progress::-moz-progress-bar {
   z-index: 4;
   background-color: rgb(193, 190, 190);
   width: 13.75em;
-  height: .5em;
-  margin-top: .25em;
-  margin-bottom: .5em;
+  height: 0.5em;
+  margin-top: 0.25em;
+  margin-bottom: 0.5em;
+}
+
+.carousel-thumbnail {
+  max-width: 5rem;
+  height: auto;
+  position: relative;
+  z-index: 1;
 }
 
 .characteristic {
@@ -47,6 +74,11 @@ progress::-moz-progress-bar {
   flex-direction: column;
   height: 3em;
   font-size: .85em;
+}
+
+.checkout-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .divider1 {
@@ -68,8 +100,30 @@ progress::-moz-progress-bar {
 
 }
 
+.enchilada {
+  padding: 1em 4em 1em 0.1em;
+  margin: 0em 1em 1em 1em;
+  font-family: system-ui;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.enchilada:after {
+  padding-left: 1em;
+}
+
+.flex-break {
+  flex-basis: 100%;
+  height: 0;
+}
+
 .helpful {
   margin-bottom: 1em;
+}
+
+.image-container {
+  max-width: 10rem;
+  max-height: 10rem;
 }
 
 .modal {
@@ -104,6 +158,10 @@ progress::-moz-progress-bar {
   border-bottom: .75em solid rgb(70, 70, 70);
 }
 
+.opac {
+  opacity: 0.6;
+}
+
 .options {
   display: flex;
   font-size: .67em;
@@ -130,7 +188,7 @@ progress::-moz-progress-bar {
 .report {
   margin-left: 1em;
   padding-left: 1em;
-  border-left: .1em solid rgb(70, 70, 70);
+  border-left: 0.1em solid rgb(70, 70, 70);
 }
 
 .response {
@@ -151,7 +209,6 @@ progress::-moz-progress-bar {
 
 .reviewsBreakdown {
   zoom: 1.35;
-  /* transform: scale(1.35); */
 }
 
 .reviewsList {
@@ -162,20 +219,19 @@ progress::-moz-progress-bar {
 
 .star {
   margin-top: 1em;
-  margin-left: .25em;
+  margin-left: 0.25em;
   display: inline-block;
   position: relative;
-  font-size: .85em;
+  font-size: 0.85em;
   color: white;
-  -webkit-text-stroke-width: .076em;
+  -webkit-text-stroke-width: 0.076em;
   -webkit-text-stroke-color: rgb(70, 70, 70);
 }
 
 .star-25:after,
 .star-50:after,
 .star-75:after,
-.star-100:after
- {
+.star-100:after {
   font-family: FontAwesome;
   content: '\f005';
   position: absolute;
@@ -206,12 +262,13 @@ progress::-moz-progress-bar {
 }
 
 .starBar {
-  margin-bottom: .4em;
+  margin-bottom: 0.4em;
   display: flex;
-  font-size: .85em;
+  font-size: 0.85em;
   text-decoration: underline;
   width: 14em;
 }
+
 
 .starBar:hover {
   cursor: pointer;
@@ -222,17 +279,29 @@ progress::-moz-progress-bar {
   font-size: .6em;
 }
 
-.style-check {
-  position: absolute;
-	transform: translateX(3.5em);
-	z-index: 1;
-}
-
 .style-node {
-  /* border-radius: 50%; */
   clip-path: circle();
   max-width: 8em;
+  max-height: 8em; /* * Closest */
   margin: 0.25em 0;
+  position: relative;
+}
+
+.style-check {
+  position: absolute;
+  transform: translateX(-1em) translateY(-0.5rem);
+  z-index: 1;
+}
+
+.style-check:hover {
+  cursor: auto;
+  position: absolute;
+}
+
+.styles-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .triangleIcon {
@@ -242,17 +311,101 @@ progress::-moz-progress-bar {
   margin-bottom: .25em;
 }
 
+.thumbnail-container {
+  min-height: 4em;
+  max-width: 5em;
+  max-height: 4em;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.5em 0;
+}
 
 
+#arrow-left {
+  margin-left: 4em;
+}
 
+#arrow-right {
+  margin-right: 4em;
+}
 
+#carousel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 4em;
+  transform: translateX(2.5em);
+}
 
+#current-thumbnail {
+  border-bottom: solid 0.2rem cornflowerblue;
+}
 
+#fs-icon-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 89%;
+}
 
+#fs-icon {
+  z-index: 3;
+  color: white;
+  position: inherit;
+  top: 6%;
+  right: 5%;
+}
 
+#icon-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 
+#main-photo {
+  z-index: 0;
+  max-height: 40em;
+  width: auto;
+  cursor: zoom-in;
+}
 
+#main-photo-container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  overflow: hidden;
+  min-width: 60em;
+  margin-right: auto;
+  margin-left: auto;
+  justify-content: center;
+  background-color: black;
+  animation: expand;
+}
 
+#zoom-image {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  padding: calc(100% / (16 / 9));
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
+#zoom-image:hover {
+  background-size: 175%;
+  cursor: zoom-out;
+}
+
+#zoom-image-wrapper {
+  margin: 4em auto;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 60em;
+}
 
 

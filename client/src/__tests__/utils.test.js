@@ -1,6 +1,4 @@
-import {
-  averageRatings, composeParams, formatPrice, makeRows,
-} from '../utils';
+import { averageRatings, composeParams, formatPrice } from '../utils';
 
 describe('formatPrice', () => {
   it('should format price correctly', () => {
@@ -55,28 +53,5 @@ describe('averageRatings', () => {
     const result = averageRatings(input);
     const expected = 4.5;
     expect(result).toBe(expected);
-  });
-});
-
-describe('make rows', () => {
-  it('should work for evenly-distributed rows', () => {
-    const input = [1, 2, 3, 4, 5, 6, 7, 8];
-    const result = makeRows(input, 4);
-    const expected = [
-      [1, 2, 3, 4],
-      [5, 6, 7, 8],
-    ];
-    expect(result).toEqual(expected);
-  });
-
-  it('should work for unevenly-distributed rows', () => {
-    const input = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const result = makeRows(input, 4);
-    const expected = [
-      [1, 2, 3, 4],
-      [5, 6, 7, 8],
-      [9, 10],
-    ];
-    expect(result).toEqual(expected);
   });
 });
