@@ -4,6 +4,7 @@ import Questions from 'components/Q&A/questions';
 import ProductOverview from 'components/overview/ProductOverview';
 import ProductProvider from 'components/ProductProvider';
 import useSetContext from './components/setContext';
+import ReviewAddModal from './components/R&R/ReviewAddModal';
 
 const App = () => {
   const { error, loading, context: contextValues } = useSetContext();
@@ -23,6 +24,7 @@ const App = () => {
           <Reviews />
           <ProductOverview />
           <Questions />
+          <ReviewAddModal />
         </ProductProvider>
       )}
     </>

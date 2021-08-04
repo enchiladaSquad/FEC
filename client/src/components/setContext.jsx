@@ -11,11 +11,13 @@ const useSetContext = () => {
   const [productId, setProductId] = useState(18082);
   const [product, setProduct] = useState(null);
   const [productStyles, setProductStyles] = useState(null);
+  const [reportRerender, setReportRerender] = useState(0);
   const [reviews, setReviews] = useState(null);
   const [reviewsMeta, setReviewsMeta] = useState(null);
   const [reviewPage, setReviewPage] = useState(1);
   const [reviewCount, setReviewCount] = useState(2);
   const [reviewSort, setReviewSort] = useState('relevant');
+  const [starFilter, setStarFilter] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -81,7 +83,7 @@ const useSetContext = () => {
       },
     };
     fetchData(request.route, request.setter, request.params);
-  }, [reviewCount, reviewSort]);
+  }, [reviewCount, reviewSort, reportRerender, starFilter]);
 
   //   useEffect(() => {
   //     const fetchPromises = [
@@ -108,13 +110,17 @@ const useSetContext = () => {
     productId,
     product,
     productStyles,
+    reportRerender,
     reviews,
     reviewsMeta,
     reviewPage,
     reviewCount,
     reviewSort,
+    starFilter,
+    setReportRerender,
     setReviewCount,
     setReviewSort,
+    setStarFilter,
   };
 
   return { error, loading, context };

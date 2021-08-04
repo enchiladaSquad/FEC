@@ -20,7 +20,7 @@ describe('composeParams', () => {
       product_id: 1813,
     };
     const result = composeParams(input);
-    const expected = '?page=1&count=100&sort="relevant"&product_id=1813';
+    const expected = '?page=1&count=100&sort=relevant&product_id=1813';
     expect(result).toBe(expected);
   });
   it('should compose a single param', () => {

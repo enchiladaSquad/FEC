@@ -33,3 +33,11 @@ export const makeRows = (array, size) => {
   }
   return result;
 };
+
+export const filterByRating = (starRating, array) => {
+  return (
+    array.filter((result) => {
+      return starRating.indexOf(result.rating) > -1;
+    })
+  );
+};

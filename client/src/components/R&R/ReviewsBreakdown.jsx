@@ -4,7 +4,7 @@ import { averageRatings } from '../../utils';
 import { ProductContext } from '../../context';
 
 const ReviewsBreakdown = () => {
-  const { reviewsMeta } = useContext(ProductContext);
+  const { reviewsMeta, starFilter, setStarFilter } = useContext(ProductContext);
   const options = {
     Size: ['A size too small', 'Perfect', 'A size too big'],
     Width: ['Too narrow', 'Perfect', 'Too wide'],
@@ -53,19 +53,35 @@ const ReviewsBreakdown = () => {
     return keys;
   };
 
+  const setFilter = (rating) => {
+    const temp = starFilter.slice(0);
+    if (temp.indexOf(rating) === -1) {
+      temp.push(rating);
+      setStarFilter(temp);
+    } else {
+      temp.splice(temp.indexOf(rating), 1);
+      console.log(temp);
+      setStarFilter(temp);
+    }
+  };
+
   return (
     <div className="reviewsBreakdown">
       <div className="starAndAverage">
         <div className="averageReview">{averageRatings(reviewsMeta.ratings)}</div>
         <StarRating rating={Number(averageRatings(reviewsMeta.ratings))} />
       </div>
+      <div className="starFilteringDisplay">{starFilter.length ? "Filtering reviews by star ratings:" : null } {starFilter.length ? starFilter.map((rating) => {
+        return ` ${rating}`;
+      }) : null}</div>
+      {starFilter.length ? (<button onClick={() => {setStarFilter([])}}>Clear Filters</button>) : null}
       <div className="recPercent">
         {recommendPercentage()}
         % of reviews recommended this product
       </div>
       {calcRatingPercentages().map((rating) => {
         return (
-          <div className="starBar" key={JSON.stringify(rating)}>
+          <div className="starBar" onClick={() => { setFilter(Number(rating)) }} key={JSON.stringify(rating)}>
             {rating} Stars: <progress className="percentBar" value={Number(starPercents[rating])} max="100" />
           </div>
         );
@@ -82,7 +98,7 @@ const ReviewsBreakdown = () => {
             <div className="bar">
               <div className="divider1" />
               <div className="divider2" />
-              <div className="icon" style={style}>▲</div>
+              <div className="triangleIcon" style={style}>▲</div>
               <div className="options">
                 <div className="opt1">{options[characteristic.char][0]}</div>
                 <div className="opt2">{options[characteristic.char][1]}</div>
