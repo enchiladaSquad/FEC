@@ -18,14 +18,12 @@ const AddToCart = ({ skus }) => {
   const sizeQuantities = composeSizeQuantity(skus);
 
   const [currentSize, setCurrentSize] = useState(['SELECT SIZE']);
-  const [currentQuantity, setCurrentQuantity] = useState(0);
+  // const [currentQuantity, setCurrentQuantity] = useState(0);
   const [triedSubmit, setTriedSubmit] = useState(false);
 
   const quantity = sizeQuantities[currentSize];
 
   const quantityArray = quantity > 15 ? populateLinearArray(15) : populateLinearArray(quantity);
-
-  console.log('quantityArray:', quantityArray);
 
   return (
     <>
@@ -78,7 +76,7 @@ const AddToCart = ({ skus }) => {
           options={
             areArraysEqual(currentSize, ['SELECT SIZE']) ? ['-'] : quantityArray
           }
-          onChange={setCurrentQuantity}
+          onChange={() => {}}
           flexGrow={2}
           label="Sizes"
           disabled={areArraysEqual(currentSize, ['SELECT SIZE'])}

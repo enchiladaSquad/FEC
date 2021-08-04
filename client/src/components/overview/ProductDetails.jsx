@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { formatPrice } from 'src/utils';
 
 const ProductDetails = ({ product }) => (
-  <div>
+  <div className="product-details">
     <div
       style={{
         fontFamily: 'monospace',

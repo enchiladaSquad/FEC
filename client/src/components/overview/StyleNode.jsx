@@ -1,25 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { CheckCircleOutline } from '@material-ui/icons';
+import { CheckCircle } from '@material-ui/icons';
 
 const StyleNode = ({
   index, src, alt, marked, setStyleIndex,
 }) => {
   return (
-    <div
-      className="image-container"
-      onClick={() => {
-        setStyleIndex(index);
-      }}
-    >
-      <img
-        className={`style-node ${marked ? '' : 'opac'}`}
-        key={index}
-        src={src}
-        alt={alt}
-      />
-      {marked ? <CheckCircleOutline className="style-check" /> : null}
+    <div style={{ position: 'relative' }}>
+      <div
+        className="image-container"
+        onClick={() => {
+          setStyleIndex(index);
+        }}
+      >
+        <img
+          className={`style-node ${marked ? '' : 'opac'}`}
+          key={index}
+          src={src}
+          alt={alt}
+        />
+      </div>
+      {marked ? (
+        <CheckCircle
+          style={{
+            top: '0px',
+            right: '15px',
+          }}
+          className="style-check"
+        />
+      ) : null}
     </div>
   );
 };

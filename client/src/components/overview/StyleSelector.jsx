@@ -16,7 +16,7 @@ const StyleSelector = ({ styles, setStyleIndex, styleIndex }) => {
               marked={styleIndex === i}
               setCurrentStyleIndex={setStyleIndex}
             />
-            {(i + 1) % 4 ? null : <div className="flex-break" />}
+            {/* {(i + 1) % 4 ? null : <div className="flex-break" />} */}
           </>
         );
       })}

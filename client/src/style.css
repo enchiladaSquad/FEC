@@ -8,6 +8,13 @@ body {
   font-family: 'Poppins', sans-serif;
   color: rgb(70, 70, 70);
 }
+
+path {
+  fill: white;
+  stroke: black;
+  stroke-width: 1px;
+}
+
 progress {
   border-radius: 0%;
   height: 0.5em;
@@ -60,10 +67,9 @@ progress::-moz-progress-bar {
 }
 
 .carousel-thumbnail {
-  max-width: 5rem;
-  height: auto;
+  height: 4em;
+  width: auto;
   position: relative;
-  z-index: 1;
 }
 
 .characteristic {
@@ -98,10 +104,9 @@ progress::-moz-progress-bar {
 }
 
 .icon {
-  width: 0.5em;
-  height: 0.5em;
-  /* margin-top: .25em; */
-  margin-bottom: 0.25em;
+  fill: white;
+  stroke: black;
+  stroke-width: 1px;
 }
 
 .options {
@@ -152,7 +157,6 @@ progress::-moz-progress-bar {
 
 .enchilada {
   padding: 1em 4em 1em 0.1em;
-  margin: 0em 1em 1em 1em;
   font-family: system-ui;
   font-weight: bold;
   font-size: medium;
@@ -168,7 +172,6 @@ progress::-moz-progress-bar {
 }
 
 .response {
-  /* border: .075em solid rgb(70, 70, 70); */
   background-color: rgb(210, 209, 209);
   width: auto;
   display: inline-block;
@@ -177,18 +180,34 @@ progress::-moz-progress-bar {
 .icon {
   width: 15em;
   height: 0.5em;
-  /* margin-top: .25em; */
   margin-bottom: 0.25em;
 }
 
 .image-container {
-  max-width: 10rem;
-  max-height: 10rem;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  clip-path: circle();
+  margin: 0 1em 1em 0;
+}
+
+.image-gallery-container {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 1em;
+  background-color: black;
+  max-width: calc(100% - 500px);
+  align-items: center;
 }
 
 .info-panel {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  margin: 2em;
+  width: 500px;
 }
 
 .opac {
@@ -214,8 +233,8 @@ progress::-moz-progress-bar {
 }
 
 .overview-container {
+  margin: 5em;
   display: flex;
-  flex-direction: row;
 }
 
 .recPercent {
@@ -313,17 +332,16 @@ progress::-moz-progress-bar {
 }
 
 .style-node {
-  clip-path: circle();
-  max-width: 8em;
-  max-height: 8em; /* * Closest */
-  margin: 0.25em 0;
-  position: relative;
+  cursor: pointer;
+  width: 8em;
+}
+
+.image-container:hover {
+  transform: scale(1.1);
 }
 
 .style-check {
   position: absolute;
-  transform: translateX(-1em) translateY(-0.5rem);
-  z-index: 1;
 }
 
 .style-check:hover {
@@ -335,16 +353,17 @@ progress::-moz-progress-bar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  width: 350px;
 }
 
 .thumbnail-container {
-  min-height: 4em;
-  max-width: 5em;
-  max-height: 4em;
+  width: 4em;
+  height: 4em;
   overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0.5em 0;
+  margin: 0.5em 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #arrow-down {
@@ -353,14 +372,19 @@ progress::-moz-progress-bar {
 }
 
 #arrow-left {
-  margin-left: 4em;
-  z-index: 3;
+  position: absolute;
+  left: 0;
+  top: 50%;
   color: white;
+  fill: white;
+  stroke: black;
+  stroke-width: 1px;
 }
 
 #arrow-right {
-  margin-right: 4em;
-  z-index: 3;
+  position: absolute;
+  top: 50%;
+  right: 0;
   color: white;
 }
 
@@ -373,9 +397,7 @@ progress::-moz-progress-bar {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 4em;
-  transform: translateX(2.5em);
-  position: absolute;
+  justify-content: center;
 }
 
 #current-thumbnail {
@@ -389,9 +411,8 @@ progress::-moz-progress-bar {
 }
 
 #fs-icon {
-  z-index: 3;
+  position: absolute;
   color: white;
-  position: inherit;
   top: 6%;
   right: 5%;
 }
@@ -406,22 +427,15 @@ progress::-moz-progress-bar {
 }
 
 #main-photo {
-  z-index: 0;
-  max-height: 40em;
-  width: auto;
+  width: 100%;
   cursor: zoom-in;
 }
 
 #main-photo-container {
-  display: flex;
-  align-items: center;
+  position: relative;
   overflow: hidden;
-  min-width: 60em;
-  margin-right: auto;
-  margin-left: auto;
-  justify-content: center;
   background-color: black;
-  animation: expand;
+  padding: 1em;
 }
 
 #zoom-image {
@@ -429,7 +443,7 @@ progress::-moz-progress-bar {
   padding: 0;
   box-sizing: border-box;
   width: 100%;
-  padding: calc(100% / (16 / 9));
+  /* padding: calc(100% / (16 / 9)); */
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -441,8 +455,8 @@ progress::-moz-progress-bar {
 }
 
 #zoom-image-wrapper {
-  margin: 4em auto;
+  margin: 4em;
   padding: 0;
   box-sizing: border-box;
-  max-width: 60em;
+  min-width: 60em;
 }

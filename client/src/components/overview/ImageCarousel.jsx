@@ -34,41 +34,43 @@ const ImageCarousel = ({
 
   return (
     <div id="carousel-container">
-      <PrevThumbnail
-        id="arrow-up"
-        style={{
-          visibility: thumbStart > 0 ? 'visible' : 'hidden',
-        }}
-        onClick={() => {
-          setThumbStart((prevMin) => (prevMin > 0 ? prevMin - 1 : prevMin));
-        }}
-      />
-      {currentThumbnails.map((photo, i) => (
-        <Thumbnail
-          isImageThumbnail={
-            photos[currentPhotoIndex].thumbnail_url === photo.thumbnail_url
-          }
-          photo={photo}
-          alt={alt}
-          index={i}
-          setCurrentPhotoIndex={setCurrentPhotoIndex}
-          key={i}
+      <div>
+        <PrevThumbnail
+          id="arrow-up"
+          style={{
+            visibility: thumbStart > 0 ? 'visible' : 'hidden',
+          }}
+          onClick={() => {
+            setThumbStart((prevMin) => (prevMin > 0 ? prevMin - 1 : prevMin));
+          }}
         />
-      ))}
-      <NextThumbnail
-        id="arrow-down"
-        style={{
-          visibility:
-            thumbStart + THUMBNAIL_LENGTH < photos.length - 1
-              ? 'visible'
-              : 'hidden',
-        }}
-        onClick={() => {
-          setThumbStart((prevStart) => (prevStart < photos.length - THUMBNAIL_LENGTH
-            ? prevStart + 1
-            : prevStart));
-        }}
-      />
+        {currentThumbnails.map((photo, i) => (
+          <Thumbnail
+            isImageThumbnail={
+              photos[currentPhotoIndex].thumbnail_url === photo.thumbnail_url
+            }
+            photo={photo}
+            alt={alt}
+            index={i}
+            setCurrentPhotoIndex={setCurrentPhotoIndex}
+            key={i}
+          />
+        ))}
+        <NextThumbnail
+          id="arrow-down"
+          style={{
+            visibility:
+              thumbStart + THUMBNAIL_LENGTH < photos.length - 1
+                ? 'visible'
+                : 'hidden',
+          }}
+          onClick={() => {
+            setThumbStart((prevStart) => (prevStart < photos.length - THUMBNAIL_LENGTH
+              ? prevStart + 1
+              : prevStart));
+          }}
+        />
+      </div>
     </div>
   );
 };

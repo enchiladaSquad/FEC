@@ -13,53 +13,40 @@ import { ProductContext } from '../../context';
 const ProductOverview = () => {
   const { reviewsMeta, product, productStyles } = useContext(ProductContext);
 
-  const [styles, setStyles] = useState(productStyles.results);
   const [styleIndex, setStyleIndex] = useState(0);
-  const [currentPhotos, setCurrentPhotos] = useState([]);
-  const [skus, setSkus] = useState(null);
-  const [altText, setAltText] = useState(productStyles.results[0].name);
+  const [zooming, setZooming] = useState(false);
+
+  const styles = productStyles.results;
+  const { photos: currentPhotos, name: altText, skus } = styles[styleIndex];
 
   useEffect(() => {
-    const { results } = productStyles;
-    setStyles(results);
     setStyleIndex(0);
-    const { photos, name, skus: styleSkus } = styles[styleIndex];
-    setCurrentPhotos(photos || []);
-    setAltText(name || '');
-    setSkus(styleSkus);
-    // setStyles(results, () => {
-    //   setStyleIndex(0, () => {
-    //     const { photos, name, skus: styleSkus } = styles[styleIndex];
-    //     setCurrentPhotos(photos);
-    //     setAltText(name);
-    //     setSkus(styleSkus);
-    //   });
-    // });
-  }, [productStyles, styles, styleIndex]);
-
-  // useEffect(() => {
-  //   setCurrentPhotos(styles[styleIndex].photos);
-  // }, [styleIndex]);
+  }, [product]);
 
   return (
     <div className="overview-container">
       {currentPhotos.length ? (
-        <ImageGallery photos={currentPhotos} alt={altText} />
+        <ImageGallery
+          photos={currentPhotos}
+          zooming={zooming}
+          alt={altText}
+          setZooming={setZooming}
+        />
       ) : null}
-      <div className="info-panel">
-        <div className="star-container">
-          <StarRating rating={Number(averageRatings(reviewsMeta.ratings))} />
-        </div>
-        <ProductDetails product={product} />
-        {styles && styleIndex ? (
+      {!zooming ? (
+        <div className="info-panel">
+          <div className="star-container">
+            <StarRating rating={Number(averageRatings(reviewsMeta.ratings))} />
+          </div>
+          <ProductDetails product={product} />
           <StyleSelector
             styles={styles}
             setStyleIndex={setStyleIndex}
             styleIndex={styleIndex}
           />
-        ) : null}
-        {skus ? <AddToCart skus={skus} /> : null}
-      </div>
+          <AddToCart skus={skus} />
+        </div>
+      ) : null}
     </div>
   );
 };
