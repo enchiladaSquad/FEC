@@ -3,7 +3,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzer;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const isProduction = process.env.NODE_ENV == 'production';
 
@@ -20,7 +20,6 @@ const config = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
-    new BundleAnalyzerPlugin(),
   ],
   devtool: 'inline-source-map',
   module: {
@@ -66,6 +65,7 @@ module.exports = () => {
     config.plugins.push(new MiniCssExtractPlugin());
   } else {
     config.mode = 'development';
+    config.plugins.push(new BundleAnalyzerPlugin());
   }
   return config;
 };

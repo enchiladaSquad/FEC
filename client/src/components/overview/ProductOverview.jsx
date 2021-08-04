@@ -19,7 +19,7 @@ const ProductOverview = () => {
   const styles = productStyles.results;
   const { photos: currentPhotos, name: altText, skus } = styles[styleIndex];
 
-  // debugger;
+  const salePrice = styles[styleIndex].sale_price;
 
   useEffect(() => {
     setStyleIndex(0);
@@ -40,7 +40,7 @@ const ProductOverview = () => {
           <div className="star-container">
             <StarRating rating={Number(averageRatings(reviewsMeta.ratings))} />
           </div>
-          <ProductDetails product={product} />
+          <ProductDetails product={product} salePrice={salePrice} />
           <StyleSelector
             styles={styles}
             setStyleIndex={setStyleIndex}

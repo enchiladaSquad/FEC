@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 
 import { formatPrice } from 'src/utils';
 
-const ProductDetails = ({ product }) => (
+const ProductDetails = ({ product, salePrice }) => (
   <div className="product-details">
     <div
+      title="product-category"
       style={{
         fontFamily: 'monospace',
         fontSize: '0.9rem',
@@ -15,6 +16,7 @@ const ProductDetails = ({ product }) => (
       {product.category.toUpperCase()}
     </div>
     <div
+      title="product-name"
       style={{
         fontWeight: 'bold',
         fontSize: '1.8em',
@@ -24,9 +26,24 @@ const ProductDetails = ({ product }) => (
     >
       {product.name}
     </div>
-    <div style={{ marginTop: '0.8rem', color: 'dimgrey' }}>
+    {salePrice ? (
+      <span
+        title="sale-product-price"
+        style={{ marginTop: '0.8rem', color: 'red', paddingRight: '0.5em' }}
+      >
+        {formatPrice(salePrice)}
+      </span>
+    ) : null}
+    <span
+      title="default-product-price"
+      style={{
+        marginTop: '0.8rem',
+        color: 'dimgrey',
+        textDecoration: salePrice ? 'line-through' : '',
+      }}
+    >
       {formatPrice(product.default_price)}
-    </div>
+    </span>
   </div>
 );
 
@@ -50,4 +67,9 @@ ProductDetails.propTypes = {
       }),
     ),
   }).isRequired,
+  salePrice: PropTypes.string,
+};
+
+ProductDetails.defaultProps = {
+  salePrice: null,
 };

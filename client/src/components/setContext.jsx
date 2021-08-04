@@ -7,7 +7,7 @@ const port = 4000;
 const baseUrl = `http://localhost:${port}`;
 
 const useSetContext = () => {
-  const [productId, setProductId] = useState(18082); // 18081 is a tarp
+  const [productId, setProductId] = useState(18080);
   const [product, setProduct] = useState(null);
   const [productStyles, setProductStyles] = useState(null);
   const [reviews, setReviews] = useState(null);

@@ -1,4 +1,3 @@
-import { FormatIndentDecrease } from '@material-ui/icons';
 import axios from 'axios';
 import React, { useState, useContext, useEffect } from 'react';
 // import React from 'react';
@@ -63,8 +62,8 @@ const ReviewsListItem = ({ review, decrease }) => {
 
   return (
 
-    myStorage.getItem(`${review.review_id}reported`) === 'true' ? null :
-      (
+    myStorage.getItem(`${review.review_id}reported`) === 'true' ? null
+      : (
         <div className="review">
           <StarRating rating={review.rating} />
           {review.reviewer_name} {formatDate()}
@@ -77,7 +76,7 @@ const ReviewsListItem = ({ review, decrease }) => {
             {'('}{myStorage[`${review.review_id}helpful`]}{')'}
             <span className="report" onClick={handleReport}>Report</span>
           </div>
-        </div >
+        </div>
       )
   );
 };
