@@ -80,12 +80,12 @@ module.exports = {
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    '^data(.*)$': '<rootDir>/server/data/$1',
-    '^server(.*)$': '<rootDir>/server/$1',
-    '^src(.*)$': '<rootDir>/client/src/$1',
-    '^components(.*)$': '<rootDir>/client/src/components/$1',
-    '^modules(.*)$': '<rootDir>/node_modules/$1',
-    '^react(.*)$': '<rootDir>/node_modules/react',
+    // '^data(.*)$': '<rootDir>/server/data/$1',
+    // '^server(.*)$': '<rootDir>/server/$1',
+    // '^src(.*)$': '<rootDir>/client/src/$1',
+    // '^components(.*)$': '<rootDir>/client/src/components/$1',
+    // '^modules(.*)$': '<rootDir>/node_modules/$1',
+    // '^react(.*)$': '<rootDir>/node_modules/react',
     // '^react-dom(.*)$': '<rootDir>/node_modules/react-dom',
   },
 
@@ -134,7 +134,7 @@ module.exports = {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: ['./client/src/testSetup.js'],
+  // setupFilesAfterEnv: ['./client/src/testSetup.js'],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -160,7 +160,6 @@ module.exports = {
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   testPathIgnorePatterns: [
     '\\\\node_modules\\\\',
-    '<rootDir>/client/src/testSetup.js',
   ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files

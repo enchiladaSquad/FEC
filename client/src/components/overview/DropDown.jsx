@@ -27,11 +27,7 @@ const DropDown = ({
 };
 
 DropDown.propTypes = {
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      option: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+  options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   onChange: PropTypes.func.isRequired,
   flexGrow: PropTypes.number.isRequired,
   disabled: PropTypes.bool.isRequired,
