@@ -7,7 +7,7 @@ import {
   Fullscreen,
 } from '@material-ui/icons';
 
-import Chevron from 'components/overview/Chevron';
+// import Chevron from 'components/overview/Chevron';
 
 const MainPhoto = ({
   photos,

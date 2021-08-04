@@ -7,7 +7,6 @@ import useSetContext from './components/setContext';
 
 const App = () => {
   const { error, loading, context: contextValues } = useSetContext();
-  // Set Context
 
   return (
     <>

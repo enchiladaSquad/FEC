@@ -8,16 +8,14 @@ const StyleSelector = ({ styles, setStyleIndex, styleIndex }) => {
     <div className="styles-container">
       {styles.map((style, i) => {
         return (
-          <>
-            <StyleNode
-              index={i}
-              src={style.photos[0].thumbnail_url}
-              alt={style.name + i}
-              marked={styleIndex === i}
-              setCurrentStyleIndex={setStyleIndex}
-            />
-            {/* {(i + 1) % 4 ? null : <div className="flex-break" />} */}
-          </>
+          <StyleNode
+            key={i}
+            index={i}
+            src={style.photos[0].thumbnail_url}
+            alt={style.name + i}
+            marked={styleIndex === i}
+            setStyleIndex={setStyleIndex}
+          />
         );
       })}
     </div>

@@ -19,7 +19,6 @@ progress {
   border-radius: 0%;
   height: 0.5em;
   margin-top: 0.4em;
-  /* margin-bottom: .25em; */
   margin-left: 0.5em;
 }
 
@@ -27,7 +26,6 @@ progress {
   border-radius: 0%;
   height: 0.5em;
   margin-top: 0.4em;
-  /* margin-bottom: .25em; */
   margin-left: 0.5em;
 }
 
@@ -171,12 +169,6 @@ progress::-moz-progress-bar {
   height: 0;
 }
 
-.response {
-  background-color: rgb(210, 209, 209);
-  width: auto;
-  display: inline-block;
-}
-
 .icon {
   width: 15em;
   height: 0.5em;
@@ -191,6 +183,10 @@ progress::-moz-progress-bar {
   align-items: center;
   clip-path: circle();
   margin: 0 1em 1em 0;
+}
+
+.image-container:hover {
+  transform: scale(1.1);
 }
 
 .image-gallery-container {
@@ -336,10 +332,6 @@ progress::-moz-progress-bar {
   width: 8em;
 }
 
-.image-container:hover {
-  transform: scale(1.1);
-}
-
 .style-check {
   position: absolute;
 }
@@ -443,7 +435,6 @@ progress::-moz-progress-bar {
   padding: 0;
   box-sizing: border-box;
   width: 100%;
-  /* padding: calc(100% / (16 / 9)); */
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;

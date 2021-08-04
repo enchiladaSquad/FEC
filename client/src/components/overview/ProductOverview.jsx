@@ -19,6 +19,8 @@ const ProductOverview = () => {
   const styles = productStyles.results;
   const { photos: currentPhotos, name: altText, skus } = styles[styleIndex];
 
+  // debugger;
+
   useEffect(() => {
     setStyleIndex(0);
   }, [product]);
