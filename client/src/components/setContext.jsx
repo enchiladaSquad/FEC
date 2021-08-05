@@ -8,9 +8,10 @@ const port = 4000;
 const baseUrl = `http://localhost:${port}`;
 
 const useSetContext = () => {
-  const [productId, setProductId] = useState(18081);
+  const [productId, setProductId] = useState(18082);
   const [product, setProduct] = useState(null);
   const [productStyles, setProductStyles] = useState(null);
+  const [reportRerender, setReportRerender] = useState(0);
   const [reviews, setReviews] = useState(null);
   const [reviewsMeta, setReviewsMeta] = useState(null);
   const [reviewPage, setReviewPage] = useState(1);
@@ -60,7 +61,6 @@ const useSetContext = () => {
 
     Promise.allSettled(fetchPromises)
       .then(() => {
-        // dis ok? ^
         setLoading(false);
       })
       .catch((err) => {
@@ -69,6 +69,20 @@ const useSetContext = () => {
         setError(err);
       });
   }, []);
+
+  useEffect(() => {
+    const request = {
+      route: '/reviews',
+      setter: setReviews,
+      params: {
+        page: reviewPage,
+        count: reviewCount,
+        sort: reviewSort,
+        product_id: productId,
+      },
+    };
+    fetchData(request.route, request.setter, request.params);
+  }, [reviewCount, reviewSort, reportRerender]);
 
   //   useEffect(() => {
   //     const fetchPromises = [
@@ -95,11 +109,14 @@ const useSetContext = () => {
     productId,
     product,
     productStyles,
+    reportRerender,
     reviews,
     reviewsMeta,
     reviewPage,
     reviewCount,
     reviewSort,
+    setReportRerender,
+    setReviewCount,
     setReviewSort,
   };
 

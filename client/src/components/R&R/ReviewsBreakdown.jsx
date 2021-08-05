@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import StarRating from '../SharedComponents';
 import { averageRatings } from '../../utils';
 import { ProductContext } from '../../context';
-import { TextRotationAngleupTwoTone } from '@material-ui/icons';
 
-const ReviewsBreakdown = () => {
+const ReviewsBreakdown = ({ setStarFilter, starFilter }) => {
   const { reviewsMeta } = useContext(ProductContext);
   const options = {
     Size: ['A size too small', 'Perfect', 'A size too big'],
@@ -38,17 +37,29 @@ const ReviewsBreakdown = () => {
   const calcRatingPercentages = () => {
     const keys = ['5', '4', '3', '2', '1'];
     const ratingTotal = keys.reduce((total, key) => {
-      return total + Number(reviewsMeta.ratings[key]);
+      const starCount = reviewsMeta.ratings[key] ? Number(reviewsMeta.ratings[key]) : 0;
+      return total + starCount;
     }, 0);
 
     keys.forEach((key) => {
-      if (isNaN(calculatePercentage(reviewsMeta.ratings[key], ratingTotal).toFixed(0))) {
-        starPercents[key] = 0;
-      } else {
+      starPercents[key] = 0;
+      if (reviewsMeta.ratings[key]) {
         starPercents[key] = calculatePercentage(reviewsMeta.ratings[key], ratingTotal).toFixed(0);
       }
     });
     return keys;
+  };
+
+  const setFilter = (rating) => {
+    const temp = starFilter.slice(0);
+    if (temp.indexOf(rating) === -1) {
+      temp.push(rating);
+      setStarFilter(temp);
+    } else {
+      temp.splice(temp.indexOf(rating), 1);
+      console.log(temp);
+      setStarFilter(temp);
+    }
   };
 
   return (
@@ -57,13 +68,17 @@ const ReviewsBreakdown = () => {
         <div className="averageReview">{averageRatings(reviewsMeta.ratings)}</div>
         <StarRating rating={Number(averageRatings(reviewsMeta.ratings))} />
       </div>
+      <div className="starFilteringDisplay">{starFilter.length ? "Filtering reviews by star ratings:" : null} {starFilter.length ? starFilter.map((rating) => {
+        return ` ${rating}`;
+      }) : null}</div>
+      {starFilter.length ? (<button onClick={() => { setStarFilter([]) }}>Clear Filters</button>) : null}
       <div className="recPercent">
         {recommendPercentage()}
         % of reviews recommended this product
       </div>
       {calcRatingPercentages().map((rating) => {
         return (
-          <div className="starBar" key={JSON.stringify(rating)}>
+          <div className="starBar" onClick={() => { setFilter(Number(rating)) }} key={JSON.stringify(rating)}>
             {rating} Stars: <progress className="percentBar" value={Number(starPercents[rating])} max="100" />
           </div>
         );
@@ -80,7 +95,7 @@ const ReviewsBreakdown = () => {
             <div className="bar">
               <div className="divider1" />
               <div className="divider2" />
-              <div className="icon" style={style}>▲</div>
+              <div className="triangleIcon" style={style}>▲</div>
               <div className="options">
                 <div className="opt1">{options[characteristic.char][0]}</div>
                 <div className="opt2">{options[characteristic.char][1]}</div>
