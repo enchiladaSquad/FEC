@@ -37,7 +37,7 @@ export const averageRatings = (ratings) => {
   if (average.toString().length === 1) {
     return `${average}.0`;
   }
-  return Number(average);
+  return average;
 };
 
 export const composeSizeQuantity = (skus) => {
