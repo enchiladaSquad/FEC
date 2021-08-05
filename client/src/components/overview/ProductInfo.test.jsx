@@ -6,7 +6,7 @@ import { act } from 'react-dom/test-utils';
 import product from '../../../../server/data/exampleProductIdRes';
 import { formatPrice } from '../../utils';
 
-import ProductDetails from './ProductDetails';
+import ProductInfo from './ProductInfo';
 
 describe('sample tests', () => {
   it('should pass a simple render test', () => {
@@ -32,11 +32,11 @@ describe('sample tests', () => {
   });
 });
 
-describe('ProductDetails', () => {
+describe('ProductInfo', () => {
   let cmpt;
   beforeEach(async () => {
     await act(async () => {
-      cmpt = render(<ProductDetails product={product} />);
+      cmpt = render(<ProductInfo product={product} />);
     });
   });
 
@@ -59,7 +59,7 @@ describe('ProductDetails', () => {
     let cmpt;
 
     await act(async () => {
-      cmpt = render(<ProductDetails product={product} salePrice={'10000'} />);
+      cmpt = render(<ProductInfo product={product} salePrice={'10000'} />);
     });
 
     const price = cmpt.getByTitle('sale-product-price').innerHTML;

@@ -17,7 +17,7 @@ const DropDown = ({
         {options.map((option, i) => {
           return (
             <option key={i} value={option}>
-              {option}
+              {option.toString()}
             </option>
           );
         })}
@@ -27,7 +27,9 @@ const DropDown = ({
 };
 
 DropDown.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  ).isRequired,
   onChange: PropTypes.func.isRequired,
   flexGrow: PropTypes.number.isRequired,
   disabled: PropTypes.bool.isRequired,
