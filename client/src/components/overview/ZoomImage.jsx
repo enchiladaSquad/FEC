@@ -16,9 +16,6 @@ const ZoomImage = ({ url, setZooming }) => {
     img.src = url;
   }, [url]);
 
-  console.log('imageWidth:', imageWidth);
-  console.log('imageHeight:', imageHeight);
-
   return (
     <div
       id="zoom-image-wrapper"

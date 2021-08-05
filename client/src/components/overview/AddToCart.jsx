@@ -10,6 +10,7 @@ import {
 } from 'src/utils';
 
 const AddToCart = ({ skus }) => {
+  // TODO: REFACTOR
   const keys = Object.keys(skus);
   const sizes = keys.map((key) => {
     return skus[key].size;
@@ -18,7 +19,8 @@ const AddToCart = ({ skus }) => {
   const sizeQuantities = composeSizeQuantity(skus);
 
   const [currentSize, setCurrentSize] = useState(['SELECT SIZE']);
-  // const [currentQuantity, setCurrentQuantity] = useState(0);
+  const [currentQuantity, setCurrentQuantity] = useState(0); // * USED FOR CART ENDPOINT
+  const [currentSku, setCurrentSku] = useState(0);
   const [triedSubmit, setTriedSubmit] = useState(false);
 
   const quantity = sizeQuantities[currentSize];
@@ -76,7 +78,7 @@ const AddToCart = ({ skus }) => {
           options={
             areArraysEqual(currentSize, ['SELECT SIZE']) ? ['-'] : quantityArray
           }
-          onChange={() => {}}
+          onChange={setCurrentQuantity}
           flexGrow={2}
           label="Sizes"
           disabled={areArraysEqual(currentSize, ['SELECT SIZE'])}
