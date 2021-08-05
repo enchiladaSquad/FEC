@@ -21,7 +21,7 @@ const config = {
       template: './src/index.html',
     }),
   ],
-  devtool: 'inline-source-map',
+
   module: {
     rules: [
       {
@@ -65,7 +65,7 @@ module.exports = () => {
     config.plugins.push(new MiniCssExtractPlugin());
   } else {
     config.mode = 'development';
-    config.plugins.push(new BundleAnalyzerPlugin());
+    // config.plugins.push(new BundleAnalyzerPlugin());
   }
   return config;
 };
