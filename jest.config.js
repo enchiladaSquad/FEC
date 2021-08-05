@@ -69,22 +69,22 @@ module.exports = {
   moduleDirectories: ['node_modules'],
 
   // An array of file extensions your modules use
-  // moduleFileExtensions: [
-  //   "js",
-  //   "jsx",
-  //   "ts",
-  //   "tsx",
-  //   "json",
-  //   "node"
-  // ],
+  moduleFileExtensions: [
+    'js',
+    'jsx',
+    'ts',
+    'tsx',
+    'json',
+    'node',
+  ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
     '^data(.*)$': '<rootDir>/server/data/$1',
     // '^server(.*)$': '<rootDir>/server/$1',
     '^src(.*)$': '<rootDir>/client/src/$1',
-    // '^components(.*)$': '<rootDir>/client/src/components/$1',
-    // '^modules(.*)$': '<rootDir>/node_modules/$1',
+    '^components(.*)$': '<rootDir>/client/src/components/$1',
+    '^modules(.*)$': '<rootDir>/node_modules/$1',
     // '^react(.*)$': '<rootDir>/node_modules/react',
     // '^react-dom(.*)$': '<rootDir>/node_modules/react-dom',
   },
