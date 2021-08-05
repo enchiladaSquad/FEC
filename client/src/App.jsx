@@ -24,7 +24,7 @@ const App = () => {
           <ProductOverview />
           <Reviews />
           <Questions />
-          <ReviewAddModal />
+          {/* <ReviewAddModal /> */}
         </ProductProvider>
       )}
     </>

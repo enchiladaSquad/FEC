@@ -3,13 +3,11 @@ import { ProductContext } from '../../context';
 import { filterByRating } from '../../utils';
 import ReviewsListItem from './ReviewsListItem';
 
-const ReviewsList = () => {
+const ReviewsList = ({ starFilter }) => {
   const {
     reviews,
     reviewsMeta,
     reviewCount,
-    starFilter,
-    setStarFilter,
     setReviewCount,
     setReviewSort,
   } = useContext(ProductContext);
@@ -26,32 +24,21 @@ const ReviewsList = () => {
   };
 
   const handleSort = (event) => {
-    event.preventDefault();
     setReviewSort(event.target.value);
-  };
-
-  const getReviewsTotal = () => {
-    return (
-      (Number(reviewsMeta.recommended.true
-        ? reviewsMeta.recommended.true : 0)
-        + Number(reviewsMeta.recommended.false
-          ? reviewsMeta.recommended.false : 0)).toString()
-    );
   };
 
   return (
     <div>
+      <div className="numberAndSortType">
+        Showing {reviews.results.length}
+        reviews, sorted by
+        <select onChange={handleSort}>
+          <option value="relevant">Relevance</option>
+          <option value="newest">Newest</option>
+          <option value="helpful">Helpful</option>
+        </select>
+      </div>
       <div className="reviewsList">
-        <div className="numberAndSortType">
-          Showing {reviews.results.length} of {' '}
-          {getReviewsTotal()} {' '}
-          reviews, sorted by
-          <select onChange={handleSort}>
-            <option value="relevant">Relevance</option>
-            <option value="newest">Newest</option>
-            <option value="helpful">Helpful</option>
-          </select>
-        </div>
         {starFilter.length
           ? filterByRating(starFilter, reviews.results).map((review) => {
             return (

@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import StarRating from '../SharedComponents';
 import { averageRatings } from '../../utils';
 import { ProductContext } from '../../context';
 
-const ReviewsBreakdown = () => {
-  const { reviewsMeta, starFilter, setStarFilter } = useContext(ProductContext);
+const ReviewsBreakdown = ({ setStarFilter, starFilter }) => {
+  const { reviewsMeta } = useContext(ProductContext);
   const options = {
     Size: ['A size too small', 'Perfect', 'A size too big'],
     Width: ['Too narrow', 'Perfect', 'Too wide'],
@@ -37,10 +37,7 @@ const ReviewsBreakdown = () => {
   const calcRatingPercentages = () => {
     const keys = ['5', '4', '3', '2', '1'];
     const ratingTotal = keys.reduce((total, key) => {
-      let starCount = Number(reviewsMeta.ratings[key]);
-      if (isNaN(starCount)) {
-        starCount = 0;
-      }
+      const starCount = reviewsMeta.ratings[key] ? Number(reviewsMeta.ratings[key]) : 0;
       return total + starCount;
     }, 0);
 
@@ -71,10 +68,10 @@ const ReviewsBreakdown = () => {
         <div className="averageReview">{averageRatings(reviewsMeta.ratings)}</div>
         <StarRating rating={Number(averageRatings(reviewsMeta.ratings))} />
       </div>
-      <div className="starFilteringDisplay">{starFilter.length ? "Filtering reviews by star ratings:" : null } {starFilter.length ? starFilter.map((rating) => {
+      <div className="starFilteringDisplay">{starFilter.length ? "Filtering reviews by star ratings:" : null} {starFilter.length ? starFilter.map((rating) => {
         return ` ${rating}`;
       }) : null}</div>
-      {starFilter.length ? (<button onClick={() => {setStarFilter([])}}>Clear Filters</button>) : null}
+      {starFilter.length ? (<button onClick={() => { setStarFilter([]) }}>Clear Filters</button>) : null}
       <div className="recPercent">
         {recommendPercentage()}
         % of reviews recommended this product

@@ -7,7 +7,7 @@ const ReviewAddModal = () => {
         <div className="modal-header">
           <h4 className="modal-title">Add Review</h4>
         </div>
-        <div className="mmodal-body"></div>
+        <div className="modal-body"></div>
         <div className="modal-footer">
           <button className="button">Close</button>
         </div>
