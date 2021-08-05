@@ -80,9 +80,9 @@ module.exports = {
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    // '^data(.*)$': '<rootDir>/server/data/$1',
+    '^data(.*)$': '<rootDir>/server/data/$1',
     // '^server(.*)$': '<rootDir>/server/$1',
-    // '^src(.*)$': '<rootDir>/client/src/$1',
+    '^src(.*)$': '<rootDir>/client/src/$1',
     // '^components(.*)$': '<rootDir>/client/src/components/$1',
     // '^modules(.*)$': '<rootDir>/node_modules/$1',
     // '^react(.*)$': '<rootDir>/node_modules/react',
@@ -158,9 +158,7 @@ module.exports = {
   // ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  testPathIgnorePatterns: [
-    '\\\\node_modules\\\\',
-  ],
+  testPathIgnorePatterns: ['\\\\node_modules\\\\'],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],

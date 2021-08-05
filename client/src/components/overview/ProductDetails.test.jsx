@@ -1,49 +1,70 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import { render, fireEvent } from '@testing-library/react';
+import 'regenerator-runtime/runtime';
+import { render } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
+import product from '../../../../server/data/exampleProductIdRes';
+import { formatPrice } from '../../utils';
 // import { render, act } from '@testing-library/react';
 // import reactDom from 'react-dom';
 
 import ProductDetails from './ProductDetails';
 
-describe('ProductDetails', () => {
-  test.only('the simplest test', () => {
+describe('sample tests', () => {
+  it('should pass a simple render test', () => {
     const aDiv = render(<div />);
 
     expect(aDiv).toBeTruthy();
   });
 
-  test('displays the name of the product', async () => {
-    let cmpt;
-    const product = 'data/exampleProductIdRes.js';
-
+  test('another simple test', async () => {
     await act(async () => {
-      cmpt = render(<ProductDetails product={product} />);
-      const name = cmpt.getByTitle('product-name');
-      expect(name).toBe(product.name);
+      const cmpt = render(<div data-testid="name">Alex</div>);
+      const name = cmpt.getByTestId('name').textContent;
+      expect(name).toBe('Alex');
     });
   });
 
-  test('displays the price of the product', async () => {
-    let cmpt;
-    const product = 'data/exampleProductIdRes.js';
+  test('a third simple test', async () => {
+    await act(async () => {
+      const cmpt = render(<div title="name">Alex</div>);
+      const name = cmpt.getByTitle('name').textContent;
+      expect(name).toBe('Alex');
+    });
+  });
+});
 
+describe('ProductDetails', () => {
+  let cmpt;
+  beforeEach(async () => {
     await act(async () => {
       cmpt = render(<ProductDetails product={product} />);
-      const price = cmpt.getByTitle('default-product-price');
-      expect(price).toBe(product.default_price);
     });
   });
 
-  test('displays the category of the product', async () => {
+  it('should display the category of the product accurately', async () => {
+    const category = cmpt.getByTitle('product-category').innerHTML;
+    expect(category).toBe(product.category.toUpperCase());
+  });
+
+  it('should display the name of the product accurately', () => {
+    const name = cmpt.getByTitle('product-name').innerHTML;
+    expect(name).toBe(product.name);
+  });
+
+  it('should display the default price of the product accurately', () => {
+    const price = cmpt.getByTitle('default-product-price').innerHTML;
+    expect(price).toBe(formatPrice(product.default_price));
+  });
+
+  xit('should display the sale price of the product accurately', async () => {
     let cmpt;
-    const product = 'data/exampleProductIdRes.js';
 
     await act(async () => {
-      cmpt = render(<ProductDetails product={product} />);
-      const category = cmpt.getByTitle('product-category');
-      expect(category).toBe(product.category);
+      cmpt = render(<ProductDetails product={product} salePrice={'10000'} />);
     });
+
+    const price = cmpt.getByTitle('sale-product-price').innerHTML;
+    expect(price).toBe('$10000');
   });
 });
