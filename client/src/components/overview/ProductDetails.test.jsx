@@ -5,8 +5,6 @@ import { render } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import product from '../../../../server/data/exampleProductIdRes';
 import { formatPrice } from '../../utils';
-// import { render, act } from '@testing-library/react';
-// import reactDom from 'react-dom';
 
 import ProductDetails from './ProductDetails';
 
