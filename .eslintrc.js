@@ -34,6 +34,8 @@ module.exports = {
     'react/no-array-index-key': 0,
     'react-hooks/exhaustive-deps': 1,
     'comma-dangle': 1,
+    'jsx-a11y/click-events-have-key-events': 1,
+    'jsx-a11y/no-static-element-interactions': 1,
   },
   settings: {
     'import/resolver': {

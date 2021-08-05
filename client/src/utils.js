@@ -31,7 +31,9 @@ export const averageRatings = (ratings) => {
       length += Number(ratings[key]);
     }
   });
-  const average = Number((Math.round((total / length) * 4) / 4).toString().slice(0, 3));
+  const average = Number(
+    (Math.round((total / length) * 4) / 4).toString().slice(0, 3),
+  );
   if (average.toString().length === 1) {
     return `${average}.0`;
   }

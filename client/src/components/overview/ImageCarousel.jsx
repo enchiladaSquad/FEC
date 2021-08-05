@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import Thumbnail from 'components/overview/Thumbnail';
 
@@ -9,7 +10,12 @@ import {
 
 const THUMBNAIL_LENGTH = 7;
 
-const ImageCarousel = ({ photos, setCurrentPhotoIndex, currentPhotoIndex }) => {
+const ImageCarousel = ({
+  photos,
+  setCurrentPhotoIndex,
+  currentPhotoIndex,
+  alt,
+}) => {
   const [thumbStart, setThumbStart] = useState(0);
   const [currentThumbnails, setCurrentThumbnails] = useState([]);
 
@@ -28,40 +34,56 @@ const ImageCarousel = ({ photos, setCurrentPhotoIndex, currentPhotoIndex }) => {
 
   return (
     <div id="carousel-container">
-      <PrevThumbnail
-        className="arrow-icon"
-        style={{
-          visibility: thumbStart > 0 ? 'visible' : 'hidden',
-        }}
-        onClick={() => {
-          setThumbStart((prevMin) => (prevMin > 0 ? prevMin - 1 : prevMin));
-        }}
-      />
-      {currentThumbnails.map((photo, i) => (
-        <Thumbnail
-          isImageThumbnail={
-            photos[currentPhotoIndex].thumbnail_url === photo.thumbnail_url
-          }
-          photo={photo}
-          index={i}
-          setCurrentPhotoIndex={setCurrentPhotoIndex}
+      <div>
+        <PrevThumbnail
+          id="arrow-up"
+          style={{
+            visibility: thumbStart > 0 ? 'visible' : 'hidden',
+          }}
+          onClick={() => {
+            setThumbStart((prevMin) => (prevMin > 0 ? prevMin - 1 : prevMin));
+          }}
         />
-      ))}
-      <NextThumbnail
-        className="arrow-icon"
-        style={{
-          visibility:
-            thumbStart + THUMBNAIL_LENGTH < photos.length - 1
-              ? 'visible'
-              : 'hidden',
-        }}
-        onClick={() => {
-          setThumbStart((prevStart) => (prevStart < photos.length - THUMBNAIL_LENGTH
-            ? prevStart + 1
-            : prevStart));
-        }}
-      />
+        {currentThumbnails.map((photo, i) => (
+          <Thumbnail
+            isImageThumbnail={
+              photos[currentPhotoIndex].thumbnail_url === photo.thumbnail_url
+            }
+            photo={photo}
+            alt={alt}
+            index={i}
+            setCurrentPhotoIndex={setCurrentPhotoIndex}
+            key={i}
+          />
+        ))}
+        <NextThumbnail
+          id="arrow-down"
+          style={{
+            visibility:
+              thumbStart + THUMBNAIL_LENGTH < photos.length - 1
+                ? 'visible'
+                : 'hidden',
+          }}
+          onClick={() => {
+            setThumbStart((prevStart) => (prevStart < photos.length - THUMBNAIL_LENGTH
+              ? prevStart + 1
+              : prevStart));
+          }}
+        />
+      </div>
     </div>
   );
 };
 export default ImageCarousel;
+
+ImageCarousel.propTypes = {
+  photos: PropTypes.arrayOf(
+    PropTypes.shape({
+      thumbnail_url: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  setCurrentPhotoIndex: PropTypes.func.isRequired,
+  currentPhotoIndex: PropTypes.number.isRequired,
+  alt: PropTypes.string.isRequired,
+};

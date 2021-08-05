@@ -62,8 +62,8 @@ const ReviewsListItem = ({ review, decrease }) => {
 
   return (
 
-    myStorage.getItem(`${review.review_id}reported`) === 'true' ? null :
-      (
+    myStorage.getItem(`${review.review_id}reported`) === 'true' ? null
+      : (
         <div className="review">
           <StarRating rating={review.rating} />
           {review.reviewer_name} {formatDate()}

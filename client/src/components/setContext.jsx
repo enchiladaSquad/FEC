@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import { composeParams } from '../utils';
-// import { ProductContext } from '../context';
 
 const port = 4000;
 const baseUrl = `http://localhost:${port}`;
 
 const useSetContext = () => {
-  const [productId, setProductId] = useState(18082);
+  const [productId, setProductId] = useState(18080);
   const [product, setProduct] = useState(null);
   const [productStyles, setProductStyles] = useState(null);
   const [reportRerender, setReportRerender] = useState(0);

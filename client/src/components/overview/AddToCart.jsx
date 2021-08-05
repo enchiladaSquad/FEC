@@ -10,6 +10,7 @@ import {
 } from 'src/utils';
 
 const AddToCart = ({ skus }) => {
+  // TODO: REFACTOR
   const keys = Object.keys(skus);
   const sizes = keys.map((key) => {
     return skus[key].size;
@@ -18,7 +19,8 @@ const AddToCart = ({ skus }) => {
   const sizeQuantities = composeSizeQuantity(skus);
 
   const [currentSize, setCurrentSize] = useState(['SELECT SIZE']);
-  const [currentQuantity, setCurrentQuantity] = useState(0);
+  const [currentQuantity, setCurrentQuantity] = useState(0); // * USED FOR CART ENDPOINT
+  const [currentSku, setCurrentSku] = useState(0);
   const [triedSubmit, setTriedSubmit] = useState(false);
 
   const quantity = sizeQuantities[currentSize];
@@ -69,6 +71,7 @@ const AddToCart = ({ skus }) => {
             onChange={setCurrentSize}
             flexGrow={3}
             label="Sizes"
+            disabled={false}
           />
         </>
         <DropDown
@@ -117,21 +120,13 @@ const AddToCart = ({ skus }) => {
   );
 };
 
-// AddToCart.propTypes = {
-//   skus: PropTypes.shape({
-//     [PropTypes.number.isRequired]: PropTypes.shape({
-//       quantity: PropTypes.number.isRequired,
-//       size: PropTypes.string.isRequired,
-//     }).isRequired,
-//   }).isRequired,
-// };
-
-// DropDown.propTypes = {
-//   options: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       option: PropTypes.string.isRequired,
-//     }),
-//   ).isRequired,
-// };
+AddToCart.propTypes = {
+  skus: PropTypes.objectOf(
+    PropTypes.shape({
+      quantity: PropTypes.number.isRequired,
+      size: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
+};
 
 export default AddToCart;

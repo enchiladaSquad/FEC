@@ -8,7 +8,6 @@ import ReviewAddModal from './components/R&R/ReviewAddModal';
 
 const App = () => {
   const { error, loading, context: contextValues } = useSetContext();
-  // Set Context
 
   return (
     <>

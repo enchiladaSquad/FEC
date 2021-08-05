@@ -6,16 +6,13 @@ import ZoomImage from 'components/overview/ZoomImage';
 import ImageCarousel from 'components/overview/ImageCarousel';
 
 const ImageGallery = ({
-  photos,
-  currentPhotoIndex,
-  setCurrentPhotoIndex,
-  alt,
+  photos, alt, zooming, setZooming,
 }) => {
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [expanded, setExpanded] = useState(false);
-  const [zooming, setZooming] = useState(false);
 
   return (
-    <>
+    <div className="image-gallery-container">
       {zooming ? (
         <ZoomImage
           url={photos[currentPhotoIndex].url}
@@ -36,10 +33,11 @@ const ImageGallery = ({
             photos={photos}
             setCurrentPhotoIndex={setCurrentPhotoIndex}
             currentPhotoIndex={currentPhotoIndex}
+            alt={alt}
           />
         </>
       )}
-    </>
+    </div>
   );
 };
 
@@ -50,9 +48,9 @@ ImageGallery.propTypes = {
       url: PropTypes.string.isRequired,
     }),
   ).isRequired,
-  currentPhotoIndex: PropTypes.number.isRequired,
-  setCurrentPhotoIndex: PropTypes.func.isRequired,
   alt: PropTypes.string.isRequired,
+  zooming: PropTypes.bool.isRequired,
+  setZooming: PropTypes.func.isRequired,
 };
 
 export default ImageGallery;
