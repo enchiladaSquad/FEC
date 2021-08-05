@@ -43,11 +43,6 @@ progress::-moz-progress-bar {
   /* style rules */
 }
 
-/* .arrow-icon {
-  z-index: 3;
-  color: white;
-} */
-
 .averageReview {
   font-size: 3em;
   margin-right: 0.2em;
@@ -77,57 +72,6 @@ progress::-moz-progress-bar {
   flex-direction: column;
   height: 3em;
   font-size: 0.85em;
-}
-
-.divider1 {
-  position: absolute;
-  z-index: 5;
-  background-color: white;
-  width: 0.25em;
-  height: 0.5em;
-  margin-left: 4.45em;
-}
-
-.divider2 {
-  z-index: 5;
-  position: absolute;
-  background-color: white;
-  width: 0.22em;
-  height: 0.5em;
-  margin-left: 9.32em;
-}
-
-.helpful {
-  margin-bottom: 1em;
-}
-
-.icon {
-  fill: white;
-  stroke: black;
-  stroke-width: 1px;
-}
-
-.options {
-  display: flex;
-  font-size: 0.67em;
-  justify-content: center;
-  margin-top: 0.7em;
-}
-
-.opt1 {
-  flex: 1;
-  margin-left: 0;
-}
-
-.opt3 {
-  flex: 1;
-  margin-right: 0;
-  text-align: end;
-}
-
-.recPercent {
-  font-size: 0.6em;
-  margin-bottom: 1em;
 }
 
 .checkout-container {
@@ -169,10 +113,14 @@ progress::-moz-progress-bar {
   height: 0;
 }
 
+.helpful {
+  margin-bottom: 1em;
+}
+
 .icon {
-  width: 15em;
-  height: 0.5em;
-  margin-bottom: 0.25em;
+  fill: white;
+  stroke: black;
+  stroke-width: 1px;
 }
 
 .image-container {
@@ -204,6 +152,38 @@ progress::-moz-progress-bar {
   justify-content: space-evenly;
   margin: 2em;
   width: 500px;
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.modal-body {
+  padding: 2em;
+  border-top: .75em solid rgb(70, 70, 70);
+  border-bottom: .75em solid rgb(70, 70, 70);
+}
+
+.modal-content {
+  width: 40em;
+  background-color: white;
+}
+
+.modal-header, .modal-footer {
+  padding: 2em;
+}
+
+.modal-title {
+  margin: 0;
 }
 
 .opac {
@@ -244,26 +224,29 @@ progress::-moz-progress-bar {
   border-left: 0.1em solid rgb(70, 70, 70);
 }
 
+.response {
+  background-color: rgb(210, 209, 209);
+  width: auto;
+  display: inline-block;
+}
+
+.review {
+  padding-bottom: 1em;
+  border-bottom: .1em solid rgb(70, 70, 70);
+}
+
 .reviews {
   display: flex;
 }
 
-.review {
-  padding-bottom: 1em;
-  border-bottom: 0.1em solid rgb(70, 70, 70);
-}
-
 .reviewsBreakdown {
   zoom: 1.35;
 }
 
-.review {
-  padding-bottom: 1em;
-  border-bottom: 0.1em solid rgb(70, 70, 70);
-}
-
-.reviewsBreakdown {
-  zoom: 1.35;
+.reviewsList {
+  overflow: auto;
+  max-height: 80vh;
+  /* height: 80vh; */
 }
 
 .star {
@@ -320,16 +303,16 @@ progress::-moz-progress-bar {
 
 .starBar:hover {
   cursor: pointer;
+  color: blue;
+}
+
+.starFilteringDisplay {
+  font-size: .6em;
 }
 
 .star-container {
   display: flex;
   flex-direction: row;
-}
-
-.style-node {
-  cursor: pointer;
-  width: 8em;
 }
 
 .style-check {
@@ -346,6 +329,18 @@ progress::-moz-progress-bar {
   flex-wrap: wrap;
   align-items: center;
   width: 350px;
+}
+
+.style-node {
+  cursor: pointer;
+  width: 8em;
+}
+
+.triangleIcon {
+  width: .5em;
+  height: .5em;
+  /* margin-top: .25em; */
+  margin-bottom: .25em;
 }
 
 .thumbnail-container {
@@ -396,17 +391,17 @@ progress::-moz-progress-bar {
   border-bottom: solid 0.2rem cornflowerblue;
 }
 
-#fs-icon-container {
-  display: flex;
-  justify-content: flex-end;
-  width: 89%;
-}
-
 #fs-icon {
   position: absolute;
   color: white;
   top: 6%;
   right: 5%;
+}
+
+#fs-icon-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 89%;
 }
 
 #icon-container {

@@ -3,9 +3,7 @@ export const formatPrice = (priceStr) => `$${priceStr.split('.')[0]}`;
 export const composeParams = (params) => {
   let result = '?';
   Object.keys(params).forEach((param) => {
-    result += `${param}=${
-      typeof params[param] === 'string' ? `"${params[param]}"` : params[param]
-    }&`;
+    result += `${param}=${params[param]}&`;
   });
   return result.slice(0, -1);
 };
@@ -50,6 +48,14 @@ export const composeSizeQuantity = (skus) => {
     result[size] = quantity;
   }
   return result;
+};
+
+export const filterByRating = (starRating, array) => {
+  return (
+    array.filter((result) => {
+      return starRating.indexOf(result.rating) > -1;
+    })
+  );
 };
 
 export const populateLinearArray = (size) => {
