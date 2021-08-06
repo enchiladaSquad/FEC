@@ -12,7 +12,7 @@ const stylesHandler = isProduction
   : 'style-loader';
 
 const config = {
-  entry: './src/index.js',
+  entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
   },
@@ -21,7 +21,7 @@ const config = {
       template: './src/index.html',
     }),
   ],
-
+  devtool: 'source-map',
   module: {
     rules: [
       {

@@ -479,3 +479,25 @@ progress::-moz-progress-bar {
   box-sizing: border-box;
   min-width: 60em;
 }
+
+#size-error-container {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+#size-error {
+  flex-grow: 3;
+  background-color: red;
+  color: rgb(97, 26, 21);
+}
+
+#size-error-placeholder {
+	flex-grow: 2;
+	visibility: hidden;
+}
+
+#cart-button-text {
+	padding-left: 0.25em;
+	display: flex;
+	justify-content: space-between;
+}
