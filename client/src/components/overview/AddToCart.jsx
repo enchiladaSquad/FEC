@@ -57,8 +57,6 @@ const AddToCart = ({ skus }) => {
             label={'Sizes'}
             open={sizeSelectOpen}
             disabled={false}
-            handleClose={() => setSizeSelectOpen(false)}
-            handleOpen={() => setSizeSelectOpen(true)}
           />
         </span>
         <div style={{ flexGrow: '2' }}>

@@ -9,8 +9,16 @@ const PORT = 4000;
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, '../../client/dist')));
+const routeMiddleware = function (req, res, next) {
+  if (!/(^\/api\/*)/.test(req.url)) {
+    return res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
+  }
+  next();
+};
+
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '../../client/dist')));
+app.use(routeMiddleware);
 
 const getStatusCode = (method) => {
   switch (method) {
@@ -25,11 +33,7 @@ const getStatusCode = (method) => {
   }
 };
 
-// const router = express.Router();
-
-// const app.use()
-
-app.all('/*', (req, res) => {
+app.all('/api/*', (req, res) => {
   console.log('METHOD:', req.method);
   console.log('PATH:', req.url);
   const url = `${baseUrl}${req.url.slice(4)}`;
@@ -47,7 +51,7 @@ app.all('/*', (req, res) => {
       res.status(statusCode).send(apiRes.data);
     })
     .catch((err) => {
-      console.error(err);
+      // console.error(err);
       res.status(500).send(err);
     });
 });

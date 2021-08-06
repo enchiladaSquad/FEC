@@ -4,10 +4,12 @@ import axios from 'axios';
 import { composeParams } from '../utils';
 
 const port = 4000;
-const baseUrl = `http://localhost:${port}`;
+const baseUrl = `http://localhost:${port}/api`;
 
-const useSetContext = () => {
-  const [productId, setProductId] = useState(18080);
+const useSetContext = (location) => {
+  const [productId, setProductId] = useState(
+    location.pathname.slice(1) || 18082,
+  );
   const [product, setProduct] = useState(null);
   const [productStyles, setProductStyles] = useState(null);
   const [reportRerender, setReportRerender] = useState(0);
@@ -83,28 +85,8 @@ const useSetContext = () => {
     fetchData(request.route, request.setter, request.params);
   }, [reviewCount, reviewSort, reportRerender]);
 
-  //   useEffect(() => {
-  //     const fetchPromises = [
-  //     { route: '/reviews', setter: setReviews, params: {
-  //         page: reviewPage, count: reviewCount, sort: reviewSort, product_id: productId
-  //       }
-  //     },
-  //     { route: '/reviews/meta', setter: setReviewsMeta, params: { product_id: productId } },
-  //     ].map((item) => {
-  //       return fetchData(item.route, item.setter, item.params);
-  //     });
-
-  // Promise.allSettled(fetchPromises).then(() => {
-  // //is this ok? ^
-  //   setLoading(false);
-  // })
-  //   .catch((err) => {
-  //     console.error(err);
-  //     setError(err);
-  //   });
-  //   }, [reviews]);
-
   const context = {
+    setProductId,
     productId,
     product,
     productStyles,
