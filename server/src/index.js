@@ -25,10 +25,14 @@ const getStatusCode = (method) => {
   }
 };
 
+// const router = express.Router();
+
+// const app.use()
+
 app.all('/*', (req, res) => {
   console.log('METHOD:', req.method);
   console.log('PATH:', req.url);
-  const url = `${baseUrl}${req.url}`;
+  const url = `${baseUrl}${req.url.slice(4)}`;
   axios({
     method: req.method,
     url,

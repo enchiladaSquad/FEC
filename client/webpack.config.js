@@ -21,7 +21,7 @@ const config = {
       template: './src/index.html',
     }),
   ],
-
+  devtool: 'source-map',
   module: {
     rules: [
       {
