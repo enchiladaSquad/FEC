@@ -21,7 +21,7 @@ const ProductOverview = () => {
   const { photos: currentPhotos, name: altText, skus } = styles[styleIndex];
 
   const { description, features } = product;
-  const salePrice = styles[styleIndex].sale_price;
+  const { sale_price: salePrice, name: styleName } = styles[styleIndex];
 
   useEffect(() => {
     setStyleIndex(0);
@@ -45,7 +45,11 @@ const ProductOverview = () => {
                 rating={Number(averageRatings(reviewsMeta.ratings))}
               />
             </div>
-            <ProductDetails product={product} salePrice={salePrice} />
+            <ProductInfo
+              product={product}
+              salePrice={salePrice}
+              styleName={styleName}
+            />
             <StyleSelector
               styles={styles}
               setStyleIndex={setStyleIndex}
@@ -55,7 +59,7 @@ const ProductOverview = () => {
           </div>
         ) : null}
       </div>
-      {/* <ProductInfo description={description} features={features} /> */}
+      <ProductDetails description={description} features={features} />
     </>
   );
 };

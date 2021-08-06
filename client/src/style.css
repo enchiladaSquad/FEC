@@ -79,6 +79,18 @@ progress::-moz-progress-bar {
   flex-direction: row;
 }
 
+.description-container {
+  padding-right: 2em;
+  max-height: 9em;
+  overflow: auto;
+}
+
+.details-container {
+  display: flex;
+  justify-content: center;
+  min-height: 6em;
+}
+
 .divider1 {
   position: absolute;
   z-index: 5;
@@ -102,10 +114,24 @@ progress::-moz-progress-bar {
   font-family: system-ui;
   font-weight: bold;
   font-size: medium;
+  margin: 0.5em;
 }
 
 .enchilada:after {
   padding-left: 1em;
+}
+
+.feature-container {
+  margin: 0.5em;
+}
+
+.features-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 0.15em solid gray;
+  padding-left: 2em;
+  width: 500px;
 }
 
 .flex-break {
@@ -214,6 +240,10 @@ progress::-moz-progress-bar {
   display: flex;
 }
 
+.product-details {
+  margin-left: 1em;
+}
+
 .recPercent {
   font-size: 0.6em;
   margin-bottom: 1em;
@@ -314,6 +344,7 @@ progress::-moz-progress-bar {
 .star-container {
   display: flex;
   flex-direction: row;
+  margin-left: 1em;
 }
 
 .style-check {
@@ -330,6 +361,7 @@ progress::-moz-progress-bar {
   flex-wrap: wrap;
   align-items: center;
   width: 350px;
+  margin-left: 1em;
 }
 
 .style-node {

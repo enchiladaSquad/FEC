@@ -20,7 +20,7 @@ const DropDown = ({
         {options.map((option, i) => {
           return (
             <option key={i} value={option}>
-              {option}
+              {option.toString()}
             </option>
           );
         })}

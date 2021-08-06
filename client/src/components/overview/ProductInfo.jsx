@@ -1,21 +1,77 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const ProductInfo = ({ description, features }) => {
-  return (
-    <div>
-      <div>{description}</div>
-      <div>
-        {features.map((feature) => {
-          return (
-            <div>
-              {'checkmark'}
-              {feature}
-            </div>
-          );
-        })}
-      </div>
+import { formatPrice } from 'src/utils';
+
+const ProductInfo = ({ product, salePrice, styleName }) => (
+  <div className="product-details">
+    <div
+      title="product-category"
+      style={{
+        fontFamily: 'monospace',
+        fontSize: '0.9rem',
+        color: 'dimgrey',
+      }}
+    >
+      {product.category.toUpperCase()}
     </div>
-  );
-};
+    <div
+      title="product-name"
+      style={{
+        fontWeight: 'bold',
+        fontSize: '1.8em',
+        fontFamily: 'system-ui',
+        color: 'dimgrey',
+      }}
+    >
+      {product.name}
+    </div>
+    {salePrice ? (
+      <span
+        title="sale-product-price"
+        style={{ marginTop: '0.8rem', color: 'red', paddingRight: '0.5em' }}
+      >
+        {formatPrice(salePrice)}
+      </span>
+    ) : null}
+    <span
+      title="default-product-price"
+      style={{
+        marginTop: '0.8rem',
+        color: 'dimgrey',
+        textDecoration: salePrice ? 'line-through' : '',
+      }}
+    >
+      {formatPrice(product.default_price)}
+    </span>
+    <div>{`STYLE > ${styleName}`}</div>
+  </div>
+);
 
 export default ProductInfo;
+
+ProductInfo.propTypes = {
+  product: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    campus: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    slogan: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    default_price: PropTypes.string.isRequired,
+    created_at: PropTypes.string.isRequired,
+    updated_at: PropTypes.string.isRequired,
+    features: PropTypes.arrayOf(
+      PropTypes.shape({
+        feature: PropTypes.string.isRequired,
+        value: PropTypes.string.isRequired,
+      }),
+    ),
+  }).isRequired,
+  styleName: PropTypes.string.isRequired,
+  salePrice: PropTypes.string,
+};
+
+ProductInfo.defaultProps = {
+  salePrice: null,
+};
