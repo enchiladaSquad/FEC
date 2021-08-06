@@ -169,8 +169,8 @@ progress::-moz-progress-bar {
 
 .modal-body {
   padding: 2em;
-  border-top: .75em solid rgb(70, 70, 70);
-  border-bottom: .75em solid rgb(70, 70, 70);
+  border-top: 0.75em solid rgb(70, 70, 70);
+  border-bottom: 0.75em solid rgb(70, 70, 70);
 }
 
 .modal-content {
@@ -178,7 +178,8 @@ progress::-moz-progress-bar {
   background-color: white;
 }
 
-.modal-header, .modal-footer {
+.modal-header,
+.modal-footer {
   padding: 2em;
 }
 
@@ -232,7 +233,7 @@ progress::-moz-progress-bar {
 
 .review {
   padding-bottom: 1em;
-  border-bottom: .1em solid rgb(70, 70, 70);
+  border-bottom: 0.1em solid rgb(70, 70, 70);
 }
 
 .reviews {
@@ -307,7 +308,7 @@ progress::-moz-progress-bar {
 }
 
 .starFilteringDisplay {
-  font-size: .6em;
+  font-size: 0.6em;
 }
 
 .star-container {
@@ -337,10 +338,10 @@ progress::-moz-progress-bar {
 }
 
 .triangleIcon {
-  width: .5em;
-  height: .5em;
+  width: 0.5em;
+  height: 0.5em;
   /* margin-top: .25em; */
-  margin-bottom: .25em;
+  margin-bottom: 0.25em;
 }
 
 .thumbnail-container {
@@ -445,4 +446,26 @@ progress::-moz-progress-bar {
   padding: 0;
   box-sizing: border-box;
   min-width: 60em;
+}
+
+#size-error-container {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+#size-error {
+  flex-grow: 3;
+  background-color: red;
+  color: rgb(97, 26, 21);
+}
+
+#size-error-placeholder {
+	flex-grow: 2;
+	visibility: hidden;
+}
+
+#cart-button-text {
+	padding-left: 0.25em;
+	display: flex;
+	justify-content: space-between;
 }

@@ -51,11 +51,9 @@ export const composeSizeQuantity = (skus) => {
 };
 
 export const filterByRating = (starRating, array) => {
-  return (
-    array.filter((result) => {
-      return starRating.indexOf(result.rating) > -1;
-    })
-  );
+  return array.filter((result) => {
+    return starRating.indexOf(result.rating) > -1;
+  });
 };
 
 export const populateLinearArray = (size) => {
@@ -66,14 +64,19 @@ export const populateLinearArray = (size) => {
   return arr;
 };
 
-export const areArraysEqual = (arr1, arr2) => {
+// export const populateLinearArray = (start, end) => {
+//   return Array(end - start + 1)
+//     .fill()
+//     .map((_, idx) => start + idx);
+// };
+export const arraysAreEqual = (arr1, arr2) => {
   if (arr1 === arr2) return true;
   if (arr1.length !== arr2.length) return false;
   if (!arr1 || !arr2) return false;
 
   for (let i = 0, l = arr1.length; i < l; i += 1) {
     if (arr1[i] instanceof Array && arr2[i] instanceof Array) {
-      if (!areArraysEqual(arr1[i], arr2[i])) {
+      if (!arraysAreEqual(arr1[i], arr2[i])) {
         return false;
       }
     } else if (arr1[i] !== arr2[i]) {
