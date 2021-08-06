@@ -32,6 +32,8 @@ const ImageCarousel = ({
     );
   }, [photos, thumbStart]);
 
+  // TODO: pass an onClick down to thumbnail
+
   return (
     <div id="carousel-container">
       <div>
@@ -49,10 +51,11 @@ const ImageCarousel = ({
             isImageThumbnail={
               photos[currentPhotoIndex].thumbnail_url === photo.thumbnail_url
             }
+            handleClick={() => {
+              setCurrentPhotoIndex(i);
+            }}
             photo={photo}
             alt={alt}
-            index={i}
-            setCurrentPhotoIndex={setCurrentPhotoIndex}
             key={i}
           />
         ))}

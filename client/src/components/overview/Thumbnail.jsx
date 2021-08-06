@@ -2,24 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Thumbnail = ({
-  photo,
-  index,
-  alt,
-  isImageThumbnail,
-  setCurrentPhotoIndex,
+  photo, alt, isImageThumbnail, handleClick,
 }) => (
-  <div
-    className="thumbnail-container"
-    onClick={() => {
-      setCurrentPhotoIndex(index);
-    }}
-    key={index}
-  >
+  <div className="thumbnail-container" onClick={handleClick}>
     <img
       className="carousel-thumbnail"
       id={isImageThumbnail ? 'current-thumbnail' : null}
       src={photo.thumbnail_url}
-      alt={`${alt}-${index}`}
+      alt={`${alt}`}
     />
   </div>
 );
@@ -31,8 +21,7 @@ Thumbnail.propTypes = {
     thumbnail_url: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
   }).isRequired,
-  index: PropTypes.number.isRequired,
   isImageThumbnail: PropTypes.bool.isRequired,
-  setCurrentPhotoIndex: PropTypes.func.isRequired,
   alt: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };

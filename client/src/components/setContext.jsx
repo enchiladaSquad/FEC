@@ -83,27 +83,6 @@ const useSetContext = () => {
     fetchData(request.route, request.setter, request.params);
   }, [reviewCount, reviewSort, reportRerender]);
 
-  //   useEffect(() => {
-  //     const fetchPromises = [
-  //     { route: '/reviews', setter: setReviews, params: {
-  //         page: reviewPage, count: reviewCount, sort: reviewSort, product_id: productId
-  //       }
-  //     },
-  //     { route: '/reviews/meta', setter: setReviewsMeta, params: { product_id: productId } },
-  //     ].map((item) => {
-  //       return fetchData(item.route, item.setter, item.params);
-  //     });
-
-  // Promise.allSettled(fetchPromises).then(() => {
-  // //is this ok? ^
-  //   setLoading(false);
-  // })
-  //   .catch((err) => {
-  //     console.error(err);
-  //     setError(err);
-  //   });
-  //   }, [reviews]);
-
   const context = {
     productId,
     product,

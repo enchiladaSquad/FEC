@@ -19,12 +19,15 @@ const App = () => {
       ) : loading ? (
         <div> We Be Loadin </div>
       ) : (
-        <ProductProvider contextValues={contextValues}>
-          <ProductOverview />
-          <Reviews />
-          <Questions />
-          {/* <ReviewAddModal /> */}
-        </ProductProvider>
+        <>
+          <h1 title="page-title">Hello Catwalk</h1>
+          <ProductProvider contextValues={contextValues}>
+            <ProductOverview />
+            <Reviews />
+            <Questions />
+            {/* <ReviewAddModal /> */}
+          </ProductProvider>
+        </>
       )}
     </>
   );

@@ -4,9 +4,10 @@ import 'regenerator-runtime/runtime';
 import { render } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import product from '../../../../server/data/exampleProductIdRes';
+import productStyles from '../../../../server/data/exampleProductIdStyleRes';
 import { formatPrice } from '../../utils';
 
-import ProductDetails from './ProductDetails';
+import ProductInfo from './ProductInfo';
 
 describe('sample tests', () => {
   it('should pass a simple render test', () => {
@@ -32,11 +33,17 @@ describe('sample tests', () => {
   });
 });
 
-describe('ProductDetails', () => {
+describe('ProductInfo', () => {
   let cmpt;
   beforeEach(async () => {
     await act(async () => {
-      cmpt = render(<ProductDetails product={product} />);
+      cmpt = render(
+        <ProductInfo
+          styleName={productStyles.results[0].name}
+          product={product}
+          salePrice={'10000'}
+        />,
+      );
     });
   });
 
@@ -55,13 +62,7 @@ describe('ProductDetails', () => {
     expect(price).toBe(formatPrice(product.default_price));
   });
 
-  xit('should display the sale price of the product accurately', async () => {
-    let cmpt;
-
-    await act(async () => {
-      cmpt = render(<ProductDetails product={product} salePrice={'10000'} />);
-    });
-
+  it('should display the sale price of the product accurately', async () => {
     const price = cmpt.getByTitle('sale-product-price').innerHTML;
     expect(price).toBe('$10000');
   });
