@@ -6,10 +6,15 @@ import CharacteristicRadios from './CharacteristicRadios';
 const ReviewAddModal = ({ addReviewToggle, setAddReviewToggle, product }) => {
   const { reviews } = useContext(ProductContext);
   const { reviewsMeta } = useContext(ProductContext);
-
+  const [prodId, setProdId] = useState(Number(reviews.product));
   const [rating, setRating] = useState(0);
-  const [bodyMessage, setBodyMessage] = useState('');
+  const [recommend, setRecommend] = useState(null);
+  const [characteristics, setCharacteristics] = useState({});
+  const [summary, setSummary] = useState('');
+  const [body, setBody] = useState('');
   const [images, setImages] = useState([]);
+  const [nickname, setNickname] = useState('');
+  const [email, setEmail] = useState('');
   const userRatingWords = {
     1: 'Poor',
     2: 'Fair',
@@ -17,16 +22,30 @@ const ReviewAddModal = ({ addReviewToggle, setAddReviewToggle, product }) => {
     4: 'Good',
     5: 'Great',
   };
+  console.log(reviews);
+  const handleRecommend = (event) => {
+    if (event.target.value === 'true') {
+      setRecommend(true);
+    }
+    if (event.target.value === 'false') {
+      setRecommend(false);
+    }
+  };
 
   const handleImageUpload = (event) => {
     const oldImages = [];
     Object.keys(event.target.files).forEach((key) => {
-      console.log(event.target.files[key]);
       oldImages.push(URL.createObjectURL(event.target.files[key]));
     });
     setImages(oldImages);
   };
-  console.log(images);
+
+  const handleCharacteristic = (event) => {
+    const newChars = { ...characteristics };
+    newChars[reviewsMeta.characteristics[event.target.alt].id}] = Number(event.target.value);
+    setCharacteristics(newChars);
+  };
+
   return (
     <div className={`modal ${addReviewToggle ? 'show' : ''}`} onClick={() => { setAddReviewToggle(false) }}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
@@ -35,26 +54,26 @@ const ReviewAddModal = ({ addReviewToggle, setAddReviewToggle, product }) => {
           <h4> About the {product.name}</h4>
         </div>
         <form className="modal-body">
-          <div
-            className="modal-rating"
-          >
+          <span className="modal-rating">
             *Overall Rating:
             <input className="modal-star-radio" type="radio" name="star" required="required" checked={rating ? 'checked' : ''} />
-            <StarRating
-              required="required"
-              setRating={setRating}
-              clickable={true}
-            />
+            <span>
+              <StarRating
+                required="required"
+                setRating={setRating}
+                clickable={true}
+              />
+            </span>
             {rating ? ` ${userRatingWords[rating]}` : ''}
-          </div>
-          <div className="modal-recommend">
+          </span>
+          <div className="modal-recommend" onChange={handleRecommend}>
             *Do you recommend this product?:
-            <input type="radio" id="recommend-yes" name="recommend" className="radio" value="Yes" />
+            <input type="radio" id="recommend-yes" name="recommend" className="radio" value="true" />
             <label htmlFor="recommend-yes">Yes</label>
-            <input required="required" type="radio" id="recommend-no" name="recommend" className="radio" value="No" />
+            <input required="required" type="radio" id="recommend-no" name="recommend" className="radio" value="false" />
             <label htmlFor="recommend-no">No</label>
           </div>
-          <div className="modal-characteristics">
+          <div className="modal-characteristics" onChange={handleCharacteristic}>
             <CharacteristicRadios chars={reviewsMeta.characteristics} />
           </div>
           <div className="modal-review-summary">
@@ -64,6 +83,9 @@ const ReviewAddModal = ({ addReviewToggle, setAddReviewToggle, product }) => {
               type="text"
               maxLength="60"
               placeholder="Example: Best purchase ever!"
+              onChange={(event) => {
+                setSummary(event.target.value);
+              }}
             />
           </div>
           <div className="modal-review-body">
@@ -76,12 +98,12 @@ const ReviewAddModal = ({ addReviewToggle, setAddReviewToggle, product }) => {
               placeholder="Why did you like the product or not?"
               minLength="50"
               onChange={(event) => {
-                setBodyMessage(event.target.value);
+                setBody(event.target.value);
               }}
             />
           </div>
           <div>
-            {50 - bodyMessage.length > 0 ? `*Minimum required characters left: ${50 - bodyMessage.length}` : 'Minimum reached'}
+            {50 - body.length > 0 ? `*Minimum required characters left: ${50 - body.length}` : 'Minimum reached'}
           </div>
           <div className="modal-photos">
             Upload photos:
@@ -102,13 +124,16 @@ const ReviewAddModal = ({ addReviewToggle, setAddReviewToggle, product }) => {
             </div>
           </div>
           <div className="modal-nickname">
-            *What is your nickname?:
+            *Desired nickname:
             <input
               required="required"
               className="review-text-input"
               type="text"
               maxLength="60"
               placeholder="Example: jackson11!"
+              onChange={(event) => {
+                setNickname(event.target.value);
+              }}
             />
           </div>
           <div className="modal-email">
@@ -119,9 +144,12 @@ const ReviewAddModal = ({ addReviewToggle, setAddReviewToggle, product }) => {
               type="email"
               maxLength="60"
               placeholder="Example: jackson11@email.com!"
+              onChange={(event) => {
+                setEmail(event.target.value);
+              }}
             />
-            <div>For authentication reasons only, you will not be emailed</div>
           </div>
+          <div>For authentication reasons only, you will not be emailed</div>
           <input type="submit" className="modal-submit" value="Submit" />
         </form>
         <div className="modal-footer">
