@@ -1,52 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CheckCircleOutline } from '@material-ui/icons';
 
-const StyleNode = ({
-  index, src, alt, marked, setCurrentStyleIndex,
-}) => {
-  return (
-    <div className="image-container">
-      <img
-        className={`style-node ${marked ? '' : 'opac'}`}
-        key={index}
-        src={src}
-        alt={alt}
-        onClick={() => {
-          setCurrentStyleIndex(index);
-        }}
-      />
-      {marked ? <CheckCircleOutline className="style-check" /> : null}
-    </div>
-  );
-};
+import StyleNode from 'components/overview/StyleNode';
 
-const StyleSelector = ({ styles, setCurrentStyleIndex, currentStyleIndex }) => {
+const StyleSelector = ({ styles, setStyleIndex, styleIndex }) => {
   return (
     <div className="styles-container">
       {styles.map((style, i) => {
         return (
-          <>
-            <StyleNode
-              index={i}
-              src={style.photos[0].thumbnail_url}
-              alt={style.name + i}
-              marked={currentStyleIndex === i}
-              setCurrentStyleIndex={setCurrentStyleIndex}
-            />
-            {(i + 1) % 4 ? null : <div className="flex-break" />}
-          </>
+          <StyleNode
+            key={i}
+            index={i}
+            src={style.photos[0].thumbnail_url}
+            alt={style.name + i}
+            marked={styleIndex === i}
+            setStyleIndex={setStyleIndex}
+          />
         );
       })}
     </div>
   );
-};
-
-StyleNode.propTypes = {
-  index: PropTypes.number.isRequired,
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
-  marked: PropTypes.bool.isRequired,
 };
 
 StyleSelector.propTypes = {
@@ -71,8 +44,8 @@ StyleSelector.propTypes = {
       }),
     }),
   ).isRequired,
-  setCurrentStyleIndex: PropTypes.func.isRequired,
-  currentStyleIndex: PropTypes.number.isRequired,
+  setStyleIndex: PropTypes.func.isRequired,
+  styleIndex: PropTypes.number.isRequired,
 };
 
 export default StyleSelector;

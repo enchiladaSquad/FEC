@@ -4,6 +4,7 @@ import ProductDetails from 'components/overview/ProductDetails';
 import ImageGallery from 'components/overview/ImageGallery';
 import StyleSelector from 'components/overview/StyleSelector';
 import AddToCart from 'components/overview/AddToCart';
+import ProductInfo from 'components/overview/ProductInfo';
 
 import StarRating from 'components/SharedComponents';
 
@@ -14,47 +15,48 @@ const ProductOverview = () => {
   const { reviewsMeta, product, productStyles } = useContext(ProductContext);
 
   const [styleIndex, setStyleIndex] = useState(0);
-  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
-  const [currentPhotos, setCurrentPhotos] = useState([]);
-  const [altText, setAltText] = useState('');
+  const [zooming, setZooming] = useState(false);
 
-  const [styles, setStyles] = useState(productStyles.results);
-  const [currentStyleIndex, setCurrentStyleIndex] = useState(0);
-  const [skus, setSkus] = useState(styles[currentStyleIndex].skus);
+  const styles = productStyles.results;
+  const { photos: currentPhotos, name: altText, skus } = styles[styleIndex];
+
+  const { description, features } = product;
+  const salePrice = styles[styleIndex].sale_price;
 
   useEffect(() => {
     setStyleIndex(0);
-    setCurrentPhotos(productStyles.results[styleIndex].photos);
-    setCurrentPhotoIndex(0);
-    setAltText(productStyles.results[styleIndex].name);
-  }, []);
+  }, [product]);
 
   return (
-    <div>
-      <>
-        <div>Header</div>
+    <>
+      <div className="overview-container">
         {currentPhotos.length ? (
           <ImageGallery
             photos={currentPhotos}
-            currentPhotoIndex={currentPhotoIndex}
-            setCurrentPhotoIndex={setCurrentPhotoIndex}
+            zooming={zooming}
             alt={altText}
+            setZooming={setZooming}
           />
         ) : null}
-        <StarRating rating={averageRatings(reviewsMeta.ratings)} />
-        <ProductDetails
-          productCategory={product.category || ''}
-          productName={product.name || ''}
-          productPrice={product.default_price || ''}
-        />
-        <StyleSelector
-          styles={styles}
-          setCurrentStyleIndex={setCurrentStyleIndex}
-          currentStyleIndex={currentStyleIndex}
-        />
-        <AddToCart skus={skus} />
-      </>
-    </div>
+        {!zooming ? (
+          <div className="info-panel">
+            <div className="star-container">
+              <StarRating
+                rating={Number(averageRatings(reviewsMeta.ratings))}
+              />
+            </div>
+            <ProductDetails product={product} salePrice={salePrice} />
+            <StyleSelector
+              styles={styles}
+              setStyleIndex={setStyleIndex}
+              styleIndex={styleIndex}
+            />
+            <AddToCart skus={skus} />
+          </div>
+        ) : null}
+      </div>
+      {/* <ProductInfo description={description} features={features} /> */}
+    </>
   );
 };
 
