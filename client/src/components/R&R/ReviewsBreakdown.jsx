@@ -57,7 +57,6 @@ const ReviewsBreakdown = ({ setStarFilter, starFilter }) => {
       setStarFilter(temp);
     } else {
       temp.splice(temp.indexOf(rating), 1);
-      console.log(temp);
       setStarFilter(temp);
     }
   };

@@ -44,6 +44,11 @@ progress::-moz-progress-bar {
   /* style rules */
 }
 
+textarea {
+  resize: none;
+  width: auto;
+}
+
 .averageReview {
   font-size: 3em;
   margin-right: 0.2em;
@@ -60,6 +65,14 @@ progress::-moz-progress-bar {
   margin-bottom: 0.5em;
 }
 
+.char-label-left {
+  text-align: center;
+}
+
+.char-label-right {
+  text-align: center;
+}
+
 .carousel-thumbnail {
   height: 4em;
   width: auto;
@@ -74,6 +87,19 @@ progress::-moz-progress-bar {
   height: 3em;
   font-size: 0.85em;
 }
+
+.characteristic-radios {
+  margin-left: 2em;
+  text-align: center;
+}
+
+.characteristic-radios-container {
+  display: grid;
+  grid-template-columns: 1.5fr 2.5fr 3fr 3fr;
+}
+
+/* .characteristic-radios-name {
+} */
 
 .checkout-container {
   display: flex;
@@ -141,7 +167,16 @@ progress::-moz-progress-bar {
 }
 
 .helpful {
+  margin-top: 1em;
   margin-bottom: 1em;
+}
+
+.helpful-button {
+  text-decoration: underline;
+}
+
+.helpful-button:hover {
+  cursor: pointer;
 }
 
 .icon {
@@ -181,6 +216,10 @@ progress::-moz-progress-bar {
   width: 500px;
 }
 
+.max-photos {
+  color: red;
+}
+
 .modal {
   position: fixed;
   left: 0;
@@ -192,12 +231,24 @@ progress::-moz-progress-bar {
   align-items: center;
   justify-content: center;
   z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal.show {
+  opacity: 1;
+  pointer-events: visible;
 }
 
 .modal-body {
   padding: 2em;
-  border-top: 0.75em solid rgb(70, 70, 70);
-  border-bottom: 0.75em solid rgb(70, 70, 70);
+  border-top: .075em solid rgb(70, 70, 70);
+  border-bottom: .075em solid rgb(70, 70, 70);
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  justify-content: space-between;
+  height: 60vh;
 }
 
 .modal-content {
@@ -210,8 +261,35 @@ progress::-moz-progress-bar {
   padding: 2em;
 }
 
+.modal-photos {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-review-summary, .modal-review-body, .modal-nickname, .modal-email {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.modal-star-radio {
+  opacity: 0;
+  width: .075em;
+  margin-left: 3.1em;
+  margin-top: 1em;
+  position: absolute;
+}
+
+.modal-submit {
+  width: 10em;
+  align-self: center;
+}
+
 .modal-title {
   margin: 0;
+}
+
+.more-reviews, .add-review{
+  padding: 1em;
 }
 
 .opac {
@@ -245,6 +323,10 @@ progress::-moz-progress-bar {
   margin-left: 1em;
 }
 
+.radio {
+  margin-left: .75em;
+}
+
 .recPercent {
   font-size: 0.6em;
   margin-bottom: 1em;
@@ -254,31 +336,70 @@ progress::-moz-progress-bar {
   margin-left: 1em;
   padding-left: 1em;
   border-left: 0.1em solid rgb(70, 70, 70);
+  text-decoration: underline;
+}
+
+.report:hover {
+  cursor: pointer;
 }
 
 .response {
   background-color: rgb(210, 209, 209);
   width: auto;
   display: inline-block;
+  margin-bottom: 1em;
 }
 
 .review {
   padding-bottom: 1em;
   border-bottom: 0.1em solid rgb(70, 70, 70);
+  word-break: break-word;
+}
+
+.review-body {
+  margin-top: 1em;
+}
+
+.review-recommend {
+  margin-bottom: 1em;
+}
+
+.review-stars {
+
+}
+
+.review-summary {
+  font-weight:bold;
+  margin-top: 1em;
+}
+
+.review-text-input {
+  width: 23em;
 }
 
 .reviews {
+  width: 80vw;
+  margin-top: 3em;
+  margin-left: auto;
+  margin-right: auto;
+  height: 90vh;
   display: flex;
+  justify-content: space-evenly;
 }
 
 .reviewsBreakdown {
-  zoom: 1.35;
+  zoom: 1.65;
 }
 
 .reviewsList {
   overflow: auto;
   max-height: 80vh;
   /* height: 80vh; */
+}
+
+.reviews-list-container {
+  width: 100vh;
+  margin-left: .75em;
 }
 
 .star {
@@ -290,6 +411,10 @@ progress::-moz-progress-bar {
   color: white;
   -webkit-text-stroke-width: 0.076em;
   -webkit-text-stroke-color: rgb(70, 70, 70);
+}
+
+.star.clickable:hover {
+  cursor: pointer;
 }
 
 .star-25:after,
@@ -385,6 +510,32 @@ progress::-moz-progress-bar {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.upload-preview {
+  max-width: 6.5em;
+  height: fit-content;
+  width: fit-content;
+}
+
+.upload-thumbnails {
+  display: flex;
+}
+
+.upload-thumb-container {
+  height: 3.4em;
+  overflow: hidden;
+  border: .075em solid rgb(70, 70, 70);
+  padding: 0;
+}
+
+.username-date {
+  margin-top: .7em;
+}
+
+.stars-user-date {
+  display: flex;
+  justify-content: space-between;
 }
 
 #arrow-down {

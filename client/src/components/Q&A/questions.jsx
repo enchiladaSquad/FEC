@@ -6,7 +6,6 @@ const Questions = () => {
               
   return (
     <div>
-      This is the Questions and Answers section
     </div>
   );
 

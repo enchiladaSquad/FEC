@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import Reviews from 'components/R&R/Reviews';
-import Questions from 'components/Q&A/questions';
 import ProductOverview from 'components/overview/ProductOverview';
 import ProductProvider from 'components/ProductProvider';
 import useSetContext from './components/setContext';
@@ -25,12 +24,10 @@ const App = () => {
         <>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <div id="app-container">
-              <h1 title="page-title">Hello Catwalk</h1>
+              <h1 title="page-title">EnchiLads' Catwalk</h1>
               <ProductProvider contextValues={contextValues}>
                 <ProductOverview />
                 <Reviews />
-                <Questions />
-                {/* <ReviewAddModal /> */}
               </ProductProvider>
             </div>
           </div>
