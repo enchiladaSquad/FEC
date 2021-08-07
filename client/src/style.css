@@ -166,7 +166,16 @@ textarea {
 }
 
 .helpful {
+  margin-top: 1em;
   margin-bottom: 1em;
+}
+
+.helpful-button {
+  text-decoration: underline;
+}
+
+.helpful-button:hover {
+  cursor: pointer;
 }
 
 .icon {
@@ -269,8 +278,17 @@ textarea {
   position: absolute;
 }
 
+.modal-submit {
+  width: 10em;
+  align-self: center;
+}
+
 .modal-title {
   margin: 0;
+}
+
+.more-reviews, .add-review{
+  padding: 1em;
 }
 
 .opac {
@@ -317,17 +335,41 @@ textarea {
   margin-left: 1em;
   padding-left: 1em;
   border-left: 0.1em solid rgb(70, 70, 70);
+  text-decoration: underline;
+}
+
+.report:hover {
+  cursor: pointer;
 }
 
 .response {
   background-color: rgb(210, 209, 209);
   width: auto;
   display: inline-block;
+  margin-bottom: 1em;
 }
 
 .review {
   padding-bottom: 1em;
   border-bottom: 0.1em solid rgb(70, 70, 70);
+  word-break: break-word;
+}
+
+.review-body {
+  margin-top: 1em;
+}
+
+.review-recommend {
+  margin-bottom: 1em;
+}
+
+.review-stars {
+
+}
+
+.review-summary {
+  font-weight:bold;
+  margin-top: 1em;
 }
 
 .review-text-input {
@@ -335,17 +377,27 @@ textarea {
 }
 
 .reviews {
+  width: 80vw;
+  margin-top: 3em;
+  margin-left: auto;
+  margin-right: auto;
+  height: 90vh;
   display: flex;
+  justify-content: space-evenly;
 }
 
 .reviewsBreakdown {
-  zoom: 1.35;
+  zoom: 1.65;
 }
 
 .reviewsList {
   overflow: auto;
   max-height: 80vh;
   /* height: 80vh; */
+}
+
+.reviews-list-container {
+  width: 100vh
 }
 
 .star {
@@ -473,6 +525,15 @@ textarea {
   overflow: hidden;
   border: .075em solid rgb(70, 70, 70);
   padding: 0;
+}
+
+.username-date {
+  margin-top: .7em;
+}
+
+.stars-user-date {
+  display: flex;
+  justify-content: space-between;
 }
 
 #arrow-down {

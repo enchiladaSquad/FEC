@@ -31,7 +31,7 @@ const ReviewsList = ({ starFilter }) => {
   };
 
   return (
-    <div>
+    <div className="reviews-list-container">
       <div className="numberAndSortType">
         {`Showing ${reviews.results.length}
         reviews, sorted by `}
@@ -62,8 +62,8 @@ const ReviewsList = ({ starFilter }) => {
             );
           })}
       </div>
-      <div onClick={() => { setReviewCount(reviewCount + 2); }}>More Reviews</div>
-      <div onClick={() => { setAddReviewToggle(true) }}>Add a review</div>
+      <button className="enchilada more-reviews" onClick={() => { setReviewCount(reviewCount + 2); }}>More Reviews</button>
+      <button className="enchilada add-review" onClick={() => { setAddReviewToggle(true) }}>Add a review +</button>
       {addReviewToggle ? (
         <ReviewAddModal
           addReviewToggle={addReviewToggle}

@@ -65,16 +65,22 @@ const ReviewsListItem = ({ review, decrease }) => {
     myStorage.getItem(`${review.review_id}reported`) === 'true' ? null
       : (
         <div className="review">
-          <StarRating rating={review.rating} />
-          {review.reviewer_name} {formatDate()}
-          <div>{review.summary}</div>
-          <div>{review.body}</div>
-          <div> {review.recommend ? '✔ I recommend this product' : null} </div>
+          <div className="stars-user-date">
+            <span className="review-stars">
+              <StarRating rating={review.rating} />
+            </span>
+            <span className="username-date">
+              {review.reviewer_name} {formatDate()}
+            </span>
+          </div>
+          <div className="review-summary">{review.summary}</div>
+          <div className="review-body">{review.body}</div>
+          <div className="review-recommend"> {review.recommend ? '✔ I recommend this product' : null} </div>
           {review.response !== null ? <div className="response">Response: This is a response!</div> : null}
           <div className="helpful">
-            Helpful? <span onClick={handleYesVote}>Yes </span>
-            {'(' + myStorage[`${review.review_id}helpful`] + ')'}
-            <span className="report" onClick={handleReport}>Report</span>
+            Helpful? <span className="helpful-button" onClick={handleYesVote}>Yes</span>
+            {' (' + myStorage[`${review.review_id}helpful`] + ')  '}
+            <span className="report" onClick={handleReport}>{'  Report'}</span>
           </div>
         </div>
       )
