@@ -20,12 +20,14 @@ const ZoomPhoto = ({ imgSrc, disableZooming }) => {
     <div
       id="zoom-image-wrapper"
       style={{
-        width: `${imageWidth / 1.5}px`,
-        height: `${imageHeight / 1.5}px`,
+        width: '80%',
+        height: 'auto',
       }}
       onClick={disableZooming}
       onMouseMove={(e) => {
         const { width, height } = imageRef.current.getBoundingClientRect();
+        setImageWidth(width);
+        setImageHeight(height);
         setBgPos(
           `${(e.clientX / width) * 100}% ${(e.clientY / height) * 100}%`,
         );

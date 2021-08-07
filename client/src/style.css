@@ -477,7 +477,7 @@ progress::-moz-progress-bar {
   margin: 4em;
   padding: 0;
   box-sizing: border-box;
-  min-width: 60em;
+  width: 60em;
 }
 
 #size-error-container {
