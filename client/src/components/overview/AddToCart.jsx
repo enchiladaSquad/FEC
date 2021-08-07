@@ -88,7 +88,7 @@ const AddToCart = ({ skus }) => {
             <button
               type="button"
               className="enchilada"
-              style={{ flexGrow: '0', textAlign: 'center' }}
+              style={{ flexGrow: '0', textAlign: 'center', padding: '1em' }}
             >
               <i className="fa fa-star" />
             </button>

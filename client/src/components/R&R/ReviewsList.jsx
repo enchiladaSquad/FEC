@@ -2,9 +2,11 @@ import React, { useState, useContext } from 'react';
 import { ProductContext } from '../../context';
 import { filterByRating } from '../../utils';
 import ReviewsListItem from './ReviewsListItem';
+import ReviewAddModal from './ReviewAddModal';
 
 const ReviewsList = ({ starFilter }) => {
   const {
+    product,
     reviews,
     reviewsMeta,
     reviewCount,
@@ -12,6 +14,7 @@ const ReviewsList = ({ starFilter }) => {
     setReviewSort,
   } = useContext(ProductContext);
   const [updateCount, setUpdateCount] = useState(0);
+  const [addReviewToggle, setAddReviewToggle] = useState(false);
   const myStorage = window.localStorage;
 
   if (!myStorage.getItem('listCount')) {
@@ -28,10 +31,10 @@ const ReviewsList = ({ starFilter }) => {
   };
 
   return (
-    <div>
+    <div className="reviews-list-container">
       <div className="numberAndSortType">
-        Showing {reviews.results.length}
-        reviews, sorted by
+        {`Showing ${reviews.results.length}
+        reviews, sorted by `}
         <select onChange={handleSort}>
           <option value="relevant">Relevance</option>
           <option value="newest">Newest</option>
@@ -59,8 +62,25 @@ const ReviewsList = ({ starFilter }) => {
             );
           })}
       </div>
-      <div onClick={() => { setReviewCount(reviewCount + 2); }}>More Reviews</div>
-      <div>Add a review</div>
+      {console.log(reviews.results.length, reviewCount)}
+      <button className="enchilada add-review" onClick={() => { setAddReviewToggle(true) }}>Add a review +</button>
+      {reviews.results.length < reviewCount ? '' : (
+        <button
+          className="enchilada more-reviews"
+          onClick={() => {
+            setReviewCount(reviewCount + 2);
+          }}
+        >
+          More Reviews
+        </button>
+      )}
+      {addReviewToggle ? (
+        <ReviewAddModal
+          addReviewToggle={addReviewToggle}
+          setAddReviewToggle={setAddReviewToggle}
+          product={product}
+        />
+      ) : null}
     </div>
   );
 };
