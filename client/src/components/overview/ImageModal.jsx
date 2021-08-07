@@ -9,7 +9,24 @@ const ImageModal = ({ imgSrc, hideModal }) => {
   return (
     <div className="modal-background" onClick={hideModal}>
       <div className="modal-container">
-        <img src={imgSrc} style={{ width: '100%' }} alt={''} />
+        <div
+          onClick={(e) => {
+            setZooming(!zooming);
+            e.stopPropagation();
+          }}
+          style={{ backgroundImage: `url('${imgSrc}')` }}
+        >
+          <img
+            src={imgSrc}
+            style={{
+              width: '100%',
+              pointerEvents: 'none',
+              transform: `${zooming ? 'scale(2.5)' : 'scale(1)'}`,
+            }}
+            alt={''}
+          />
+        </div>
+
         <Cancel
           className="floating-icon"
           onClick={(e) => {
