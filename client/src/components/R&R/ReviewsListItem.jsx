@@ -56,7 +56,7 @@ const ReviewsListItem = ({ review, decrease }) => {
   };
 
   const handleReport = () => {
-    axios.put(`/reviews/${review.review_id}/report`)
+    axios.put(`api/reviews/${review.review_id}/report`)
       .then(setReportRerender(Math.random()));
   };
 

@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
+import axios from 'axios';
 import { ProductContext } from '../../context';
 import StarRating from '../SharedComponents';
 import CharacteristicRadios from './CharacteristicRadios';
 
 const ReviewAddModal = ({ addReviewToggle, setAddReviewToggle, product }) => {
-  const { reviews } = useContext(ProductContext);
-  const { reviewsMeta } = useContext(ProductContext);
+  const { reviews, reviewsMeta } = useContext(ProductContext);
   const [prodId, setProdId] = useState(Number(reviews.product));
   const [rating, setRating] = useState(0);
   const [recommend, setRecommend] = useState(null);
@@ -15,6 +15,7 @@ const ReviewAddModal = ({ addReviewToggle, setAddReviewToggle, product }) => {
   const [images, setImages] = useState([]);
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
+
   const userRatingWords = {
     1: 'Poor',
     2: 'Fair',
@@ -22,7 +23,8 @@ const ReviewAddModal = ({ addReviewToggle, setAddReviewToggle, product }) => {
     4: 'Good',
     5: 'Great',
   };
-  console.log(reviews);
+
+
   const handleRecommend = (event) => {
     if (event.target.value === 'true') {
       setRecommend(true);
@@ -46,6 +48,26 @@ const ReviewAddModal = ({ addReviewToggle, setAddReviewToggle, product }) => {
     setCharacteristics(newChars);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const requestBody = {
+      product_id: prodId,
+      rating,
+      summary,
+      body,
+      recommend,
+      name: nickname,
+      email,
+      photos: images,
+      characteristics,
+    };
+
+    axios.post('/api/reviews', requestBody)
+      .then((response) => { console.debug(response); })
+      .then(setAddReviewToggle(false))
+      .catch((err) => { console.error(err); });
+  };
+
   return (
     <div className={`modal ${addReviewToggle ? 'show' : ''}`} onClick={() => { setAddReviewToggle(false) }}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
@@ -53,7 +75,7 @@ const ReviewAddModal = ({ addReviewToggle, setAddReviewToggle, product }) => {
           <h3 className="modal-title">Write Your Review</h3>
           <h4> About the {product.name}</h4>
         </div>
-        <form className="modal-body">
+        <form className="modal-body" onSubmit={handleSubmit}>
           <span className="modal-rating">
             *Overall Rating:
             <input className="modal-star-radio" type="radio" name="star" required="required" checked={rating ? 'checked' : ''} />
@@ -150,7 +172,7 @@ const ReviewAddModal = ({ addReviewToggle, setAddReviewToggle, product }) => {
             />
           </div>
           <div>For authentication reasons only, you will not be emailed</div>
-          <input type="submit" className="modal-submit" value="Submit" />
+          <input type="submit" className="modal-submit" value="Submit" disabled={images.length <= 5 ? '' : 'disabled'} />
         </form>
         <div className="modal-footer">
           <button className="modal-close-button" onClick={() => { setAddReviewToggle(false) }}>Cancel</button>

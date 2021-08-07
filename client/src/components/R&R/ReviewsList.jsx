@@ -33,8 +33,8 @@ const ReviewsList = ({ starFilter }) => {
   return (
     <div>
       <div className="numberAndSortType">
-        Showing {reviews.results.length}
-        reviews, sorted by
+        Showing {reviews.results.length + ' '}
+        reviews, sorted by {' '}
         <select onChange={handleSort}>
           <option value="relevant">Relevance</option>
           <option value="newest">Newest</option>
