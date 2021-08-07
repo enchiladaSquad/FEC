@@ -24,27 +24,21 @@ const ReviewAddModal = ({ addReviewToggle, setAddReviewToggle, product }) => {
     5: 'Great',
   };
 
-
   const handleRecommend = (event) => {
-    if (event.target.value === 'true') {
-      setRecommend(true);
-    }
-    if (event.target.value === 'false') {
-      setRecommend(false);
-    }
+    setRecommend(event.target.value === 'true');
   };
 
   const handleImageUpload = (event) => {
-    const oldImages = [];
-    Object.keys(event.target.files).forEach((key) => {
-      oldImages.push(URL.createObjectURL(event.target.files[key]));
-    });
-    setImages(oldImages);
+    setImages(Object.keys(event.target.files).map((key) => {
+      return URL.createObjectURL(event.target.files[key]);
+    }));
   };
-
   const handleCharacteristic = (event) => {
+    console.log(event);
     const newChars = { ...characteristics };
-    newChars[reviewsMeta.characteristics[event.target.alt].id] = Number(event.target.value);
+    newChars[reviewsMeta.characteristics[event.target.name].id] = Number(event.target.value);
+    // ^setting newChars at key of the ID corresponding to the characteristic name 
+    // to the rating value selected
     setCharacteristics(newChars);
   };
 
@@ -112,10 +106,11 @@ const ReviewAddModal = ({ addReviewToggle, setAddReviewToggle, product }) => {
           </div>
           <div className="modal-review-body">
             *Review body:
-            <input
+            <textarea
+              rows="5"
+              cols="70"
               required="required"
               className="review-text-input"
-              type="text"
               maxLength="1000"
               placeholder="Why did you like the product or not?"
               minLength="50"
@@ -146,7 +141,7 @@ const ReviewAddModal = ({ addReviewToggle, setAddReviewToggle, product }) => {
             </div>
           </div>
           <div className="modal-nickname">
-            *Desired nickname:
+            *Nickname:
             <input
               required="required"
               className="review-text-input"
@@ -159,7 +154,7 @@ const ReviewAddModal = ({ addReviewToggle, setAddReviewToggle, product }) => {
             />
           </div>
           <div className="modal-email">
-            *Your email?:
+            *Email:
             <input
               required="required"
               className="review-text-input"

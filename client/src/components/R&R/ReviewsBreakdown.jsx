@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import StarRating from '../SharedComponents';
 import { averageRatings } from '../../utils';
 import { ProductContext } from '../../context';
-//minor push change
 
 const ReviewsBreakdown = ({ setStarFilter, starFilter }) => {
   const { reviewsMeta } = useContext(ProductContext);

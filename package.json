@@ -2,7 +2,7 @@
   "name": "front-end-capstone",
   "version": "1.0.0",
   "description": "A demonstration of raw talent devised and forged by ferocious Enchilada-Eaters",
-  "main": "./client/index.jsx",
+  "main": "index.js",
   "scripts": {
     "test": "jest",
     "watch:test": "jest --watch",
