@@ -42,7 +42,7 @@ const ReviewAddModal = ({ addReviewToggle, setAddReviewToggle, product }) => {
 
   const handleCharacteristic = (event) => {
     const newChars = { ...characteristics };
-    newChars[reviewsMeta.characteristics[event.target.alt].id}] = Number(event.target.value);
+    newChars[reviewsMeta.characteristics[event.target.alt].id] = Number(event.target.value);
     setCharacteristics(newChars);
   };
 
