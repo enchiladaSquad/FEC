@@ -7,10 +7,12 @@ const DropDown = ({
   label,
   value,
   disabled = false,
+  paddingR,
 }) => {
   return (
     <>
       <select
+        style={{ paddingRight: `${paddingR.toString()}em` }}
         label={label}
         className="enchilada"
         onChange={handleChange}
@@ -37,6 +39,7 @@ DropDown.propTypes = {
   disabled: PropTypes.bool.isRequired,
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   label: PropTypes.string.isRequired,
+  paddingR: PropTypes.number.isRequired,
 };
 
 export default DropDown;
