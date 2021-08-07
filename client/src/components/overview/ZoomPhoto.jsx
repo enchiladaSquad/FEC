@@ -25,7 +25,7 @@ const ZoomPhoto = ({ imgSrc, disableZooming }) => {
       }}
       onClick={disableZooming}
       onMouseMove={(e) => {
-        const { width, height } = imageRef.current;
+        const { width, height } = imageRef;
         // setImageWidth(width);
         // setImageHeight(height);
         setBgPos(

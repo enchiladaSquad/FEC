@@ -450,6 +450,8 @@ progress::-moz-progress-bar {
 #main-photo {
   width: 100%;
   cursor: zoom-in;
+	object-fit: contain;
+	height: 600px
 }
 
 #main-photo-container {
@@ -457,6 +459,8 @@ progress::-moz-progress-bar {
   overflow: hidden;
   background-color: black;
   padding: 1em;
+  width: 700px;
+  height: 600px;
 }
 
 #zoom-image {
@@ -528,6 +532,7 @@ progress::-moz-progress-bar {
   max-width: 80em;
   position: relative;
   overflow: hidden;
+  max-height: calc(100% - 3em);
 }
 
 .floating-icon {
