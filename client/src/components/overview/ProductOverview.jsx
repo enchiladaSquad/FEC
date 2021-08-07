@@ -5,7 +5,6 @@ import ImageGallery from 'components/overview/ImageGallery';
 import StyleSelector from 'components/overview/StyleSelector';
 import AddToCart from 'components/overview/AddToCart';
 import ProductInfo from 'components/overview/ProductInfo';
-import ExpandedPhoto from 'components/overview/ExpandedPhoto';
 import ImageModal from 'components/overview/ImageModal';
 
 import StarRating from 'components/SharedComponents';

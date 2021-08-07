@@ -1,10 +1,6 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Fullscreen, Cancel } from '@material-ui/icons';
-
-import ZoomPhoto from 'components/overview/ZoomPhoto';
-
-// Tak
+import { Cancel } from '@material-ui/icons';
 
 const ImageModal = ({ imgSrc, hideModal }) => {
   const [zooming, setZooming] = useState(false);
@@ -29,7 +25,6 @@ const ImageModal = ({ imgSrc, hideModal }) => {
             const { clientX: mouseX, clientY: mouseY } = ev;
             const x = mouseX - left; // Position of Mouse relative to the top-left of the DIV
             const y = mouseY - top; // Position of Mouse relative to the top-left of the DIV
-            // console.log('mousePos:', x, y);
             // We subtract from X and Y because we are calculating relative to them
             const { width, height } = imgRef.current;
             const cx = width / 2;
@@ -66,23 +61,6 @@ const ImageModal = ({ imgSrc, hideModal }) => {
         />
       </div>
     </div>
-    // <div
-    // className={}
-    //   style={{ width: '100%', position: 'relative' }}
-    //   onClick={() => {
-    //     setZooming(true);
-    //   }}
-    // >
-    //   <img src={imgSrc} style={{ width: '100%' }} alt={''} />
-    //   <Fullscreen
-    //     id="fs-icon"
-    //     fontSize="large"
-    //     onClick={(e) => {
-    //       e.stopPropagation();
-    //       disableExpanded();
-    //     }}
-    //   />
-    // </div>
   );
 };
 
