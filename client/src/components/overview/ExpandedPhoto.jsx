@@ -12,6 +12,7 @@ const ExpandedPhoto = ({ imgSrc, disableExpanded }) => {
         <ZoomPhoto imgSrc={imgSrc} disableZooming={() => setZooming(false)} />
       ) : (
         <div
+          id="expanded-photo-container"
           style={{ width: '100%' }}
           onClick={() => {
             setZooming(true);

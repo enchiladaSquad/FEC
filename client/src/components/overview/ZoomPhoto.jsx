@@ -4,17 +4,17 @@ import PropTypes from 'prop-types';
 const ZoomPhoto = ({ imgSrc, disableZooming }) => {
   const imageRef = useRef(null);
   const [bgPos, setBgPos] = useState('center');
-  const [imageWidth, setImageWidth] = useState(0);
-  const [imageHeight, setImageHeight] = useState(0);
+  // const [imageWidth, setImageWidth] = useState(0);
+  // const [imageHeight, setImageHeight] = useState(0);
 
-  useEffect(() => {
-    const img = new Image();
-    img.onload = () => {
-      setImageWidth(img.width);
-      setImageHeight(img.height);
-    };
-    img.src = imgSrc;
-  }, [imgSrc]);
+  // useEffect(() => {
+  //   const img = new Image();
+  //   img.onload = () => {
+  //     setImageWidth(img.width);
+  //     setImageHeight(img.height);
+  //   };
+  //   img.src = imgSrc;
+  // }, [imgSrc]);
 
   return (
     <div
@@ -25,9 +25,9 @@ const ZoomPhoto = ({ imgSrc, disableZooming }) => {
       }}
       onClick={disableZooming}
       onMouseMove={(e) => {
-        const { width, height } = imageRef.current.getBoundingClientRect();
-        setImageWidth(width);
-        setImageHeight(height);
+        const { width, height } = imageRef.current;
+        // setImageWidth(width);
+        // setImageHeight(height);
         setBgPos(
           `${(e.clientX / width) * 100}% ${(e.clientY / height) * 100}%`,
         );
@@ -42,9 +42,9 @@ const ZoomPhoto = ({ imgSrc, disableZooming }) => {
         style={{
           backgroundImage: `url('${imgSrc}')`,
           backgroundPosition: bgPos,
-          width: `${imageWidth}`,
-          height: `${imageHeight}`,
-          padding: `calc(100% / ${imageWidth / imageHeight})`,
+          // width: `${imageWidth}`,
+          // height: `${imageHeight}`,
+          padding: `calc(100% / ${16 / 9})`,
         }}
       />
     </div>

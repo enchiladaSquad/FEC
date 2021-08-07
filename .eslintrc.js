@@ -36,6 +36,7 @@ module.exports = {
     'comma-dangle': 1,
     'jsx-a11y/click-events-have-key-events': 1,
     'jsx-a11y/no-static-element-interactions': 1,
+    'no-unused-vars': 1,
   },
   settings: {
     'import/resolver': {
