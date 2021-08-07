@@ -100,6 +100,18 @@ progress::-moz-progress-bar {
   flex-direction: row;
 }
 
+.description-container {
+  padding-right: 2em;
+  max-height: 9em;
+  overflow: auto;
+}
+
+.details-container {
+  display: flex;
+  justify-content: center;
+  min-height: 6em;
+}
+
 .divider1 {
   position: absolute;
   z-index: 5;
@@ -123,10 +135,24 @@ progress::-moz-progress-bar {
   font-family: system-ui;
   font-weight: bold;
   font-size: medium;
+  margin: 0.5em;
 }
 
 .enchilada:after {
   padding-left: 1em;
+}
+
+.feature-container {
+  margin: 0.5em;
+}
+
+.features-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 0.15em solid gray;
+  padding-left: 2em;
+  width: 500px;
 }
 
 .flex-break {
@@ -215,7 +241,8 @@ progress::-moz-progress-bar {
   background-color: white;
 }
 
-.modal-header, .modal-footer {
+.modal-header,
+.modal-footer {
   padding: 2em;
 }
 
@@ -268,6 +295,10 @@ progress::-moz-progress-bar {
   display: flex;
 }
 
+.product-details {
+  margin-left: 1em;
+}
+
 .radio {
   margin-left: .75em;
 }
@@ -291,7 +322,7 @@ progress::-moz-progress-bar {
 
 .review {
   padding-bottom: 1em;
-  border-bottom: .1em solid rgb(70, 70, 70);
+  border-bottom: 0.1em solid rgb(70, 70, 70);
 }
 
 .review-text-input {
@@ -374,12 +405,13 @@ progress::-moz-progress-bar {
 }
 
 .starFilteringDisplay {
-  font-size: .6em;
+  font-size: 0.6em;
 }
 
 .star-container {
   display: flex;
   flex-direction: row;
+  margin-left: 1em;
 }
 
 .style-check {
@@ -396,6 +428,7 @@ progress::-moz-progress-bar {
   flex-wrap: wrap;
   align-items: center;
   width: 350px;
+  margin-left: 1em;
 }
 
 .style-node {
@@ -404,10 +437,10 @@ progress::-moz-progress-bar {
 }
 
 .triangleIcon {
-  width: .5em;
-  height: .5em;
+  width: 0.5em;
+  height: 0.5em;
   /* margin-top: .25em; */
-  margin-bottom: .25em;
+  margin-bottom: 0.25em;
 }
 
 .thumbnail-container {
@@ -529,4 +562,26 @@ progress::-moz-progress-bar {
   padding: 0;
   box-sizing: border-box;
   min-width: 60em;
+}
+
+#size-error-container {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+#size-error {
+  flex-grow: 3;
+  background-color: red;
+  color: rgb(97, 26, 21);
+}
+
+#size-error-placeholder {
+	flex-grow: 2;
+	visibility: hidden;
+}
+
+#cart-button-text {
+	padding-left: 0.25em;
+	display: flex;
+	justify-content: space-between;
 }

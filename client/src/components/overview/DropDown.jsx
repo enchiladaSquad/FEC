@@ -2,22 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const DropDown = ({
-  options, onChange, flexGrow, disabled = false,
+  options,
+  handleChange,
+  label,
+  value,
+  disabled = false,
 }) => {
   return (
     <>
       <select
-        style={{ flexGrow }}
+        label={label}
         className="enchilada"
-        onChange={(e) => {
-          onChange(e.target.value);
-        }}
+        onChange={handleChange}
         disabled={disabled}
+        value={value}
       >
         {options.map((option, i) => {
           return (
             <option key={i} value={option}>
-              {option}
+              {option.toString()}
             </option>
           );
         })}
@@ -27,10 +30,13 @@ const DropDown = ({
 };
 
 DropDown.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  onChange: PropTypes.func.isRequired,
-  flexGrow: PropTypes.number.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  ).isRequired,
+  handleChange: PropTypes.func.isRequired,
   disabled: PropTypes.bool.isRequired,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  label: PropTypes.string.isRequired,
 };
 
 export default DropDown;

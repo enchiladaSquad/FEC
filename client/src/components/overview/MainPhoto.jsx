@@ -53,7 +53,7 @@ const MainPhoto = ({
         fontSize="large"
         onClick={(e) => {
           e.stopPropagation();
-          setExpanded((expanded) => !expanded);
+          setExpanded((prevExpanded) => !prevExpanded);
         }}
       />
     </div>

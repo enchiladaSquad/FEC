@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import Reviews from 'components/R&R/Reviews';
 import Questions from 'components/Q&A/questions';
 import ProductOverview from 'components/overview/ProductOverview';
@@ -7,7 +9,8 @@ import useSetContext from './components/setContext';
 import ReviewAddModal from './components/R&R/ReviewAddModal';
 
 const App = () => {
-  const { error, loading, context: contextValues } = useSetContext();
+  const location = useLocation();
+  const { error, loading, context: contextValues } = useSetContext(location);
 
   return (
     <>
