@@ -1,42 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import MainPhoto from 'components/overview/MainPhoto';
-import ZoomImage from 'components/overview/ZoomImage';
 import ImageCarousel from 'components/overview/ImageCarousel';
 
 const ImageGallery = ({
-  photos, alt, zooming, setZooming,
+  photos,
+  alt,
+  currentPhotoIndex,
+  setCurrentPhotoIndex,
+  enableExpanded,
 }) => {
-  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
-  const [expanded, setExpanded] = useState(false);
-
   return (
     <div className="image-gallery-container">
-      {zooming ? (
-        <ZoomImage
-          url={photos[currentPhotoIndex].url}
-          setZooming={setZooming}
-        />
-      ) : (
-        <>
-          <MainPhoto
-            photos={photos}
-            currentPhotoIndex={currentPhotoIndex}
-            alt={alt}
-            expanded={expanded}
-            setExpanded={setExpanded}
-            setZooming={setZooming}
-            setCurrentPhotoIndex={setCurrentPhotoIndex}
-          />
-          <ImageCarousel
-            photos={photos}
-            setCurrentPhotoIndex={setCurrentPhotoIndex}
-            currentPhotoIndex={currentPhotoIndex}
-            alt={alt}
-          />
-        </>
-      )}
+      <MainPhoto
+        photos={photos}
+        currentPhotoIndex={currentPhotoIndex}
+        enableExpanded={enableExpanded}
+        setCurrentPhotoIndex={setCurrentPhotoIndex}
+        alt={alt}
+      />
+      <ImageCarousel
+        photos={photos}
+        setCurrentPhotoIndex={setCurrentPhotoIndex}
+        currentPhotoIndex={currentPhotoIndex}
+        alt={alt}
+      />
     </div>
   );
 };
@@ -49,8 +38,9 @@ ImageGallery.propTypes = {
     }),
   ).isRequired,
   alt: PropTypes.string.isRequired,
-  zooming: PropTypes.bool.isRequired,
-  setZooming: PropTypes.func.isRequired,
+  currentPhotoIndex: PropTypes.number.isRequired,
+  setCurrentPhotoIndex: PropTypes.func.isRequired,
+  enableExpanded: PropTypes.func.isRequired,
 };
 
 export default ImageGallery;
