@@ -58,7 +58,7 @@ const ReviewAddModal = ({ addReviewToggle, setAddReviewToggle, product }) => {
 
     axios.post('/api/reviews', requestBody)
       .then((response) => { console.debug(response); })
-      .then(setAddReviewToggle(false))
+      .then(() => (setAddReviewToggle(false)))
       .catch((err) => { console.error(err); });
   };
 

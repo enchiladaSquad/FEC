@@ -75,7 +75,7 @@ const ReviewsListItem = ({ review, decrease }) => {
           </div>
           <div className="review-summary">{review.summary}</div>
           <div className="review-body">{review.body}</div>
-          <div className="review-recommend"> {review.recommend ? '✔ I recommend this product' : null} </div>
+          <div className="review-recommend"> {review.recommend ? <> <i className="fa fa-check" /> I recommend this product </> : null} </div>
           {review.response !== null ? <div className="response">Response: This is a response!</div> : null}
           <div className="helpful">
             Helpful? <span className="helpful-button" onClick={handleYesVote}>Yes</span>

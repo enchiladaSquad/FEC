@@ -62,8 +62,18 @@ const ReviewsList = ({ starFilter }) => {
             );
           })}
       </div>
-      <button className="enchilada more-reviews" onClick={() => { setReviewCount(reviewCount + 2); }}>More Reviews</button>
+      {console.log(reviews.results.length, reviewCount)}
       <button className="enchilada add-review" onClick={() => { setAddReviewToggle(true) }}>Add a review +</button>
+      {reviews.results.length < reviewCount ? '' : (
+        <button
+          className="enchilada more-reviews"
+          onClick={() => {
+            setReviewCount(reviewCount + 2);
+          }}
+        >
+          More Reviews
+        </button>
+      )}
       {addReviewToggle ? (
         <ReviewAddModal
           addReviewToggle={addReviewToggle}
