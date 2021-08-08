@@ -1,15 +1,24 @@
-# 🚀 Welcome to your new awesome project!
+# 🚀 Front-End Capstone
 
-This project has been created using **webpack-cli**, you can now run
+This project was created as a demonstration of the skills of Hack Reactor Students.
 
-```
-npm run build
-```
-
-or
+In order to run, clone this repository and then...
 
 ```
-yarn build
+npm install
 ```
 
-to bundle your application
+and
+
+```
+npm build:prod
+```
+
+to build before calling...
+
+```
+npm start:server
+```
+
+...to start the server.
+

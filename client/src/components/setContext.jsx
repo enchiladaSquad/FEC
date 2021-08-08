@@ -10,7 +10,6 @@ const useSetContext = (location) => {
   const [productId, setProductId] = useState(
     location.pathname.slice(1) || 18082,
   );
-  // TODO: Replace these with useReducer
   const [product, setProduct] = useState(null);
   const [productStyles, setProductStyles] = useState(null);
   const [reportRerender, setReportRerender] = useState(0);
