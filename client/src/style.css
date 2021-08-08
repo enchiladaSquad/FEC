@@ -7,6 +7,7 @@ body {
 body {
   font-family: 'Poppins', sans-serif;
   color: rgb(70, 70, 70);
+  margin: 0;
 }
 
 path {
@@ -136,7 +137,7 @@ textarea {
 }
 
 .enchilada {
-  padding: 1em 4em 1em 0.1em;
+  padding: 1em;
   font-family: system-ui;
   font-weight: bold;
   font-size: medium;
@@ -314,8 +315,8 @@ textarea {
 }
 
 .overview-container {
-  margin: 5em;
   display: flex;
+  margin-bottom: 3em;
 }
 
 .product-details {
@@ -600,6 +601,8 @@ textarea {
 #main-photo {
   width: 100%;
   cursor: zoom-in;
+	object-fit: contain;
+	height: 600px
 }
 
 #main-photo-container {
@@ -607,6 +610,8 @@ textarea {
   overflow: hidden;
   background-color: black;
   padding: 1em;
+  width: 700px;
+  height: 600px;
 }
 
 #zoom-image {
@@ -628,7 +633,7 @@ textarea {
   margin: 4em;
   padding: 0;
   box-sizing: border-box;
-  min-width: 60em;
+  width: 60em;
 }
 
 #size-error-container {
@@ -643,12 +648,52 @@ textarea {
 }
 
 #size-error-placeholder {
-	flex-grow: 2;
-	visibility: hidden;
+  flex-grow: 2;
+  visibility: hidden;
 }
 
 #cart-button-text {
-	padding-left: 0.25em;
-	display: flex;
-	justify-content: space-between;
+  padding-left: 0.25em;
+  display: flex;
+  justify-content: space-between;
+}
+
+#expanded-photo-container {
+  position: relative;
+}
+
+#app-container {
+  max-width: 80em;
+}
+
+.modal-background {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+
+.modal-container {
+  max-width: 80em;
+  position: relative;
+  overflow: hidden;
+  max-height: calc(100% - 3em);
+}
+
+.floating-icon {
+  position: absolute;
+  color: white;
+  top: 6%;
+  right: 5%;
+  cursor: pointer;
+}
+
+.floating-icon:hover {
+  transform: scale(1.15);
 }

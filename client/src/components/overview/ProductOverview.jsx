@@ -5,6 +5,7 @@ import ImageGallery from 'components/overview/ImageGallery';
 import StyleSelector from 'components/overview/StyleSelector';
 import AddToCart from 'components/overview/AddToCart';
 import ProductInfo from 'components/overview/ProductInfo';
+import ImageModal from 'components/overview/ImageModal';
 
 import StarRating from 'components/SharedComponents';
 
@@ -15,13 +16,15 @@ const ProductOverview = () => {
   const { reviewsMeta, product, productStyles } = useContext(ProductContext);
 
   const [styleIndex, setStyleIndex] = useState(0);
-  const [zooming, setZooming] = useState(false);
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [modalImage, setModalImage] = useState(null);
 
   const styles = productStyles.results;
   const { photos: currentPhotos, name: altText, skus } = styles[styleIndex];
 
   const { description, features } = product;
   const { sale_price: salePrice, name: styleName } = styles[styleIndex];
+  const currentPhoto = currentPhotos[currentPhotoIndex].url;
 
   useEffect(() => {
     setStyleIndex(0);
@@ -30,36 +33,34 @@ const ProductOverview = () => {
   return (
     <>
       <div className="overview-container">
-        {currentPhotos.length ? (
-          <ImageGallery
-            photos={currentPhotos}
-            zooming={zooming}
-            alt={altText}
-            setZooming={setZooming}
-          />
-        ) : null}
-        {!zooming ? (
-          <div className="info-panel">
-            <div className="star-container">
-              <StarRating
-                rating={Number(averageRatings(reviewsMeta.ratings))}
-              />
-            </div>
-            <ProductInfo
-              product={product}
-              salePrice={salePrice}
-              styleName={styleName}
-            />
-            <StyleSelector
-              styles={styles}
-              setStyleIndex={setStyleIndex}
-              styleIndex={styleIndex}
-            />
-            <AddToCart skus={skus} />
+        <ImageGallery
+          alt={altText}
+          photos={currentPhotos}
+          currentPhotoIndex={currentPhotoIndex}
+          setCurrentPhotoIndex={setCurrentPhotoIndex}
+          enableExpanded={() => setModalImage(currentPhoto)}
+        />
+        <div className="info-panel">
+          <div className="star-container">
+            <StarRating rating={Number(averageRatings(reviewsMeta.ratings))} />
           </div>
-        ) : null}
+          <ProductInfo
+            product={product}
+            salePrice={salePrice}
+            styleName={styleName}
+          />
+          <StyleSelector
+            styles={styles}
+            setStyleIndex={setStyleIndex}
+            styleIndex={styleIndex}
+          />
+          <AddToCart skus={skus} />
+        </div>
       </div>
       <ProductDetails description={description} features={features} />
+      {modalImage ? (
+        <ImageModal imgSrc={modalImage} hideModal={() => setModalImage(null)} />
+      ) : null}
     </>
   );
 };

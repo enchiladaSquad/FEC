@@ -43,7 +43,7 @@ const AddToCart = ({ skus }) => {
         <div id="size-error-placeholder" className="enchilada" />
       </div>
       <div className="checkout-container">
-        <span onClick={() => setSizeSelectOpen(true)}>
+        <div onClick={() => setSizeSelectOpen(true)}>
           <DropDown
             options={
               sizes.length
@@ -57,8 +57,9 @@ const AddToCart = ({ skus }) => {
             label={'Sizes'}
             open={sizeSelectOpen}
             disabled={false}
+            paddingR={7}
           />
-        </span>
+        </div>
         <div style={{ flexGrow: '2' }}>
           <DropDown
             options={['-'].concat(quantityArray)}
@@ -66,6 +67,7 @@ const AddToCart = ({ skus }) => {
             label={'Quantities'}
             value={currentQuantity}
             disabled={currentSize === 'SELECT SIZE'}
+            paddingR={5}
           />
         </div>
       </div>
@@ -74,7 +76,12 @@ const AddToCart = ({ skus }) => {
           <>
             <button
               type="button"
-              style={{ flexGrow: '5', textAlign: 'center' }}
+              style={{
+                flexGrow: '5',
+                textAlign: 'center',
+                display: 'flex',
+                justifyContent: 'space-between',
+              }}
               className="enchilada"
               onClick={() => {
                 setTriedSubmit(true);
@@ -83,7 +90,8 @@ const AddToCart = ({ skus }) => {
                 }
               }}
             >
-              <span id="cart-button-text">Add to Cart +</span>
+              <span id="cart-button-text">ADD TO BUTTON</span>
+              <span>+</span>
             </button>
             <button
               type="button"

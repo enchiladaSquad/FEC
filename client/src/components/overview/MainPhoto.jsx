@@ -7,28 +7,17 @@ import {
   Fullscreen,
 } from '@material-ui/icons';
 
-// import Chevron from 'components/overview/Chevron';
-
 const MainPhoto = ({
   photos,
   currentPhotoIndex,
   alt,
-  expanded,
-  setExpanded,
-  setZooming,
+  enableExpanded,
   setCurrentPhotoIndex,
 }) => {
   return (
-    <div
-      id="main-photo-container"
-      onClick={() => {
-        setZooming(true);
-      }}
-      style={{ width: expanded ? '100%' : '' }}
-    >
+    <div id="main-photo-container" onClick={enableExpanded}>
       <img
         id="main-photo"
-        style={{ maxHeight: expanded ? '50em' : '' }}
         src={photos[currentPhotoIndex].url || ''}
         alt={alt}
       />
@@ -53,7 +42,7 @@ const MainPhoto = ({
         fontSize="large"
         onClick={(e) => {
           e.stopPropagation();
-          setExpanded((prevExpanded) => !prevExpanded);
+          enableExpanded();
         }}
       />
     </div>
@@ -69,9 +58,7 @@ MainPhoto.propTypes = {
   ).isRequired,
   currentPhotoIndex: PropTypes.number.isRequired,
   alt: PropTypes.string.isRequired,
-  expanded: PropTypes.bool.isRequired,
-  setExpanded: PropTypes.func.isRequired,
-  setZooming: PropTypes.func.isRequired,
+  enableExpanded: PropTypes.func.isRequired,
   setCurrentPhotoIndex: PropTypes.func.isRequired,
 };
 
