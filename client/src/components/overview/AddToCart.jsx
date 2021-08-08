@@ -12,6 +12,8 @@ const getSizesFromSkus = (skus) => {
   });
 };
 
+const submitCard = (cart) => {};
+
 const AddToCart = ({ skus }) => {
   const sizes = getSizesFromSkus(skus);
   const sizeQuantities = composeSizeQuantity(skus);
