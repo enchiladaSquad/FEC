@@ -32,8 +32,6 @@ const ImageCarousel = ({
     );
   }, [photos, thumbStart]);
 
-  // TODO: pass an onClick down to thumbnail
-
   return (
     <div id="carousel-container">
       <div>
