@@ -6,10 +6,10 @@
   "scripts": {
     "test": "jest",
     "watch:test": "jest --watch",
-    "build:dev": "cd client && webpack --mode=development",
+    "build:watch": "cd client && webpack --mode=development --watch",
     "build:prod": "cd client && webpack --mode=production",
-    "watch:client": "cd client && webpack --mode=development --watch",
-    "start:server": "nodemon server/src/index.js"
+    "serve:dev": "nodemon server/src/",
+    "serve:prod": "node server/src/"
   },
   "keywords": [],
   "author": "",

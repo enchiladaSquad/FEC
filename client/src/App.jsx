@@ -24,7 +24,9 @@ const App = () => {
         <>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <div id="app-container">
-              <h1 title="page-title">EnchiLads' Catwalk</h1>
+              <h1 id="page-title" title="page-title">
+                Enchilada Catwalk
+              </h1>
               <ProductProvider contextValues={contextValues}>
                 <ProductOverview />
                 <Reviews />

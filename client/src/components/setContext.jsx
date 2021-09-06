@@ -8,7 +8,7 @@ const baseUrl = `http://localhost:${port}/api`;
 
 const useSetContext = (location) => {
   const [productId, setProductId] = useState(
-    location.pathname.slice(1) || 18082,
+    location.pathname.slice(1) || 46410,
   );
   // TODO: Replace these with useReducer
   const [product, setProduct] = useState(null);
