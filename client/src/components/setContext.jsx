@@ -3,8 +3,9 @@ import axios from 'axios';
 
 import { composeParams } from '../utils';
 
-const port = 3000;
-const baseUrl = `http://localhost:${port}/api`;
+const PORT = 3000;
+// const baseUrl = `http://localhost:${port}/api`;
+const URL = `13.59.113.13:${PORT}/api`;
 
 const useSetContext = (location) => {
   const [productId, setProductId] = useState(
