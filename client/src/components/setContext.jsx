@@ -4,7 +4,7 @@ import axios from 'axios';
 import { composeParams } from '../utils';
 
 const PORT = 3000;
-// const baseUrl = `http://localhost:${port}/api`;
+// const baseURL = `http://localhost:${PORT}/api`;
 const URL = `13.59.113.13:${PORT}/api`;
 
 const useSetContext = (location) => {
@@ -26,8 +26,8 @@ const useSetContext = (location) => {
   function fetchData(route, setData, params) {
     return new Promise((resolve, reject) => {
       const requestURL = params
-        ? `${baseUrl}${route}${composeParams(params)}`
-        : `${baseUrl}${route}`;
+        ? `${URL}${route}${composeParams(params)}`
+        : `${URL}${route}`;
       axios
         .get(requestURL)
         .then((results) => {

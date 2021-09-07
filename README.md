@@ -1,6 +1,6 @@
 # Barclay & Trimarchi's Clothing Emporium
 
-The modern outfitters' solution.
+The modern outfitters' solution. The front-end of a clothing merchant website.
 
 ## Requirements
 
