@@ -5,7 +5,8 @@ import { composeParams } from '../utils';
 
 const PORT = 3000;
 // const baseURL = `http://localhost:${PORT}/api`;
-const URL = `13.59.113.13:${PORT}/api`;
+// const URL = `http://13.59.113.13:${PORT}/api`;
+const baseURL = '/api';
 
 const useSetContext = (location) => {
   const [productId, setProductId] = useState(
@@ -26,8 +27,8 @@ const useSetContext = (location) => {
   function fetchData(route, setData, params) {
     return new Promise((resolve, reject) => {
       const requestURL = params
-        ? `${URL}${route}${composeParams(params)}`
-        : `${URL}${route}`;
+        ? `${baseURL}${route}${composeParams(params)}`
+        : `${baseURL}${route}`;
       axios
         .get(requestURL)
         .then((results) => {
