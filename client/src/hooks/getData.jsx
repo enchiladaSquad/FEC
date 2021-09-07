@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const URL = 'http://localhost:4000';
+const URL = 'http://localhost:3000';
 
 // Todo: incorporate query params
 const useGetData = ({ route }) => {
