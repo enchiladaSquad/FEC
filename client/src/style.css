@@ -242,8 +242,8 @@ textarea {
 
 .modal-body {
   padding: 2em;
-  border-top: .075em solid rgb(70, 70, 70);
-  border-bottom: .075em solid rgb(70, 70, 70);
+  border-top: 0.075em solid rgb(70, 70, 70);
+  border-bottom: 0.075em solid rgb(70, 70, 70);
   display: flex;
   flex-direction: column;
   height: 60vh;
@@ -266,14 +266,17 @@ textarea {
   flex-direction: column;
 }
 
-.modal-review-summary, .modal-review-body, .modal-nickname, .modal-email {
+.modal-review-summary,
+.modal-review-body,
+.modal-nickname,
+.modal-email {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
 
 .modal-star-radio {
   opacity: 0;
-  width: .075em;
+  width: 0.075em;
   margin-left: 3.1em;
   margin-top: 1em;
   position: absolute;
@@ -288,7 +291,8 @@ textarea {
   margin: 0;
 }
 
-.more-reviews, .add-review{
+.more-reviews,
+.add-review {
   padding: 1em;
 }
 
@@ -324,7 +328,7 @@ textarea {
 }
 
 .radio {
-  margin-left: .75em;
+  margin-left: 0.75em;
 }
 
 .recPercent {
@@ -365,11 +369,10 @@ textarea {
 }
 
 .review-stars {
-
 }
 
 .review-summary {
-  font-weight:bold;
+  font-weight: bold;
   margin-top: 1em;
 }
 
@@ -399,7 +402,7 @@ textarea {
 
 .reviews-list-container {
   width: 100vh;
-  margin-left: .75em;
+  margin-left: 0.75em;
 }
 
 .star {
@@ -525,12 +528,12 @@ textarea {
 .upload-thumb-container {
   height: 3.4em;
   overflow: hidden;
-  border: .075em solid rgb(70, 70, 70);
+  border: 0.075em solid rgb(70, 70, 70);
   padding: 0;
 }
 
 .username-date {
-  margin-top: .7em;
+  margin-top: 0.7em;
 }
 
 .stars-user-date {
@@ -601,8 +604,8 @@ textarea {
 #main-photo {
   width: 100%;
   cursor: zoom-in;
-	object-fit: contain;
-	height: 600px
+  object-fit: contain;
+  height: 600px;
 }
 
 #main-photo-container {
@@ -645,6 +648,8 @@ textarea {
   flex-grow: 3;
   background-color: red;
   color: rgb(97, 26, 21);
+  border-radius: 1em;
+  width: 75px;
 }
 
 #size-error-placeholder {
@@ -696,4 +701,13 @@ textarea {
 
 .floating-icon:hover {
   transform: scale(1.15);
+}
+
+#page-title {
+  background-color: black;
+  color: white;
+  width: 100%;
+  padding: 1em;
+  margin-top: 0;
+  padding-right: 0;
 }
