@@ -7,4 +7,4 @@ services:
       - 1234:3000
     build:
       context: ../
-      dockerfile: ./scripts/docker/node.Dockerfile
+      dockerfile: ./scripts/node.Dockerfile
