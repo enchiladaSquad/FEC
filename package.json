@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "watch:test": "jest --watch",
-    "build:watch": "cd client && webpack --mode=development --watch",
+    "test:watch": "jest --watch",
+    "watch": "cd client && webpack --mode=development --watch",
     "build:prod": "cd client && webpack --mode=production",
     "serve:dev": "nodemon server/src/",
-    "serve:prod": "node server/src/"
+    "serve:prod": "pm2 start ./server/src/index.js",
+    "start": "npm run build:prod && npm run serve:prod"
   },
   "keywords": [],
   "author": "",
@@ -52,6 +53,7 @@
     "express": "^4.17.1",
     "font-awesome": "^4.7.0",
     "nodemon": "^2.0.12",
+    "pm2": "^5.1.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
