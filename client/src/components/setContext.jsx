@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { composeParams } from '../utils';
 
-const port = 4000;
+const port = 3000;
 const baseUrl = `http://localhost:${port}/api`;
 
 const useSetContext = (location) => {
