@@ -3,12 +3,14 @@ import axios from 'axios';
 
 import { composeParams } from '../utils';
 
-const port = 4000;
-const baseUrl = `http://localhost:${port}/api`;
+const PORT = 3000;
+// const baseURL = `http://localhost:${PORT}/api`;
+// const URL = `http://13.59.113.13:${PORT}/api`;
+const baseURL = '/api';
 
 const useSetContext = (location) => {
   const [productId, setProductId] = useState(
-    location.pathname.slice(1) || 18082,
+    location.pathname.slice(1) || 46410,
   );
   // TODO: Replace these with useReducer
   const [product, setProduct] = useState(null);
@@ -25,8 +27,8 @@ const useSetContext = (location) => {
   function fetchData(route, setData, params) {
     return new Promise((resolve, reject) => {
       const requestURL = params
-        ? `${baseUrl}${route}${composeParams(params)}`
-        : `${baseUrl}${route}`;
+        ? `${baseURL}${route}${composeParams(params)}`
+        : `${baseURL}${route}`;
       axios
         .get(requestURL)
         .then((results) => {

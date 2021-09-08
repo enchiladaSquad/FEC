@@ -1,0 +1,8 @@
+coverage
+scripts
+*.pem
+node_modules
+jest.config.js
+server/data
+client/dist
+src/__tests__

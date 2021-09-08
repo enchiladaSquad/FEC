@@ -5,7 +5,7 @@ const axios = require('axios');
 const API_KEY = process.env.API_KEY || require('../config');
 
 const baseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
-const PORT = 4000;
+const PORT = process.env.port || 3000;
 
 const app = express();
 
@@ -32,6 +32,8 @@ const getStatusCode = (method) => {
       return 200;
   }
 };
+
+app.get('/favicon.ico', (req, res) => {});
 
 app.all('/api/*', (req, res) => {
   console.log('METHOD:', req.method);

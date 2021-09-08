@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  node:
+    image: fec-barclay-trimarchi
+    container_name: fec-barclay-trimarchi
+    ports:
+      - 3000:3000
+    build:
+      context: ../
+      dockerfile: ./scripts/node.Dockerfile
