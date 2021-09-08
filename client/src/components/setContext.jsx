@@ -4,8 +4,6 @@ import axios from 'axios';
 import { composeParams } from '../utils';
 
 const PORT = 3000;
-// const baseURL = `http://localhost:${PORT}/api`;
-// const URL = `http://13.59.113.13:${PORT}/api`;
 const baseURL = '/api';
 
 const useSetContext = (location) => {

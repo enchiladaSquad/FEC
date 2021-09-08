@@ -34,8 +34,7 @@
     "msw": "^0.33.0",
     "prettier": "^2.3.2",
     "regenerator-runtime": "^0.13.9",
-    "sass": "^1.36.0",
-    "webpack-bundle-analyzer": "^4.4.2"
+    "sass": "^1.36.0"
   },
   "dependencies": {
     "@babel/core": "^7.15.5",
@@ -61,6 +60,7 @@
     "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",
     "webpack": "^5.52.0",
+    "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.8.0"
   }
 }
