@@ -12,8 +12,8 @@
     "serve:dev": "nodemon server/src/",
     "serve:aws": "pm2 start ./server/src/index.js",
     "serve:heroku": "node ./server/src/index.js",
-    "start:heroku": "npm run build:prod && npm run serve:heroku",
-    "start:aws": "npm run build:prod && npm run serve:aws"
+    "start:aws": "npm run build:prod && npm run serve:aws",
+    "postdeploy": "npm install && npm build:prod"
   },
   "keywords": [],
   "author": "",
