@@ -14,7 +14,8 @@
     "serve:heroku": "node ./server/src/index.js",
     "start:aws": "npm run build:prod && npm run serve:aws",
     "postdeploy": "npm install && npm run build:prod",
-    "start:heroku": "npm install && npm run build:prod && npm run serve:heroku"
+    "start:heroku": "npm run serve:heroku",
+    "build": "npm run build:prod"
   },
   "keywords": [],
   "author": "",

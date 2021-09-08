@@ -33,8 +33,6 @@ const getStatusCode = (method) => {
   }
 };
 
-app.get('/favicon.ico', (req, res) => {});
-
 app.all('/api/*', (req, res) => {
   console.log('METHOD:', req.method);
   console.log('PATH:', req.url);
