@@ -13,7 +13,8 @@
     "serve:aws": "pm2 start ./server/src/index.js",
     "serve:heroku": "node ./server/src/index.js",
     "start:aws": "npm run build:prod && npm run serve:aws",
-    "postdeploy": "npm install && npm build:prod"
+    "postdeploy": "npm install && npm build:prod",
+    "start:heroku": "npm install && npm build:prod && npm run serve:heroku"
   },
   "keywords": [],
   "author": "",
