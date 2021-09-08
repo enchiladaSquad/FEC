@@ -7,10 +7,11 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "watch": "cd client && webpack --mode=development --watch",
+    "build:dev": "cd client && webpack --mode=development",
     "build:prod": "cd client && webpack --mode=production",
     "serve:dev": "nodemon server/src/",
     "serve:prod": "pm2 start ./server/src/index.js",
-    "start": "npm run build:prod && npm run serve:prod"
+    "start": "npm run build:dev && npm run serve:prod"
   },
   "keywords": [],
   "author": "",
