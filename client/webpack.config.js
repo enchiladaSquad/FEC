@@ -3,7 +3,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const webpack = require('webpack');
 
 const isProduction = process.env.NODE_ENV == 'production';
@@ -21,6 +21,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
+    new webpack.ProvidePlugin({ process }),
   ],
   devtool: 'source-map',
   module: {
@@ -32,7 +33,7 @@ const config = {
       },
       {
         test: /\.css$/i,
-        use: [stylesHandler, 'css-loader'],
+        use: ['style-loader', 'css-loader'],
         exclude: '/node_modules/',
       },
       {
@@ -63,8 +64,8 @@ module.exports = () => {
   if (isProduction) {
     config.mode = 'production';
 
-    config.plugins.push(new MiniCssExtractPlugin());
-    config.plugins.push(new webpack.ProvidePlugin({ process }));
+    // config.plugins.push(new MiniCssExtractPlugin());
+    // config.plugins.push(new webpack.ProvidePlugin({ process }));
   } else {
     config.mode = 'development';
     // config.plugins.push(new BundleAnalyzerPlugin());
