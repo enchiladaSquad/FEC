@@ -5,7 +5,7 @@ const axios = require('axios');
 const API_KEY = process.env.API_KEY || require('../config');
 
 const baseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
-const PORT = process.env.port || 3000;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
