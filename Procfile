@@ -1,2 +1,1 @@
-web: npm install
-web: npm start
+web: pm2 stop all && npm start
