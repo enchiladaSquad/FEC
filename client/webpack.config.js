@@ -4,6 +4,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const webpack = require('webpack');
 
 const isProduction = process.env.NODE_ENV == 'production';
 
@@ -63,6 +64,7 @@ module.exports = () => {
     config.mode = 'production';
 
     config.plugins.push(new MiniCssExtractPlugin());
+    config.plugins.push(new webpack.ProvidePlugin({ process }));
   } else {
     config.mode = 'development';
     // config.plugins.push(new BundleAnalyzerPlugin());
