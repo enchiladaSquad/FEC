@@ -9,9 +9,8 @@ The modern outfitters' solution. The front-end of a clothing merchant website.
 ## Run Instructions
 
 1. `git clone` this repository, or download its zip file. Navigate to the root of this repository with your terminal of choice.
-2. Run the command `npm run build:prod` to bundle the code with Webpack.
-3. Run the command `npm run serve:prod` to start the proxy server.
-4. Open a browser and navigate to `localhost:3000` to view the results.
+2. Run the command `npm start` to bundle the code with Webpack and start the proxy server.
+3. Open a browser and navigate to `localhost:3000` to view the results.
 
 ## Technologies
 
