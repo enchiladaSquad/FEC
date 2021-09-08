@@ -4,15 +4,17 @@
   "description": "A demonstration of raw talent devised and forged by ferocious Enchilada-Eaters",
   "main": "index.js",
   "scripts": {
-		"preinstall": "npm install pm2 -g",
+    "preinstall": "npm install pm2 -g",
     "test": "jest",
     "test:watch": "jest --watch",
     "watch": "cd client && webpack --mode=development --watch",
     "build:dev": "cd client && webpack --mode=development",
     "build:prod": "cd client && webpack --mode=production",
     "serve:dev": "nodemon server/src/",
-    "serve:prod": "pm2 start ./server/src/index.js",
-    "start": "npm run build:prod && npm run serve:prod"
+    "serve:aws": "pm2 start ./server/src/index.js",
+    "serve:heroku": "node ./server/src/index.js",
+    "start:heroku": "npm run build:prod && npm run serve:heroku",
+    "start:aws": "npm run build:prod && npm run serve:aws"
   },
   "keywords": [],
   "author": "",
