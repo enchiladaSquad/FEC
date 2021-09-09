@@ -21,7 +21,6 @@ const config = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
-    new webpack.ProvidePlugin({ process }),
   ],
   devtool: 'source-map',
   module: {
@@ -33,7 +32,7 @@ const config = {
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: [stylesHandler, 'css-loader'],
         exclude: '/node_modules/',
       },
       {
@@ -64,8 +63,8 @@ module.exports = () => {
   if (isProduction) {
     config.mode = 'production';
 
-    // config.plugins.push(new MiniCssExtractPlugin());
-    // config.plugins.push(new webpack.ProvidePlugin({ process }));
+    config.plugins.push(new MiniCssExtractPlugin());
+    config.plugins.push(new webpack.ProvidePlugin({ process }));
   } else {
     config.mode = 'development';
     // config.plugins.push(new BundleAnalyzerPlugin());
