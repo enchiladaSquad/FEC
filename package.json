@@ -6,9 +6,9 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "watch": "cd client && webpack --mode=development --watch",
-    "build:dev": "cd client && webpack --mode=development",
-    "build:prod": "cd client && webpack --mode=production",
+    "watch": "cd client && webpack  --config webpack.dev.js --watch",
+    "build:dev": "cd client && webpack  --config webpack.dev.js",
+    "build:prod": "cd client && webpack --config webpack.prod.js",
     "serve:dev": "nodemon server/src/",
     "serve:aws": "pm2 start ./server/src/index.js",
     "serve:heroku": "node ./server/src/index.js",
