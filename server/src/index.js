@@ -1,9 +1,9 @@
 const path = require('path');
 const express = require('express'); // npm installed
 const axios = require('axios');
-const ENV_API_KEY = require('../config');
+const config = require('../config');
 
-const API_KEY = process.env.API_KEY || ENV_API_KEY;
+const API_KEY = config.GITHUB_TOKEN;
 
 const baseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
 const PORT = process.env.PORT || 3000;
