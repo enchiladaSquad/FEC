@@ -1,5 +1,3 @@
-// Generated using webpack-cli https://github.com/webpack/webpack-cli
-
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -12,27 +10,27 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
   },
-  // optimization: {
-  //   minimizer: [
-  //     new TerserPlugin({
-  //       parallel: true,
-  //       terserOptions: { sourceMap: false },
-  //     }),
-  //   ],
-  //   nodeEnv: 'production',
-  // },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        parallel: true,
+        terserOptions: { sourceMap: false },
+      }),
+    ],
+    nodeEnv: 'production',
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
     new MiniCssExtractPlugin(),
     new webpack.ProvidePlugin({ process: 'process' }),
-    // new CompressionPlugin({
-    //   algorithm: 'gzip',
-    //   test: /\.js$|\.css$|\.html$/,
-    //   threshold: 0,
-    //   minRatio: 0.8,
-    // }),
+    new CompressionPlugin({
+      algorithm: 'gzip',
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 0,
+      minRatio: 0.8,
+    }),
   ],
   mode: 'production',
   module: {
