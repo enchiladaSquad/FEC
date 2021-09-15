@@ -18,11 +18,11 @@ const routeMiddleware = function (req, res, next) {
   next();
 };
 
-app.use('*.js' || '*.jsx', (req, res, next) => {
-  req.url += '.gz';
-  res.set('Content-Encoding', 'gzip');
-  next();
-});
+// app.use('*.js' || '*.jsx', (req, res, next) => {
+//   req.url += '.gz';
+//   res.set('Content-Encoding', 'gzip');
+//   next();
+// });
 
 app.use(express.json());
 app.use(morgan('common'));

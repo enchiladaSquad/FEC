@@ -12,27 +12,27 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
   },
-  optimization: {
-    minimizer: [
-      new TerserPlugin({
-        parallel: true,
-        terserOptions: { sourceMap: false },
-      }),
-    ],
-    nodeEnv: 'production',
-  },
+  // optimization: {
+  //   minimizer: [
+  //     new TerserPlugin({
+  //       parallel: true,
+  //       terserOptions: { sourceMap: false },
+  //     }),
+  //   ],
+  //   nodeEnv: 'production',
+  // },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
     new MiniCssExtractPlugin(),
     new webpack.ProvidePlugin({ process: 'process' }),
-    new CompressionPlugin({
-      algorithm: 'gzip',
-      test: /\.js$|\.css$|\.html$/,
-      threshold: 0,
-      minRatio: 0.8,
-    }),
+    // new CompressionPlugin({
+    //   algorithm: 'gzip',
+    //   test: /\.js$|\.css$|\.html$/,
+    //   threshold: 0,
+    //   minRatio: 0.8,
+    // }),
   ],
   mode: 'production',
   module: {
