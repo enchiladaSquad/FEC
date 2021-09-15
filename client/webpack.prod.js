@@ -4,11 +4,22 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
+  },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        parallel: true,
+        terserOptions: { sourceMap: false },
+      }),
+    ],
+    nodeEnv: 'production',
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -16,6 +27,12 @@ module.exports = {
     }),
     new MiniCssExtractPlugin(),
     new webpack.ProvidePlugin({ process: 'process' }),
+    new CompressionPlugin({
+      algorithm: 'gzip',
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 0,
+      minRatio: 0.8,
+    }),
   ],
   mode: 'production',
   module: {

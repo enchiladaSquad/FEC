@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express'); // npm installed
 const axios = require('axios');
+const morgan = require('morgan');
 const config = require('../config');
 
 const API_KEY = config.GITHUB_TOKEN;
@@ -17,7 +18,14 @@ const routeMiddleware = function (req, res, next) {
   next();
 };
 
+app.use('*.js' || '*.jsx', (req, res, next) => {
+  req.url += '.gz';
+  res.set('Content-Encoding', 'gzip');
+  next();
+});
+
 app.use(express.json());
+app.use(morgan('common'));
 app.use(express.static(path.join(__dirname, '../../client/dist')));
 app.use(routeMiddleware);
 
@@ -35,8 +43,6 @@ const getStatusCode = (method) => {
 };
 
 app.all('/api/*', (req, res) => {
-  console.log('METHOD:', req.method);
-  console.log('PATH:', req.url);
   const url = `${baseUrl}${req.url.slice(4)}`;
   axios({
     method: req.method,
