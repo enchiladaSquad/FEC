@@ -58,7 +58,7 @@ app.all('/api/*', (req, res) => {
       res.status(statusCode).send(apiRes.data);
     })
     .catch((err) => {
-      // console.error(err);
+      console.error(err);
       res.status(500).send(err);
     });
 });
