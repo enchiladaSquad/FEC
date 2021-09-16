@@ -6,6 +6,7 @@ import ProductOverview from 'components/overview/ProductOverview';
 import ProductProvider from 'components/ProductProvider';
 import useSetContext from './components/setContext';
 import ReviewAddModal from './components/R&R/ReviewAddModal';
+import PageHeader from './components/overview/PageHeader';
 
 const App = () => {
   const location = useLocation();
@@ -24,9 +25,7 @@ const App = () => {
         <>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <div id="app-container">
-              <h1 id="page-title" title="page-title">
-                Enchilada Catwalk
-              </h1>
+              <PageHeader />
               <ProductProvider contextValues={contextValues}>
                 <ProductOverview />
                 <Reviews />

@@ -2,11 +2,9 @@ import React from 'react';
 
 const PageHeader = () => {
   return (
-    <>
-      <div>
-        <h1>Project DogWalk</h1>
-      </div>
-    </>
+    <h1 id="page-title" title="page-title">
+      Barclay & Trimarchi's Emporium
+    </h1>
   );
 };
 
