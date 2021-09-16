@@ -6,6 +6,8 @@ const config = require('../config');
 
 const API_KEY = config.GITHUB_TOKEN;
 
+console.debug('API_KEY:', API_KEY.slice(-5));
+
 const baseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
 const PORT = process.env.PORT || 3000;
 
@@ -44,6 +46,7 @@ const getStatusCode = (method) => {
 
 app.all('/api/*', (req, res) => {
   const url = `${baseUrl}${req.url.slice(4)}`;
+  console.debug(req.method, 'URL:', url);
   axios({
     method: req.method,
     url,
@@ -54,11 +57,20 @@ app.all('/api/*', (req, res) => {
     data: req.body,
   })
     .then((apiRes) => {
+      console.debug(
+        'apiRes.data:',
+        JSON.stringify(apiRes.data, null, 2).slice(0, 100),
+        '...',
+      );
       const statusCode = getStatusCode(req.method);
       res.status(statusCode).send(apiRes.data);
     })
     .catch((err) => {
-      console.error(err);
+      console.error(
+        'Error proxying request:',
+        err.message,
+        err.data ? err.data : '',
+      ); // TODO: add function to map error to status code
       res.status(500).send(err);
     });
 });
