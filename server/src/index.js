@@ -6,8 +6,6 @@ const config = require('../config');
 
 const API_KEY = config.GITHUB_TOKEN;
 
-console.debug('API_KEY:', API_KEY.slice(-5));
-
 const baseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
 const PORT = process.env.PORT || 3000;
 
