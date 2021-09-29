@@ -18,7 +18,7 @@
 
 ## About
 
-The modern outfitters' solution. The front-end of a clothing merchant website. [Click here to visit our demo and deployment!](https://adb-barclay-trimarchi-emporium.herokuapp.com/)
+The modern outfitters' solution. The front-end of a clothing merchant website. All styling is vanilla CSS3! [Click here to visit our demo and deployment!](https://adb-barclay-trimarchi-emporium.herokuapp.com/)
 
 ## Demo
 
