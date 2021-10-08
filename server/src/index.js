@@ -68,8 +68,12 @@ app.all('/api/*', (req, res) => {
         'Error proxying request:',
         err.message,
         err.data ? err.data : '',
-      ); // TODO: add function to map error to status code
-      res.status(500).send(err);
+      );
+      if (err.response) {
+        res.status(err.response.status).send(err);
+      } else {
+        res.status(500).send(err);
+      }
     });
 });
 
