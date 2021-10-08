@@ -16,17 +16,50 @@
 ![Babel](https://img.shields.io/badge/Babel-F9DC3e?style=for-the-badge&logo=babel&logoColor=black)
 ![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)
 
-The modern outfitters' solution. The front-end of a clothing merchant website.
+## About
+
+The modern outfitters' solution. The front-end of a clothing merchant website. All styling is vanilla CSS3! [Click here to visit our demo and deployment!](https://adb-barclay-trimarchi-emporium.herokuapp.com/)
+
+## Demo
+
+![image](https://user-images.githubusercontent.com/42557448/135187679-9c08fded-da3e-47aa-9446-886fc23992e3.png)
+
+![image](https://user-images.githubusercontent.com/42557448/135187720-a86ba913-5cdf-4f5a-b3f5-73049d5f2285.png)
+
+![image](https://user-images.githubusercontent.com/42557448/135187753-44de3ec3-1674-461c-aea5-1a0cdfe91ca5.png)
+
+![image](https://user-images.githubusercontent.com/42557448/135187783-6a104026-22cc-424b-8a64-bf39a72580fc.png)
 
 ## Requirements
 
 * A `config.js` file in the `server` directory which exports a GitHub API key with Hack Reactor Permissions
 
-## Run Instructions
+## Installation & Setup
 
 1. `git clone` this repository, or download its zip file.
 2. Run `npm run build` to bundle the client code with Webpack.
 3. Run `npm start` to start the proxy server.
 3. Open a browser and navigate to `localhost:3000` to view the results.
 
+## Usage
+
+* In order to view other products, append `/4641*` where `*` is greater than or equal to zero and less than or equal to four.
+*  `e.g. https://adb-barclay-trimarchi-emporium.herokuapp.com/46412`
+*  In the upper portion, clicking on an image will cause a zoomed, modal window to pop-over the window. Clicking again will engage the panning zoom.
+*  Clicking the thumbnails on the left-side of the main image will cause that thumbnail to become the main image. Clicking the arrows on either side of the main image will scroll through the images.
+*  Clicking one of the circular nodes to the right will cause the product style to change. This affects the images/thumbnails available, as well as the sizes and quantity, listed below.
+*  Size and quantity can be selected from the dropdown menus to the right.
+*  The reviews can be filtered by the number of stars. Clicking `4 Stars` on the left side of the Reviews component will filter all but four-star reviews. Clicking other stars numbers will add those to the listing. Clicking any selected numbers will cause those to be removed.
+*  Reviews can be sorted by `Newest`, `Helpfulness`, or `Relevance`, via the dropdown menu on the right side.
+*  Reviews can be rated as helpful or reported via the buttons below each review.
+*  Reviews can be added via a bottom button.
+*  More reviews can be retrieved via the other bottom button.
+
+## ChangeLog & Roadmap
+
+August 2021 - Version 1.0 Released
+
+Future Plans
+* Improve performance via Lighthouse recommendations
+* Add keyboard listeners for image navigation
 
